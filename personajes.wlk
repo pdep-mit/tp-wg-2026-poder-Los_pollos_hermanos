@@ -13,7 +13,7 @@ object alumno {
 
   method hablarCon(personaje) {
     if (self.estaAlLadoDe(personaje))
-      game.say(personaje, personaje.dialogo())
+      personaje.dialogo()
     else
       game.say(self, "Acá no hay nadie con quien hablar...")
   }
@@ -49,16 +49,27 @@ object rasta {
   method image() = "charizard.png"
   method hablar(mensaje) { game.say(self, mensaje) } 
 
-  m
+  method dialogo(){
+    if(alumno.tieneAccesoAlRepo()){
+      game.say(self, "Ya tenes acceso al Repo, no pierdas tiempo y termina el TP")
+    }
+    else {
+      game.say(self, "Dame un segundo y te habilito el TP")
+      alumno.tieneAccesoAlRepo(true) //piece of shit 
+    }
+  }
 
 
 
 }
 
 object companieroClase{
-
+  var property position = game.at(4, 5)
+  method image() = "gary.jpg" 
   method hablar(mensaje) { game.say(self, mensaje) } 
-
+   method dialogo() {
+      game.say(self, "¡Che! Pedile al Rasta que te habilite el repo.")
+  }
 }
 
 object computadora{
