@@ -7,7 +7,7 @@ import wollok.game.*
 }*/ 
 object alumno {
   var property position = game.center()
-  method image() = "assets/alumno.png"
+  method image() = "alumno.png"
 }
 
 /* method configurarJuego(juegoTomYJerry){
@@ -18,8 +18,8 @@ object alumno {
 	} 
   */
 object rasta {
-  var property position = game.at(8,8)
-  method image() = "assets/rasta.png"
+  var property position = game.at(0,0)
+  method image() = "charizard.png"
 
 }
 /*
