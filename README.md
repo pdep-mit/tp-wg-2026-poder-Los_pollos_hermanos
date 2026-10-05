@@ -1,13 +1,13 @@
-# Wollok Game: Título de juego
+# Wollok Game: Aprobame, Rasta
 
-**Grupo:** Nombre de Grupo
+**Grupo:** Los Pollos Hermanos
 
 **Integrantes:**
-- Nombre y Apellido
-- Nombre y Apellido
-- Nombre y Apellido
-- Nombre y Apellido
-- Nombre y Apellido
+- Agustina Franco
+- Denise Ayelen Paliza
+- Facundo Cordoba Nigro
+- Julian Riccelli
+
 
 ## Consignas
 
