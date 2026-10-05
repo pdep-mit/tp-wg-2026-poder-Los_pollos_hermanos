@@ -5,7 +5,7 @@ program AprobameRasta {
 	game.title("Grupo: Los Pollos Hermanos | Aprobame, Rasta")
 	game.height(10)
 	game.width(10)
-	game.boardGround("imagen.png")
+	//game.boardGround("fondo.png")
 	game.addVisualCharacter(alumno) //movemos el alumno de acuerdo a las flechas
 	game.addVisual(rasta)
 	// game.addVisual(companieroClase)
