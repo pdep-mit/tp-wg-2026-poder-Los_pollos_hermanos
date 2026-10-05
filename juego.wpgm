@@ -12,5 +12,9 @@ program AprobameRasta {
 	// game.addVisual(companieroClase)
 	// game.addVisual(computadora)
 
+	keyboard.e().onPressDo({ alumno.hablarCon(rasta) })
+
+	
+
 	game.start()
 }
