@@ -65,7 +65,7 @@ object rasta {
 
 object companieroClase{
   var property position = game.at(4, 5)
-  method image() = "gary.jpg" 
+  method image() = "dito.png" 
   method hablar(mensaje) { game.say(self, mensaje) } 
    method dialogo() {
       game.say(self, "¡Che! Pedile al Rasta que te habilite el repo.")
