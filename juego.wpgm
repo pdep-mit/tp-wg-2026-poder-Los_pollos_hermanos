@@ -1,12 +1,15 @@
 import wollok.game.*
-import example.*
+import personajes.*
 
-program NombreDeJuego {
+program AprobameRasta {
 	game.title("Grupo: Los Pollos Hermanos | Aprobame, Rasta")
 	game.height(10)
 	game.width(10)
-
-	game.addVisual(player)
+	game.boardGround("imagen.png")
+	game.addVisualCharacter(alumno) //movemos el alumno de acuerdo a las flechas
+	game.addVisual(rasta)
+	// game.addVisual(companieroClase)
+	// game.addVisual(computadora)
 
 	game.start()
 }
