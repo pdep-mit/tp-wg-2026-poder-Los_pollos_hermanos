@@ -47,7 +47,9 @@ object alumno {
 object rasta {
   var property position = game.at(0,0)
   method image() = "charizard.png"
-  method hablar(mensaje) { game.say(self, mensaje) } //ahora habla (supuestamente)
+  method hablar(mensaje) { game.say(self, mensaje) } 
+
+  m
 
 
 
@@ -55,7 +57,7 @@ object rasta {
 
 object companieroClase{
 
-  method hablar(mensaje) { game.say(self, mensaje) } //ahora habla (supuestamente)
+  method hablar(mensaje) { game.say(self, mensaje) } 
 
 }
 
