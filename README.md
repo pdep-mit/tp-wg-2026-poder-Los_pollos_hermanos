@@ -24,11 +24,11 @@ Recuerden que para cada checkpoint hay [expectativas mínimas](https://docs.goog
 
 ## Objetivo
 
-TODO
+Aprobar el TP a como de lugar. 
 
 ## Controles
 
-TODO
+E: Dialogar entre personajes
 
 # Explicaciones
 
