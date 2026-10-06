@@ -6,25 +6,30 @@ object alumno {
  // const mochila = []
  	var property tieneAccesoAlRepo = false 
 
+  method image() = "x64sprites/personajes/denise/denise-frente.png"
+
+
   // Movilidad
-    method puedeMoverseA(destino) =
+  method puedeMoverseA(destino) =
       !game.getObjectsIn(destino).any({ objeto => objeto.esSolido() })
 
-     method moverA(destino) {
+  method moverA(destino) {
       if (self.puedeMoverseA(destino))
         self.position(destino)
   }
 
-  method image() = "denise-frente.png"
 
   method estaAlLadoDe(otro) = self.position().distance(otro.position()) == 1 // Chequea si esta al lado de otro personaje. 
   // Uno porque asi da el calculo que hace distance si esta al lado (no sirve si esta en diagonal)
 
-  method hablarCon(personaje) {
-    if (self.estaAlLadoDe(personaje))
-      personaje.dialogo()
-    else
-      game.say(self, "Acá no hay nadie con quien hablar...")
+   method interactuar() {
+      const cercanos = game.allVisuals().filter({ obj => self.estaAlLadoDe(obj) })
+      
+      if (cercanos.isEmpty()) {
+          game.say(self, "Acá no hay nadie con quien hablar...")
+      } else {
+          cercanos.first().dialogo()
+      }
   }
 
   method hablar(mensaje) { game.say(self, mensaje) } //ahora habla (supuestamente)
@@ -55,7 +60,7 @@ object alumno {
 
 object rasta {
   var property position = game.at(0,0)
-  method image() = "rasta-frente.png"
+  method image() = "x64sprites/personajes/rasta/rasta-frente.png"
   method hablar(mensaje) { game.say(self, mensaje) } 
 
   method dialogo(){
@@ -64,7 +69,8 @@ object rasta {
     }
     else {
       game.say(self, "Dame un segundo y te habilito el TP")
-      alumno.tieneAccesoAlRepo(true) // Hay que agregar el metodo en alumno
+      alumno.tieneAccesoAlRepo(true) //piece of shit 
+      //game.say(self, "Listooo")
     }
   }
 
@@ -74,11 +80,17 @@ object rasta {
 
 object companieroClase{
   var property position = game.at(4, 5)
-  method image() = "wachington-frente.png" 
+  method image() = "x64sprites/personajes/wachington/wachington-frente.png" 
   method hablar(mensaje) { game.say(self, mensaje) } 
-   method dialogo() {
-      game.say(self, "¡Che! Pedile al Rasta que te habilite el repo.")
+  method dialogo(){
+    if(alumno.tieneAccesoAlRepo()){
+      game.say(self, "esta complicado el TP?? jaja")
+    }
+    else {
+      game.say(self, "Che, anda pedirle a Rasta que te de el TP")
+    }
   }
+
 }
 
 object computadora{
