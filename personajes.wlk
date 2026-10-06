@@ -9,17 +9,6 @@ object alumno {
   method image() = "x64sprites/personajes/denise/denise-frente.png"
 
 
-  // Movilidad
-  method puedeMoverseA(destino) =
-      !game.getObjectsIn(destino).any({ objeto => objeto.esSolido() })
-
-  method moverA(destino) {
-      if (self.puedeMoverseA(destino))
-        self.position(destino)
-  }
-
-  
-
   method estaAlLadoDe(otro) = self.position().distance(otro.position()) == 1 // Chequea si esta al lado de otro personaje. 
   // Uno porque asi da el calculo que hace distance si esta al lado (no sirve si esta en diagonal)
 
@@ -64,6 +53,8 @@ object rasta {
   method image() = "x64sprites/personajes/rasta/rasta-frente.png"
   method hablar(mensaje) { game.say(self, mensaje) } 
 
+  method esSolido() = true // Para que el personaje pueda chocar
+
   method dialogo(){
     if(alumno.tieneAccesoAlRepo()){
       game.say(self, "Ya tenes acceso al Repo, no pierdas tiempo y termina el TP")
@@ -83,6 +74,9 @@ object companieroClase{
   var property position = game.at(4, 5)
   method image() = "x64sprites/personajes/wachington/wachington-frente.png" 
   method hablar(mensaje) { game.say(self, mensaje) } 
+
+  method esSolido() = true // Para que el personaje pueda chocar
+
   method dialogo(){
     if(alumno.tieneAccesoAlRepo()){
       game.say(self, "esta complicado el TP?? jaja")
