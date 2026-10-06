@@ -6,20 +6,20 @@ program AprobameRasta {
 	game.height(10)
 	game.width(10)
 	game.cellSize(64)
-	game.ground("baldosa.png")
+	game.ground("x64sprites/mapa/baldosa.png")
 	game.addVisual(alumno) //movemos el alumno de acuerdo a las flechas
 	game.addVisual(rasta)
 	game.addVisual(companieroClase)
 	// game.addVisual(computadora)
+
 
 	// Movilidad 
 	keyboard.up().onPressDo({ alumno.moverA(alumno.position().up(1)) })
 	keyboard.down().onPressDo({ alumno.moverA(alumno.position().down(1)) })
 	keyboard.left().onPressDo({ alumno.moverA(alumno.position().left(1)) })
 	keyboard.right().onPressDo({ alumno.moverA(alumno.position().right(1)) })
-	keyboard.e().onPressDo({ alumno.hablarCon(rasta) })
-
 	
+	keyboard.e().onPressDo({ alumno.interactuar() })
 
 	game.start()
 }
