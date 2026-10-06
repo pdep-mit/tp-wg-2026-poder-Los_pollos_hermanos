@@ -1,5 +1,6 @@
 import wollok.game.*
 import personajes.*
+import movimientos.*
 
 program AprobameRasta {
 	game.title("Grupo: Los Pollos Hermanos | Aprobame, Rasta")
@@ -14,11 +15,10 @@ program AprobameRasta {
 
 
 	// Movilidad 
-	keyboard.up().onPressDo({ alumno.moverA(alumno.position().up(1)) })
-	keyboard.down().onPressDo({ alumno.moverA(alumno.position().down(1)) })
-	keyboard.left().onPressDo({ alumno.moverA(alumno.position().left(1)) })
-	keyboard.right().onPressDo({ alumno.moverA(alumno.position().right(1)) })
-	
+	keyboard.up().onPressDo({ movimiento.arriba(alumno) })
+  	keyboard.down().onPressDo({ movimiento.abajo(alumno) })
+  	keyboard.left().onPressDo({ movimiento.izquierda(alumno) })
+ 	keyboard.right().onPressDo({ movimiento.derecha(alumno) })
 	keyboard.e().onPressDo({ alumno.interactuar() })
 
 	game.start()

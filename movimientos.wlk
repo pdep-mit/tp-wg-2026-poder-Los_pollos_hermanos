@@ -15,3 +15,18 @@ object tablero {
     self.estaDentro(posicion) && !self.hayObstaculoEn(posicion)
 }
 
+// Mueve a cualquier objeto que entienda position() y position(nueva)
+//Podemos mover cualquier personaje 
+//Abstaccion (ponele) de movimientos
+object movimiento {
+
+  method mover(personaje, destino) {
+    if (tablero.puedeOcuparse(destino))
+      personaje.position(destino)
+  }
+
+  method arriba(personaje) { self.mover(personaje, personaje.position().up(1)) }
+  method abajo(personaje) { self.mover(personaje, personaje.position().down(1)) }
+  method izquierda(personaje) { self.mover(personaje, personaje.position().left(1)) }
+  method derecha(personaje) { self.mover(personaje, personaje.position().right(1)) }
+}
