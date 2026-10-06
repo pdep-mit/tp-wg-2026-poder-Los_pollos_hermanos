@@ -6,6 +6,15 @@ object alumno {
  // const mochila = []
  	var property tieneAccesoAlRepo = false 
 
+  // Movilidad
+    method puedeMoverseA(destino) =
+      !game.getObjectsIn(destino).any({ objeto => objeto.esSolido() })
+
+     method moverA(destino) {
+      if (self.puedeMoverseA(destino))
+        self.position(destino)
+  }
+
   method image() = "denise-frente.png"
 
   method estaAlLadoDe(otro) = self.position().distance(otro.position()) == 1 // Chequea si esta al lado de otro personaje. 
