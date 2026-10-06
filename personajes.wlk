@@ -6,7 +6,7 @@ object alumno {
  // const mochila = []
  	var property tieneAccesoAlRepo = false 
 
-  method image() = "alumno.png"
+  method image() = "denise-frente.png"
 
   method estaAlLadoDe(otro) = self.position().distance(otro.position()) == 1 // Chequea si esta al lado de otro personaje. 
   // Uno porque asi da el calculo que hace distance si esta al lado (no sirve si esta en diagonal)
@@ -46,7 +46,7 @@ object alumno {
 
 object rasta {
   var property position = game.at(0,0)
-  method image() = "charizard.png"
+  method image() = "rasta-frente.png"
   method hablar(mensaje) { game.say(self, mensaje) } 
 
   method dialogo(){
@@ -65,7 +65,7 @@ object rasta {
 
 object companieroClase{
   var property position = game.at(4, 5)
-  method image() = "dito.png" 
+  method image() = "wachington-frente.png" 
   method hablar(mensaje) { game.say(self, mensaje) } 
    method dialogo() {
       game.say(self, "¡Che! Pedile al Rasta que te habilite el repo.")
@@ -75,3 +75,4 @@ object companieroClase{
 object computadora{
 
 }
+

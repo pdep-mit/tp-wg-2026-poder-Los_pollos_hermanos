@@ -6,7 +6,7 @@ program AprobameRasta {
 	game.height(10)
 	game.width(10)
 	game.cellSize(64)
-	game.boardGround("fondo.png")
+	game.boardGround("baldosa.png")
 	game.addVisualCharacter(alumno) //movemos el alumno de acuerdo a las flechas
 	game.addVisual(rasta)
 	game.addVisual(companieroClase)
