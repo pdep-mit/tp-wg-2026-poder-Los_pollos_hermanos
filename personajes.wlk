@@ -64,7 +64,7 @@ object rasta {
     }
     else {
       game.say(self, "Dame un segundo y te habilito el TP")
-      alumno.tieneAccesoAlRepo(true) //piece of shit 
+      alumno.tieneAccesoAlRepo(true) // Hay que agregar el metodo en alumno
     }
   }
 
