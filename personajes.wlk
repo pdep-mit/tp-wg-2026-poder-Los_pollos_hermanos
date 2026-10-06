@@ -89,6 +89,9 @@ object companieroClase{
 }
 
 object computadora{
+  var property position = game.at(2, 9)
+  method image() = "x64sprites/mapa/pc.png"
+  method esSolido() = true
 
 }
 
