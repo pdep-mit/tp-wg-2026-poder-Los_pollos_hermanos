@@ -14,7 +14,7 @@ object alumno {
   // Uno porque asi da el calculo que hace distance si esta al lado (no sirve si esta en diagonal)
 
    method interactuar() {
-      const cercanos = game.allVisuals().filter({ obj => self.estaAlLadoDe(obj) }) //revisar
+      const cercanos = game.allVisuals().filter({ obj => self.estaAlLadoDe(obj) && obj.esInteractuable()})
       
       if (cercanos.isEmpty()) {
           game.say(self, "Acá no hay nadie con quien hablar...")
@@ -37,6 +37,8 @@ object rasta {
 
   method esSolido() = true // Para que el personaje pueda chocar
 
+  method esInteractuable() = true
+
   method hablar(mensaje) { game.say(self, mensaje) } 
 
   method interactuar() { tp.estado().contestaRasta() }
@@ -51,6 +53,8 @@ object companieroClase {
 
   method esSolido() = true // Para que el personaje pueda chocar
 
+  method esInteractuable() = true
+
   method hablar(mensaje) { game.say(self, mensaje) } 
 
   method interactuar() { tp.estado().contestaCompa() }
@@ -64,6 +68,8 @@ object computadora {
   method image() = "x64sprites/mapa/pc.png"
 
   method esSolido() = true
+
+  method esInteractuable() = true
   
   method hablar(mensaje) { game.say(self, mensaje) }
 
@@ -81,7 +87,7 @@ object sinTp {
   method contestaRasta() {
     rasta.hablar("Dame un segundo y te habilito el TP")
     tp.estado(tpIncompleto)
-    alumno.guardar(tpIncompleto)
+    alumno.guardar(tp)
   }
 
   method contestaCompa() {
