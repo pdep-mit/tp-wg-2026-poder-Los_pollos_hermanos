@@ -11,7 +11,13 @@ program AprobameRasta {
 	game.addVisual(alumno) //movemos el alumno de acuerdo a las flechas
 	game.addVisual(rasta)
 	game.addVisual(companieroClase)
+	game.addVisual(new Mesa(position = game.at(1, 8)))
+	game.addVisual(new Mesa(position = game.at(4, 8)))
+	game.addVisual(new Mesa(position = game.at(7, 8)))
 	game.addVisual(computadora)
+	game.addVisual(new ComputadoraDecorativa(position = game.at(4, 8)))
+	game.addVisual(new ComputadoraDecorativa(position = game.at(7, 8)))
+
 
 
 	// Movilidad 

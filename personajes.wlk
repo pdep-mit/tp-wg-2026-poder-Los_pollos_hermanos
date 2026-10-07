@@ -63,7 +63,7 @@ object companieroClase {
 
 
 object computadora {
-  var property position = game.at(2, 9)
+  var property position = game.at(1, 8)
 
   method image() = "x64sprites/mapa/pc.png"
 
@@ -75,6 +75,21 @@ object computadora {
 
   method interactuar() { tp.estado().contestaCompu() }
 
+}
+
+
+class ComputadoraDecorativa {
+  const property position
+  method image() = "x64sprites/mapa/pc.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+
+class Mesa {
+  const property position
+  method image() = "x64sprites/mapa/mesa-medio.png"
+  method esSolido() = true
+  method esInteractuable() = false
 }
 
 
