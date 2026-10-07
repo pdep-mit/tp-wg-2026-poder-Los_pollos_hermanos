@@ -1,10 +1,31 @@
-// Archivo de tests de referencia, borrar luego de desarrollar propios
-import example.*
+import personajes.*
 
-describe "groupo de tests" {
+describe "Estados del TP" {
 
-  test "Payer comeinza en el centro del tabler" {
-    assert.equals(game.center(), player.position())
+  test "Al pedirle el TP a Rasta, el estado pasa de sin TP a TP incompleto" {
+    tp.estado(sinTp)
+    tp.estado().avanzarConRasta()
+
+    assert.equals(tpIncompleto, tp.estado())
+    assert.that(alumno.tiene(tp))
+  }
+  
+  test "Al completar el TP en la computadora, el estado pasa a TP completo" {
+    tp.estado(tpIncompleto)
+    tp.estado().avanzarConCompu()
+
+    assert.equals(tpCompleto, tp.estado())
   }
 
+  test "Al pedirle el TP a Rasta cuando está completo, pasa a entregado" {
+    tp.estado(tpCompleto)
+    tp.estado().avanzarConRasta()
+
+    assert.equals(tpEntregado, tp.estado())
+  }
+  test "Cada estado tiene un mensaje diferente para la computadora" {
+    assert.equals("???", sinTp.mensajeCompu())
+    assert.equals("Completado", tpIncompleto.mensajeCompu())
+    assert.equals("...", tpCompleto.mensajeCompu())
+  }
 }
