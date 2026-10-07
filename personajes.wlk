@@ -80,7 +80,26 @@ class Mesa {
   method esSolido() = true
   method esInteractuable() = false
 }
+class MesaIzquierda {
+  const property position
+  method image() = "x64sprites/mapa/mesa-costado-izq.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
 
+class MesaDerecha {
+  const property position
+  method image() = "x64sprites/mapa/mesa-costado-der.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+
+class Flecha {
+  const property position
+  method image() = "x64sprites/mapa/flecha.png"
+  method esSolido() = false
+  method esInteractuable() = false
+}
 
 object tp {
   var property estado = sinTp
