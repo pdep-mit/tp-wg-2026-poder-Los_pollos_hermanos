@@ -54,7 +54,7 @@ object companieroClase {
 
 object portero {
   var property position = game.at(2, 5)
-  method image() = "x64sprites/personajes/wachington/wachington-frente.png"
+  method image() = "x64sprites/personajes/portero/portero-der.png"
   method esSolido() = true
   method esInteractuable() = true
 
@@ -65,7 +65,7 @@ object portero {
 
 object tecnico {
   var property position = game.at(12, 2)
-  method image() = "x64sprites/personajes/wachington/wachington-frente.png"
+  method image() = "x64sprites/personajes/tecnico/tecnico-izq.png"
   method esSolido() = true
   method esInteractuable() = true
 
@@ -192,7 +192,7 @@ object computadora {
   }
 }
 
-//ININTERACTUABLES
+//NO-INTERACTUABLES
 class ParedFrente {
   const property position
   method image() = "x64sprites/mapa/pared-frente.png"
@@ -218,7 +218,42 @@ class ComputadoraDecorativa {
   method esSolido() = true
   method esInteractuable() = false
 }
-
+class CajaHerramientas {
+  const property position
+  method image() = "x64sprites/mapa/caja-herramientas.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class SuciedadPapeles1 {
+  const property position
+  method image() = "x64sprites/mapa/suciedad-papeles-1.png"
+  method esSolido() = false
+  method esInteractuable() = false
+}
+class SuciedadPapeles2 {
+  const property position
+  method image() = "x64sprites/mapa/suciedad-papeles-2.png"
+  method esSolido() = false
+  method esInteractuable() = false
+}
+class SuciedadPapeles3 {
+  const property position
+  method image() = "x64sprites/mapa/suciedad-papeles-3.png"
+  method esSolido() = false
+  method esInteractuable() = false
+}
+class CartelUTNIzq {
+  const property position
+  method image() = "x64sprites/mapa/cartel-utn-izq.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class CartelUTNDer {
+  const property position
+  method image() = "x64sprites/mapa/cartel-utn-der.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
 class Mesa {
   const property position
   method image() = "x64sprites/mapa/mesa-medio.png"
@@ -242,6 +277,12 @@ class MesaDerecha {
 class MesaHorizontal {
   const property position
   method image() = "x64sprites/mapa/mesa-horizontal-medio.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class MesaHorizontalPapeles {
+  const property position
+  method image() = "x64sprites/mapa/mesa-horizontal-medio-papeles.png"
   method esSolido() = true
   method esInteractuable() = false
 }

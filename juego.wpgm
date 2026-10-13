@@ -97,9 +97,18 @@ program Entrada {
 	game.addVisual(escalerasDer)
 
 	//No interactuables
-	game.addVisual(new MesaHorizontal(position = game.at(2, 3)))
+	game.addVisual(new MesaHorizontalPapeles(position = game.at(2, 3)))
 	game.addVisual(new MesaArribaHorizontal(position = game.at(2, 4)))
 	game.addVisual(new MesaAbajoHorizontal(position = game.at(2, 2)))
+	game.addVisual(new SuciedadPapeles1(position = game.at(6, 5)))
+	game.addVisual(new SuciedadPapeles1(position = game.at(9, 6)))
+	game.addVisual(new SuciedadPapeles2(position = game.at(13, 8)))
+	game.addVisual(new SuciedadPapeles2(position = game.at(4, 1)))
+	game.addVisual(new SuciedadPapeles3(position = game.at(3, 7)))
+	game.addVisual(new CartelUTNIzq(position = game.at(10, 4)))
+	game.addVisual(new CartelUTNDer(position = game.at(11, 4)))
+
+
 
 
 	game.addVisual(alumno)
