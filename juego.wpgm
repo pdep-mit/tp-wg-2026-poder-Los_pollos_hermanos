@@ -35,3 +35,81 @@ program AprobameRasta {
 
 	game.start()
 }
+
+program Entrada {
+	game.title("Entrada")
+	game.height(10)
+	game.width(15)
+	game.cellSize(64)
+	game.ground("x64sprites/mapa/baldosa.png")
+	
+
+
+	//paredes
+	game.addVisual(new ParedFrente(position = game.at(1, 9)))
+	game.addVisual(new ParedFrente(position = game.at(2, 9)))
+	game.addVisual(new ParedFrente(position = game.at(3, 9)))
+	game.addVisual(new ParedFrente(position = game.at(4, 9)))
+	game.addVisual(new ParedFrente(position = game.at(5, 9)))
+	game.addVisual(new ParedFrente(position = game.at(6, 9)))
+	game.addVisual(new ParedFrente(position = game.at(7, 9)))
+	game.addVisual(new ParedFrente(position = game.at(8, 9)))
+	game.addVisual(new ParedFrente(position = game.at(9, 9)))
+	game.addVisual(new ParedFrente(position = game.at(10, 9)))
+	game.addVisual(new ParedFrente(position = game.at(11, 9)))
+	game.addVisual(new ParedFrente(position = game.at(12, 9)))
+	game.addVisual(new ParedFrente(position = game.at(13, 9)))
+	game.addVisual(new ParedFrente(position = game.at(14, 9)))
+
+	game.addVisual(new ParedIzq(position = game.at(0, 0)))
+	game.addVisual(new ParedIzq(position = game.at(0, 1)))
+	game.addVisual(new ParedIzq(position = game.at(0, 2)))
+	game.addVisual(new ParedIzq(position = game.at(0, 3)))
+	game.addVisual(new ParedIzq(position = game.at(0, 4)))
+	game.addVisual(new ParedIzq(position = game.at(0, 5)))
+	game.addVisual(new ParedIzq(position = game.at(0, 6)))
+	game.addVisual(new ParedIzq(position = game.at(0, 7)))
+	game.addVisual(new ParedIzq(position = game.at(0, 8)))
+	game.addVisual(new ParedIzq(position = game.at(0, 9)))
+
+	game.addVisual(new ParedDer(position = game.at(14, 0)))
+	game.addVisual(new ParedDer(position = game.at(14, 1)))
+	game.addVisual(new ParedDer(position = game.at(14, 2)))
+	game.addVisual(new ParedDer(position = game.at(14, 3)))
+	game.addVisual(new ParedDer(position = game.at(14, 4)))
+	game.addVisual(new ParedDer(position = game.at(14, 5)))
+	game.addVisual(new ParedDer(position = game.at(14, 6)))
+	game.addVisual(new ParedDer(position = game.at(14, 7)))
+	game.addVisual(new ParedDer(position = game.at(14, 8)))
+	game.addVisual(new ParedDer(position = game.at(14, 9)))
+
+	//Personajes/Interactuables
+	game.addVisual(portero)
+	game.addVisual(tecnico)
+	game.addVisual(ascensor)
+	
+	game.addVisual(puertaAMMedio)
+	game.addVisual(puertaAMIzq)
+	game.addVisual(puertaAMDer)
+	game.addVisual(puertaBaño)
+	game.addVisual(puertaSalidaMedio)
+	game.addVisual(puertaSalidaIzq)
+	game.addVisual(puertaSalidaDer)
+	game.addVisual(escalerasIzq)
+	game.addVisual(escalerasDer)
+
+	//No interactuables
+	game.addVisual(new MesaHorizontal(position = game.at(2, 3)))
+	game.addVisual(new MesaArribaHorizontal(position = game.at(2, 4)))
+	game.addVisual(new MesaAbajoHorizontal(position = game.at(2, 2)))
+
+	game.addVisual(alumno)
+	
+	// Movilidad 
+	keyboard.up().onPressDo({ movimiento.arriba(alumno) })
+  	keyboard.down().onPressDo({ movimiento.abajo(alumno) })
+  	keyboard.left().onPressDo({ movimiento.izquierda(alumno) })
+ 	keyboard.right().onPressDo({ movimiento.derecha(alumno) })
+	keyboard.e().onPressDo({ alumno.interactuar() })
+	game.start()
+}
