@@ -25,8 +25,20 @@ object movimiento {
       personaje.position(destino)
   }
 
-  method arriba(personaje) { self.mover(personaje, personaje.position().up(1)) }
-  method abajo(personaje) { self.mover(personaje, personaje.position().down(1)) }
-  method izquierda(personaje) { self.mover(personaje, personaje.position().left(1)) }
-  method derecha(personaje) { self.mover(personaje, personaje.position().right(1)) }
+  method arriba(personaje) { 
+    personaje.imagen("x64sprites/personajes/wachington/wachington-detras.png")
+    self.mover(personaje, personaje.position().up(1)) 
+    }
+  method abajo(personaje) { 
+    personaje.imagen("x64sprites/personajes/wachington/wachington-frente.png")
+    self.mover(personaje, personaje.position().down(1)) 
+    }
+  method izquierda(personaje) { 
+    personaje.imagen("x64sprites/personajes/wachington/wachington-izq.png")
+    self.mover(personaje, personaje.position().left(1)) 
+    }
+  method derecha(personaje) { 
+    personaje.imagen("x64sprites/personajes/wachington/wachington-der.png")
+    self.mover(personaje, personaje.position().right(1)) 
+    }
 }

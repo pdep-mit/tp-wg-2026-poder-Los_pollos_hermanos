@@ -5,7 +5,8 @@ import objetos.*
 //PERSONAJES INTERACTUABLES
 object alumno {
   var property position = game.at(7, 0)
-  method image() = "x64sprites/personajes/wachington/wachington-frente.png"
+  var property imagen = "x64sprites/personajes/wachington/wachington-frente.png"
+  method image() = imagen
   method esSolido() = true
   const mochila = []
 
