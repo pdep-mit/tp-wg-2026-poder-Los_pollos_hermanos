@@ -1,6 +1,7 @@
 import wollok.game.*
 import personajes.*
 import movimientos.*
+import objetos.*
 
 program AprobameRasta {
 	game.title("Grupo: Los Pollos Hermanos | Aprobame, Rasta")
@@ -86,6 +87,7 @@ program Entrada {
 	game.addVisual(tecnico)
 	game.addVisual(ascensor)
 	
+	//Areas no accesibles
 	game.addVisual(puertaAMMedio)
 	game.addVisual(puertaAMIzq)
 	game.addVisual(puertaAMDer)
@@ -96,15 +98,18 @@ program Entrada {
 	game.addVisual(escalerasIzq)
 	game.addVisual(escalerasDer)
 
+	//Tacho de basura con papeles
+	game.addVisual(suciedadPapeles1)
+	game.addVisual(suciedadPapeles2)
+	game.addVisual(suciedadPapeles3)
+	game.addVisual(suciedadPapeles4)
+	game.addVisual(suciedadPapeles5)
+	game.addVisual(tachoBasura)
+
 	//No interactuables
 	game.addVisual(new MesaHorizontalPapeles(position = game.at(2, 3)))
 	game.addVisual(new MesaArribaHorizontal(position = game.at(2, 4)))
 	game.addVisual(new MesaAbajoHorizontal(position = game.at(2, 2)))
-	game.addVisual(new SuciedadPapeles1(position = game.at(6, 5)))
-	game.addVisual(new SuciedadPapeles1(position = game.at(9, 6)))
-	game.addVisual(new SuciedadPapeles2(position = game.at(13, 8)))
-	game.addVisual(new SuciedadPapeles2(position = game.at(4, 1)))
-	game.addVisual(new SuciedadPapeles3(position = game.at(3, 7)))
 	game.addVisual(new CartelUTNIzq(position = game.at(10, 4)))
 	game.addVisual(new CartelUTNDer(position = game.at(11, 4)))
 
