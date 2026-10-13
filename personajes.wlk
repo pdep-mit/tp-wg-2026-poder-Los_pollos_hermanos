@@ -1,9 +1,11 @@
 import wollok.game.*
+import objetos.*
 
 
+//PERSONAJES INTERACTUABLES
 object alumno {
-  var property position = game.at(1, 1)
-  method image() = "x64sprites/personajes/denise/denise-frente.png"
+  var property position = game.at(7, 0)
+  method image() = "x64sprites/personajes/wachington/wachington-frente.png"
   method esSolido() = true
   const mochila = []
 
@@ -51,99 +53,128 @@ object companieroClase {
   method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
 
-
-object computadora {
-  var property position = game.at(1, 8)
-  method image() = "x64sprites/mapa/pc.png"
+object portero {
+  var property position = game.at(2, 5)
+  method image() = "x64sprites/personajes/portero/portero-der.png"
   method esSolido() = true
   method esInteractuable() = true
-  
-  method hablar(mensaje) { game.say(self, mensaje) }
 
-  method interactuar() { 
-    self.hablar(tp.estado().mensajeCompu())
-    tp.estado().avanzarConCompu()
-  }
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
 
-
-class ComputadoraDecorativa {
-  const property position
-  method image() = "x64sprites/mapa/pc.png"
+object tecnico {
+  var property position = game.at(12, 2)
+  method image() = "x64sprites/personajes/tecnico/tecnico-izq.png"
   method esSolido() = true
-  method esInteractuable() = false
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
 
-class Mesa {
-  const property position
-  method image() = "x64sprites/mapa/mesa-medio.png"
+//OBJETOS INTERACTUABLES
+object ascensor {
+  var property position = game.at(4, 9)
+  method image() = "x64sprites/mapa/ascensor.png"
   method esSolido() = true
-  method esInteractuable() = false
-}
-class MesaIzquierda {
-  const property position
-  method image() = "x64sprites/mapa/mesa-costado-izq.png"
-  method esSolido() = true
-  method esInteractuable() = false
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
 
-class MesaDerecha {
-  const property position
-  method image() = "x64sprites/mapa/mesa-costado-der.png"
+object puertaBaño {
+  var property position = game.at(2, 9)
+  method image() = "x64sprites/mapa/puerta-banio.png"
   method esSolido() = true
-  method esInteractuable() = false
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
 
-class Flecha {
-  const property position
-  method image() = "x64sprites/mapa/flecha.png"
+object puertaAMMedio {
+  var property position = game.at(7, 9)
+  method image() = "x64sprites/mapa/puerta-am-medio.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
+object puertaAMIzq {
+  var property position = game.at(6, 9)
+  method image() = "x64sprites/mapa/puerta-am-izq.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
+object puertaAMDer {
+  var property position = game.at(8, 9)
+  method image() = "x64sprites/mapa/puerta-am-der.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
+object puertaSalidaMedio {
+  var property position = game.at(7, 0)
+  method image() = "x64sprites/mapa/puerta-salida-medio.png"
   method esSolido() = false
-  method esInteractuable() = false
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
+object puertaSalidaIzq {
+  var property position = game.at(6, 0)
+  method image() = "x64sprites/mapa/puerta-salida-izq.png"
+  method esSolido() = false
+  method esInteractuable() = true
 
-object tp {
-  var property estado = sinTp
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
+object puertaSalidaDer {
+  var property position = game.at(8, 0)
+  method image() = "x64sprites/mapa/puerta-salida-der.png"
+  method esSolido() = false
+  method esInteractuable() = true
 
+  // method hablar(mensaje) { game.say(self, mensaje) } 
 
-object sinTp {
-  method mensajeRasta() = "Dame un segundo y te habilito el TP"
-  method mensajeCompa() = "Anda a pedirle a rasta que te de el TP"
-  method mensajeCompu() = "???"
-
-  method avanzarConRasta() {
-    tp.estado(tpIncompleto)
-    alumno.guardar(tp)
-  }
-  method avanzarConCompu() {}
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
+object escalerasIzq {
+  var property position = game.at(11, 9)
+  method image() = "x64sprites/mapa/escaleras-izq.png"
+  method esSolido() = true
+  method esInteractuable() = true
 
+  // method hablar(mensaje) { game.say(self, mensaje) } 
 
-object tpIncompleto {
-  method mensajeRasta() = "Ya tenés acceso al repo. No pierdas tiempo y terminá el TP"
-  method mensajeCompa() = "Esta complicado el TP?? jaja"
-  method mensajeCompu() = "Completado"
-
-  method avanzarConRasta() {}
-  method avanzarConCompu() { tp.estado(tpCompleto) }
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
+object escalerasDer {
+  var property position = game.at(12, 9)
+  method image() = "x64sprites/mapa/escaleras-der.png"
+  method esSolido() = true
+  method esInteractuable() = true
 
+  // method hablar(mensaje) { game.say(self, mensaje) } 
 
-object tpCompleto {
-  method mensajeRasta() = "Listooo"
-  method mensajeCompa() = "Entregalo"
-  method mensajeCompu() = "..."
-
-  method avanzarConRasta() { tp.estado(tpEntregado) }
-  method avanzarConCompu() {}
-}
-
-
-object tpEntregado {
-  method mensajeRasta() = "Ahora anda a buscarme un mate al buffet para que lo pueda corregir"
-  method mensajeCompa() = "..."
-  method mensajeCompu() = "..."
-
-  method avanzarConRasta() {}
-  method avanzarConCompu() {}
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }

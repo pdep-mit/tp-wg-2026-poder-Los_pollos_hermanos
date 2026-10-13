@@ -1,4 +1,5 @@
 import personajes.*
+import objetos.*
 
 describe "Estados del TP" {
 
