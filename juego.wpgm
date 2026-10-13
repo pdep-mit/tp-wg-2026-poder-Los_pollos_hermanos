@@ -56,8 +56,6 @@ program Entrada {
 	game.addVisual(new ParedFrente(position = game.at(8, 9)))
 	game.addVisual(new ParedFrente(position = game.at(9, 9)))
 	game.addVisual(new ParedFrente(position = game.at(10, 9)))
-	game.addVisual(new ParedFrente(position = game.at(11, 9)))
-	game.addVisual(new ParedFrente(position = game.at(12, 9)))
 	game.addVisual(new ParedFrente(position = game.at(13, 9)))
 	game.addVisual(new ParedFrente(position = game.at(14, 9)))
 
@@ -102,6 +100,7 @@ program Entrada {
 	game.addVisual(new MesaHorizontal(position = game.at(2, 3)))
 	game.addVisual(new MesaArribaHorizontal(position = game.at(2, 4)))
 	game.addVisual(new MesaAbajoHorizontal(position = game.at(2, 2)))
+
 
 	game.addVisual(alumno)
 	
