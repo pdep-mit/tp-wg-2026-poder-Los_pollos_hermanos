@@ -1,7 +1,8 @@
 import wollok.game.*
 import objetos.*
 import habitaciones.*
-
+import salas.entrada.*
+import salas.pasillo.*
 //PERSONAJES INTERACTUABLES
 object alumno {
   var property position = game.at(7, 0)
@@ -81,7 +82,7 @@ object tecnico {
 //PUERTAS/ACCESOS
 object ascensor {
   var property position = game.at(4, 9)
-  const destino = labo
+  const destino = pasillo
   method image() = "x64sprites/mapa/ascensor.png"
   method esSolido() = true
   method esInteractuable() = true

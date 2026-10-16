@@ -3,12 +3,16 @@ import wollok.game.*
 import movimientos.*
 import salas.entrada.*
 class Sala {
+    method ancho()
+    method alto()
     method fondo()
     method objetos()
     method posicionInicial() 
 
 
 method cargar() {
+    game.width(self.ancho())
+    game.height(self.alto())
     game.ground(self.fondo())
     self.objetos().forEach({ objeto => game.addVisual(objeto) })
     alumno.position(self.posicionInicial())
@@ -48,12 +52,7 @@ class Puerta {
   }
 }
 
-object labo inherits Sala {
 
-  override method fondo() = "x64sprites/mapa/baldosa.png"
-  override method posicionInicial() = game.at(1, 1)
-  override method objetos() = [new Puerta(position = game.at(8, 4), destino = entrada)]
-}
 
 
 

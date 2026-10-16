@@ -3,9 +3,11 @@ import wollok.game.*
 import movimientos.*
 import objetos.*
 import habitaciones.*
+import salas.pasillo.*
 
 object entrada inherits Sala {
-
+    override method ancho() = 15
+    override method alto() = 10
 const contenido = [ 
     //paredes
     new ParedFrente(position = game.at(1, 9)),
@@ -74,7 +76,7 @@ const contenido = [
     new CartelUTNIzq(position = game.at(10, 4)),
     new CartelUTNDer(position = game.at(11, 4)),
 
-    new Puerta(position = game.at(5, 9), destino = labo)
+    new Puerta(position = game.at(5, 9), destino = pasillo)
 ]
 
   override method fondo() = "x64sprites/mapa/baldosa.png"
