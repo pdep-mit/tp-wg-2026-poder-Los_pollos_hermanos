@@ -43,6 +43,15 @@ object suciedadPapeles5 {
   method esInteractuable() = true
 }
 
+//CARGAR AGUA EN EL TERMO
+object taraguiPiso {
+  const property position = game.at(4, 4)
+  method image() = "x64sprites/mapa/taragui-piso.png"
+  method esSolido() = true
+  method esInteractuable() = true
+}
+
+
 //INTERACTUAR CON COMPUTADORA
 object computadora {
   var property position = game.at(1, 8)
@@ -77,7 +86,30 @@ class ParedDer {
   method esSolido() = true
   method esInteractuable() = false
 }
-
+class CarteleraVacia {
+  const property position
+  method image() = "x64sprites/mapa/pared-cartelera-vacia-medio.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class CarteleraLlena {
+  const property position
+  method image() = "x64sprites/mapa/pared-cartelera-medio.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class CarteleraIzq {
+  const property position
+  method image() = "x64sprites/mapa/pared-cartelera-izq.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class CarteleraDer {
+  const property position
+  method image() = "x64sprites/mapa/pared-cartelera-der.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
 class ComputadoraDecorativa {
   const property position
   method image() = "x64sprites/mapa/pc.png"
@@ -152,6 +184,25 @@ class MesaAbajoHorizontal {
 class Flecha {
   const property position
   method image() = "x64sprites/mapa/flecha.png"
+  method esSolido() = false
+  method esInteractuable() = false
+}
+
+class TaraguiPared {
+  const property position
+  method image() = "x64sprites/mapa/taragui-pared.png"
+  method esSolido() = false
+  method esInteractuable() = false
+}
+class CartelAgua {
+  const property position
+  method image() = "x64sprites/mapa/piso-mojado.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class Aguita {
+  const property position
+  method image() = "x64sprites/mapa/aguita.png"
   method esSolido() = false
   method esInteractuable() = false
 }
