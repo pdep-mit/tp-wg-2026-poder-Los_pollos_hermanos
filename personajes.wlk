@@ -77,6 +77,8 @@ object tecnico {
 }
 
 //OBJETOS INTERACTUABLES
+
+//PUERTAS/ACCESOS
 object ascensor {
   var property position = game.at(4, 9)
   method image() = "x64sprites/mapa/ascensor.png"
@@ -88,6 +90,56 @@ object ascensor {
   // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
 
+object puertaAula {
+  var property position = game.at(0, 2)
+  method image() = "x64sprites/mapa/puerta-izq.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
+object puertaLabo {
+  var property position = game.at(12, 5)
+  method image() = "x64sprites/mapa/puerta-medio.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
+object puertaBuffet {
+  var property position = game.at(4, 9)
+  method image() = "x64sprites/mapa/ascensor.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
+object puertaBedelia1 {
+  var property position = game.at(17,2)
+  method image() = "x64sprites/mapa/puerta-der.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
+object puertaBedelia2 {
+  var property position = game.at(17,3)
+  method image() = "x64sprites/mapa/puerta-der.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
 object puertaBaño {
   var property position = game.at(2, 9)
   method image() = "x64sprites/mapa/puerta-banio.png"
@@ -173,6 +225,27 @@ object escalerasDer {
   var property position = game.at(12, 9)
   method image() = "x64sprites/mapa/escaleras-der.png"
   method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
+
+object escalerasPasillo1 {
+  var property position = game.at(3, 0)
+  method image() = "x64sprites/mapa/puerta-salida-izq.png"
+  method esSolido() = false
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
+object escalerasPasillo2 {
+  var property position = game.at(4, 0)
+  method image() = "x64sprites/mapa/puerta-salida-der.png"
+  method esSolido() = false
   method esInteractuable() = true
 
   // method hablar(mensaje) { game.say(self, mensaje) } 
