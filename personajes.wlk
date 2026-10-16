@@ -97,3 +97,14 @@ object conserje {
 
   // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
+
+object matos {
+  var property position = game.at(1, 7)
+  method image() = "x64sprites/personajes/conserje/conserje-frente.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}

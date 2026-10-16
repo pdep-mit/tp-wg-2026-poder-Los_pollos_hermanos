@@ -205,18 +205,18 @@ program Pasillo {
 
 program Aula {
 
-	game.title("Pasillo")
+	game.title("Aula")
 	game.height(9)
 	game.width(9)
 	game.cellSize(64)
 	game.ground("x64sprites/mapa/baldosa.png")
 
 	//paredes
-	game.addVisual(new ParedFrente(position = game.at(1, 8)))
-	game.addVisual(new ParedFrente(position = game.at(2, 8)))
-	game.addVisual(new ParedFrente(position = game.at(3, 8)))
-	game.addVisual(new ParedFrente(position = game.at(4, 8)))
-	game.addVisual(new ParedFrente(position = game.at(5, 8)))
+	game.addVisual(new ParedPizarraIzq(position = game.at(1, 8)))
+	game.addVisual(new ParedPizarraMedio(position = game.at(2, 8)))
+	game.addVisual(new ParedPizarraMedio(position = game.at(3, 8)))
+	game.addVisual(new ParedPizarraMedioEscrito(position = game.at(4, 8)))
+	game.addVisual(new ParedPizarraDer(position = game.at(5, 8)))
 	game.addVisual(new ParedFrente(position = game.at(6, 8)))
 	game.addVisual(new ParedFrente(position = game.at(7, 8)))
 
@@ -235,12 +235,38 @@ program Aula {
 	game.addVisual(new ParedDer(position = game.at(8, 2)))
 	game.addVisual(new ParedDer(position = game.at(8, 3)))
 	game.addVisual(new ParedDer(position = game.at(8, 4)))
-	game.addVisual(new ParedDer(position = game.at(8, 5)))
 	game.addVisual(new ParedDer(position = game.at(8, 6)))
 	game.addVisual(new ParedDer(position = game.at(8, 7)))
 	game.addVisual(new ParedDer(position = game.at(8, 8)))
 
+	//PUERTA
+	game.addVisual(puertaPasilloDesdeAula)
 
+	//MISC
+	//game.addVisual(new Escritorio(position = game.at(x, y)))
+	//game.addVisual(new Escritorio(position = game.at(x, y)))
+	//game.addVisual(new Escritorio(position = game.at(x, y)))
+	//game.addVisual(new Escritorio(position = game.at(x, y)))
+	//game.addVisual(new Escritorio(position = game.at(x, y)))
+	//game.addVisual(new Escritorio(position = game.at(x, y)))
+	//game.addVisual(new Escritorio(position = game.at(x, y)))
+	//game.addVisual(new Escritorio(position = game.at(x, y)))
+	//game.addVisual(new Escritorio(position = game.at(x, y)))
+	//game.addVisual(new Escritorio(position = game.at(x, y)))
+	//game.addVisual(new Escritorio(position = game.at(x, y)))
+	//game.addVisual(new Escritorio(position = game.at(x, y)))
+	//game.addVisual(new Escritorio(position = game.at(x, y)))
+	//game.addVisual(new Escritorio(position = game.at(x, y)))
+	//game.addVisual(new Escritorio(position = game.at(x, y)))
+	//game.addVisual(new EscritorioMatos(position = game.at(x, y)))
+
+	//PERSONAJES
+	game.addVisual(matos)
+	//game.addVisual(julianSilla)
+	//game.addVisual(deniseSilla)
+	//game.addVisual(agusSilla)
+
+	game.addVisual(alumno)
 
 	// Movilidad 
 	keyboard.up().onPressDo({ movimiento.arriba(alumno) })

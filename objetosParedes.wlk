@@ -42,3 +42,28 @@ class ParedCarteleraDer {
   method esSolido() = true
   method esInteractuable() = false
 }
+
+class ParedPizarraMedio {
+  const property position
+  method image() = "x64sprites/mapa/pared-frente-pizarra.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class ParedPizarraMedioEscrito {
+  const property position
+  method image() = "x64sprites/mapa/pared-frente-pizarra-escrito.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class ParedPizarraIzq {
+  const property position
+  method image() = "x64sprites/mapa/pared-frente-pizarra-izq.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class ParedPizarraDer {
+  const property position
+  method image() = "x64sprites/mapa/pared-frente-pizarra-der.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
