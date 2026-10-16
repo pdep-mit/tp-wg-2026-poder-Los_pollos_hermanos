@@ -183,8 +183,8 @@ program Pasillo {
 
 
 	//PERSONAJES
-	//game.addVisual(hanz)
-	//game.addVisual(conserje)
+	game.addVisual(hanz)
+	game.addVisual(conserje)
 
 	game.addVisual(alumno)
 	

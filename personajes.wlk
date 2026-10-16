@@ -76,6 +76,27 @@ object tecnico {
   // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
 
+object hanz {
+  var property position = game.at(5, 4)
+  method image() = "x64sprites/personajes/hanz/hanz-frente.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
+object conserje {
+  var property position = game.at(9, 1)
+  method image() = "x64sprites/personajes/conserje/conserje-izq.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
+
 //OBJETOS INTERACTUABLES
 
 //PUERTAS/ACCESOS
