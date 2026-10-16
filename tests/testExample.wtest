@@ -1,5 +1,7 @@
 import personajes.*
-import objetos.*
+import objetosUtiles.*
+import objetosDecorados.*
+import objetosParedes.*
 
 describe "Estados del TP" {
 
