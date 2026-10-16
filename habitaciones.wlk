@@ -1,7 +1,7 @@
 import personajes.*
 import wollok.game.*
 import movimientos.*
-
+import salas.entrada.*
 class Sala {
     method fondo()
     method objetos()
@@ -9,7 +9,7 @@ class Sala {
 
 
 method cargar() {
-    game.boardGround(self.fondo())
+    game.ground(self.fondo())
     self.objetos().forEach({ objeto => game.addVisual(objeto) })
     alumno.position(self.posicionInicial())
     game.addVisual(alumno)
@@ -29,7 +29,7 @@ object controles {
 }
 
 object habitacionActual {
-    var property salaActual = labo
+    var property salaActual = entrada
     method irA(sala) {
         game.clear()
         salaActual = sala
@@ -49,14 +49,11 @@ class Puerta {
 }
 
 object labo inherits Sala {
-  override method fondo() = "gaga.png"
+
+  override method fondo() = "x64sprites/mapa/baldosa.png"
   override method posicionInicial() = game.at(1, 1)
   override method objetos() = [new Puerta(position = game.at(8, 4), destino = entrada)]
 }
 
-object entrada inherits Sala {
-  override method fondo() = "aula.png"
-  override method posicionInicial() = game.at(8, 4)
-  override method objetos() = [new Puerta(position = game.at(0, 4), destino = labo)]
-}
+
 
