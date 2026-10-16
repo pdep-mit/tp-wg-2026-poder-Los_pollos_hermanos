@@ -196,3 +196,4 @@ program Pasillo {
 	keyboard.e().onPressDo({ alumno.interactuar() })
 	game.start()
 }
+
