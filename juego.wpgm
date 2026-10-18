@@ -373,13 +373,16 @@ program pasilloBedelia{
 
 	game.addVisual(new ParedDer(position = game.at(7, 0)))
 	game.addVisual(new ParedDer(position = game.at(7, 1)))
-	game.addVisual(new ParedDer(position = game.at(7, 2)))
+	game.addVisual(new ParedBedelia(position = game.at(7, 2)))
 	game.addVisual(new ParedDer(position = game.at(7, 3)))
-	game.addVisual(new ParedDer(position = game.at(7, 4)))
+	game.addVisual(new ParedBedelia(position = game.at(7, 4)))
 	game.addVisual(new ParedDer(position = game.at(7, 5)))
 	game.addVisual(new ParedDer(position = game.at(7, 6)))
 	game.addVisual(new ParedDer(position = game.at(7, 7)))
 	game.addVisual(new ParedDer(position = game.at(7, 8)))
+
+	//PERSONAJES
+	game.addVisual(bedelia)
 
 	//PUERTAS
 	game.addVisual(puertaPasillo1DesdeBedelia)
@@ -390,6 +393,8 @@ program pasilloBedelia{
 	//MISC
 	game.addVisual(new Aguita(position = game.at(5, 7)))
 	game.addVisual(new CartelAgua(position = game.at(5, 7)))
+
+	game.addVisual(new FlechaDer(position = game.at(6, 3)))
 	
 
 	// Movilidad 

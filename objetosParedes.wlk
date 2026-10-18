@@ -67,3 +67,9 @@ class ParedPizarraDer {
   method esSolido() = true
   method esInteractuable() = false
 }
+class ParedBedelia {
+  const property position
+  method image() = "x64sprites/mapa/pared-bedelia.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}

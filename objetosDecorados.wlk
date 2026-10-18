@@ -71,9 +71,9 @@ class MesaAbajoVertical {
   method esInteractuable() = false
 }
 
-class Flecha {
+class FlechaDer {
   const property position
-  method image() = "x64sprites/mapa/flecha.png"
+  method image() = "x64sprites/mapa/flecha-der.png"
   method esSolido() = false
   method esInteractuable() = false
 }

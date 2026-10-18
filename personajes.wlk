@@ -148,3 +148,13 @@ object mati {
 
   // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
+object bedelia {
+  var property position = game.at(7, 3)
+  method image() = "x64sprites/mapa/pared-bedelia.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
