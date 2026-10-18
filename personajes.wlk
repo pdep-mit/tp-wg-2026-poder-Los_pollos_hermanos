@@ -100,7 +100,37 @@ object conserje {
 
 object matos {
   var property position = game.at(1, 7)
-  method image() = "x64sprites/personajes/conserje/conserje-frente.png"
+  method image() = "x64sprites/personajes/matos/matos-frente.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
+object deniseSilla {
+  var property position = game.at(4, 2)
+  method image() = "x64sprites/personajes/denise/denise-silla-der-1.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
+object julianSilla {
+  var property position = game.at(2, 0)
+  method image() = "x64sprites/personajes/julian/julian-silla-izq-1.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
+object agusSilla {
+  var property position = game.at(6, 4)
+  method image() = "x64sprites/personajes/agus/agus-silla-der-1.png"
   method esSolido() = true
   method esInteractuable() = true
 

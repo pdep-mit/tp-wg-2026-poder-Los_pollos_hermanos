@@ -243,28 +243,24 @@ program Aula {
 	game.addVisual(puertaPasilloDesdeAula)
 
 	//MISC
-	//game.addVisual(new Escritorio(position = game.at(x, y)))
-	//game.addVisual(new Escritorio(position = game.at(x, y)))
-	//game.addVisual(new Escritorio(position = game.at(x, y)))
-	//game.addVisual(new Escritorio(position = game.at(x, y)))
-	//game.addVisual(new Escritorio(position = game.at(x, y)))
-	//game.addVisual(new Escritorio(position = game.at(x, y)))
-	//game.addVisual(new Escritorio(position = game.at(x, y)))
-	//game.addVisual(new Escritorio(position = game.at(x, y)))
-	//game.addVisual(new Escritorio(position = game.at(x, y)))
-	//game.addVisual(new Escritorio(position = game.at(x, y)))
-	//game.addVisual(new Escritorio(position = game.at(x, y)))
-	//game.addVisual(new Escritorio(position = game.at(x, y)))
-	//game.addVisual(new Escritorio(position = game.at(x, y)))
-	//game.addVisual(new Escritorio(position = game.at(x, y)))
-	//game.addVisual(new Escritorio(position = game.at(x, y)))
-	//game.addVisual(new EscritorioMatos(position = game.at(x, y)))
+	game.addVisual(new EscritorioCerrado(position = game.at(2, 3)))
+	game.addVisual(new EscritorioCerrado(position = game.at(2, 5)))
+	game.addVisual(new EscritorioCerrado(position = game.at(4, 1)))
+	game.addVisual(new EscritorioCerrado(position = game.at(4, 5)))
+	game.addVisual(new EscritorioCerrado(position = game.at(6, 1)))
+	game.addVisual(new EscritorioCerrado(position = game.at(6, 3)))
+	game.addVisual(new EscritorioMatos(position = game.at(7, 7)))
+
+	game.addVisual(new EscritorioDenise(position = game.at(4, 3)))
+	game.addVisual(new EscritorioJulian(position = game.at(2, 1)))
+	game.addVisual(new EscritorioAgus(position = game.at(6, 5)))
+
 
 	//PERSONAJES
 	game.addVisual(matos)
-	//game.addVisual(julianSilla)
-	//game.addVisual(deniseSilla)
-	//game.addVisual(agusSilla)
+	game.addVisual(julianSilla)
+	game.addVisual(deniseSilla)
+	game.addVisual(agusSilla)
 
 	game.addVisual(alumno)
 

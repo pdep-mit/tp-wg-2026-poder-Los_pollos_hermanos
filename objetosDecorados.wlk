@@ -96,3 +96,40 @@ class Aguita {
   method esSolido() = false
   method esInteractuable() = false
 }
+
+class EscritorioCerrado {
+  const property position
+  method image() = "x64sprites/mapa/escritorio-cerrado.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class EscritorioCerradoLleno {
+  const property position
+  method image() = "x64sprites/mapa/escritorio-cerrado-lleno.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class EscritorioDenise {
+  const property position
+  method image() = "x64sprites/personajes/denise/denise-silla-der-2.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class EscritorioJulian {
+  const property position
+  method image() = "x64sprites/personajes/julian/julian-silla-izq-2.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class EscritorioAgus {
+  const property position
+  method image() = "x64sprites/personajes/agus/agus-silla-der-2.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class EscritorioMatos {
+  const property position
+  method image() = "x64sprites/mapa/escritorio-laptop.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
