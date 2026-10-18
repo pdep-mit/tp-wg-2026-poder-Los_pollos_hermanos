@@ -32,41 +32,41 @@ class Mesa {
 }
 class MesaIzquierda {
   const property position
-  method image() = "x64sprites/mapa/mesa-costado-izq.png"
+  method image() = "x64sprites/mapa/mesa-izq.png"
   method esSolido() = true
   method esInteractuable() = false
 }
 
 class MesaDerecha {
   const property position
-  method image() = "x64sprites/mapa/mesa-costado-der.png"
+  method image() = "x64sprites/mapa/mesa-der.png"
   method esSolido() = true
   method esInteractuable() = false
 }
 
-class MesaHorizontal {
+class MesaVertical {
   const property position
-  method image() = "x64sprites/mapa/mesa-horizontal-medio.png"
+  method image() = "x64sprites/mapa/mesa-vertical-medio.png"
   method esSolido() = true
   method esInteractuable() = false
 }
-class MesaHorizontalPapeles {
+class MesaVerticalPapeles {
   const property position
-  method image() = "x64sprites/mapa/mesa-horizontal-medio-papeles.png"
-  method esSolido() = true
-  method esInteractuable() = false
-}
-
-class MesaArribaHorizontal {
-  const property position
-  method image() = "x64sprites/mapa/mesa-horizontal-arriba.png"
+  method image() = "x64sprites/mapa/mesa-vertical-medio-papeles.png"
   method esSolido() = true
   method esInteractuable() = false
 }
 
-class MesaAbajoHorizontal {
+class MesaArribaVertical {
   const property position
-  method image() = "x64sprites/mapa/mesa-horizontal-abajo.png"
+  method image() = "x64sprites/mapa/mesa-vertical-arriba.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+
+class MesaAbajoVertical {
+  const property position
+  method image() = "x64sprites/mapa/mesa-vertical-abajo.png"
   method esSolido() = true
   method esInteractuable() = false
 }
@@ -96,7 +96,24 @@ class Aguita {
   method esSolido() = false
   method esInteractuable() = false
 }
-
+class Escritorio {
+  const property position
+  method image() = "x64sprites/mapa/escritorio.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class EscritorioVertical {
+  const property position
+  method image() = "x64sprites/mapa/escritorio-vertical.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class EscritorioVerticalPC {
+  const property position
+  method image() = "x64sprites/mapa/escritorio-vertical-pc.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
 class EscritorioCerrado {
   const property position
   method image() = "x64sprites/mapa/escritorio-cerrado.png"
@@ -127,9 +144,51 @@ class EscritorioAgus {
   method esSolido() = true
   method esInteractuable() = false
 }
-class EscritorioMatos {
+class EscritorioLaptop {
   const property position
   method image() = "x64sprites/mapa/escritorio-laptop.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class Silla {
+  const property position
+  method image() = "x64sprites/mapa/silla-vacia.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class SillaIzq {
+  const property position
+  method image() = "x64sprites/mapa/silla-izq.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class SillaDer {
+  const property position
+  method image() = "x64sprites/mapa/silla-der.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class ComputadoraLabo {
+  const property position
+  method image() = "x64sprites/mapa/escritorio-pc-1.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class ComputadoraLaboTop {
+  const property position
+  method image() = "x64sprites/mapa/escritorio-pc-2.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class ComputadoraLaboIzq {
+  const property position
+  method image() = "x64sprites/mapa/escritorio-vertical-pc-izq.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class ComputadoraLaboDer {
+  const property position
+  method image() = "x64sprites/mapa/escritorio-vertical-pc-der.png"
   method esSolido() = true
   method esInteractuable() = false
 }

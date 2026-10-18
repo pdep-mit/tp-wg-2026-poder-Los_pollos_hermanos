@@ -53,9 +53,16 @@ object taraguiPiso {
 
 
 //LABO
+object computadoraLabo {
+  const property position = game.at(2, 7)
+  method image() = "x64sprites/mapa/escritorio-pc-1.png"
+  method esSolido() = true
+  method esInteractuable() = true
+}
+
 object computadora {
   var property position = game.at(1, 8)
-  method image() = "x64sprites/mapa/pc.png"
+  method image() = "x64sprites/mapa/escritorio-pc-1.png"
   method esSolido() = true
   method esInteractuable() = true
   

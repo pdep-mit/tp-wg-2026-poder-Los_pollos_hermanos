@@ -8,6 +8,7 @@ import objetosParedes.*
 import aula.*
 import pasillo.*
 import entrada.*
+import labo.*
 
 program AprobameRasta {
 	game.title("Grupo: Los Pollos Hermanos | Aprobame, Rasta")
@@ -27,7 +28,7 @@ program AprobameRasta {
 	game.addVisual(new Mesa(position = game.at(7, 8)))
 	game.addVisual(new MesaIzquierda(position = game.at(6, 8)))
 	game.addVisual(new MesaDerecha(position = game.at(8, 8)))
-	game.addVisual(computadora)
+	game.addVisual(computadoraLabo)
 	game.addVisual(new ComputadoraDecorativa(position = game.at(4, 8)))
 	game.addVisual(new ComputadoraDecorativa(position = game.at(7, 8)))
 
@@ -113,9 +114,9 @@ program Entrada {
 	game.addVisual(tachoBasura)
 
 	//No interactuables
-	game.addVisual(new MesaHorizontalPapeles(position = game.at(2, 3)))
-	game.addVisual(new MesaArribaHorizontal(position = game.at(2, 4)))
-	game.addVisual(new MesaAbajoHorizontal(position = game.at(2, 2)))
+	game.addVisual(new MesaVerticalPapeles(position = game.at(2, 3)))
+	game.addVisual(new MesaArribaVertical(position = game.at(2, 4)))
+	game.addVisual(new MesaAbajoVertical(position = game.at(2, 2)))
 	game.addVisual(new CartelUTNIzq(position = game.at(10, 4)))
 	game.addVisual(new CartelUTNDer(position = game.at(11, 4)))
 
@@ -186,8 +187,6 @@ program Pasillo {
 	//INTERACTUABLES
 	game.addVisual(taraguiPiso)
 
-
-
 	//PERSONAJES
 	game.addVisual(hanz)
 	game.addVisual(conserje)
@@ -249,7 +248,7 @@ program Aula {
 	game.addVisual(new EscritorioCerrado(position = game.at(4, 5)))
 	game.addVisual(new EscritorioCerrado(position = game.at(6, 1)))
 	game.addVisual(new EscritorioCerrado(position = game.at(6, 3)))
-	game.addVisual(new EscritorioMatos(position = game.at(7, 7)))
+	game.addVisual(new EscritorioLaptop(position = game.at(7, 7)))
 
 	game.addVisual(new EscritorioDenise(position = game.at(4, 3)))
 	game.addVisual(new EscritorioJulian(position = game.at(2, 1)))
@@ -265,6 +264,81 @@ program Aula {
 	game.addVisual(alumno)
 
 	// Movilidad 
+	keyboard.up().onPressDo({ movimiento.arriba(alumno) })
+  	keyboard.down().onPressDo({ movimiento.abajo(alumno) })
+  	keyboard.left().onPressDo({ movimiento.izquierda(alumno) })
+ 	keyboard.right().onPressDo({ movimiento.derecha(alumno) })
+	keyboard.e().onPressDo({ alumno.interactuar() })
+	game.start()
+}
+
+program Labo {
+	game.title("Labo")
+	game.height(9)
+	game.width(9)
+	game.cellSize(64)
+	game.ground("x64sprites/mapa/baldosa.png")
+
+	game.addVisual(new ParedFrente(position = game.at(1, 8)))
+	game.addVisual(new ParedFrente(position = game.at(2, 8)))
+	game.addVisual(new ParedPizarraIzq(position = game.at(3, 8)))
+	game.addVisual(new ParedPizarraMedioEscrito(position = game.at(4, 8)))
+	game.addVisual(new ParedPizarraDer(position = game.at(5, 8)))
+	game.addVisual(new ParedFrente(position = game.at(6, 8)))
+	game.addVisual(new ParedFrente(position = game.at(7, 8)))
+
+	game.addVisual(new ParedIzq(position = game.at(0, 0)))
+	game.addVisual(new ParedIzq(position = game.at(0, 1)))
+	game.addVisual(new ParedIzq(position = game.at(0, 2)))
+	game.addVisual(new ParedIzq(position = game.at(0, 3)))
+	game.addVisual(new ParedIzq(position = game.at(0, 4)))
+	game.addVisual(new ParedIzq(position = game.at(0, 5)))
+	game.addVisual(new ParedIzq(position = game.at(0, 6)))
+	game.addVisual(new ParedIzq(position = game.at(0, 7)))
+	game.addVisual(new ParedIzq(position = game.at(0, 8)))
+
+	game.addVisual(new ParedDer(position = game.at(8, 0)))
+	game.addVisual(new ParedDer(position = game.at(8, 1)))
+	game.addVisual(new ParedDer(position = game.at(8, 2)))
+	game.addVisual(new ParedDer(position = game.at(8, 3)))
+	game.addVisual(new ParedDer(position = game.at(8, 4)))
+	game.addVisual(new ParedDer(position = game.at(8, 5)))
+	game.addVisual(new ParedDer(position = game.at(8, 6)))
+	game.addVisual(new ParedDer(position = game.at(8, 7)))
+	game.addVisual(new ParedDer(position = game.at(8, 8)))
+
+	//PUERTA
+	game.addVisual(puertaPasilloDesdeLabo)
+
+	//PERSONAJES
+	game.addVisual(rasta)
+	game.addVisual(mati)
+
+	//INTERACTUABLES
+	game.addVisual(computadoraLabo)
+
+	//MISC
+	game.addVisual(new ComputadoraLaboIzq(position = game.at(1, 2)))
+	game.addVisual(new ComputadoraLaboIzq(position = game.at(1, 4)))
+	game.addVisual(new ComputadoraLaboDer(position = game.at(7, 2)))
+	game.addVisual(new ComputadoraLaboDer(position = game.at(7, 4)))
+	game.addVisual(new ComputadoraLaboTop(position = game.at(2, 8)))
+	game.addVisual(new ComputadoraLabo(position = game.at(6, 7)))
+	game.addVisual(new ComputadoraLaboTop(position = game.at(6, 8)))
+
+
+	game.addVisual(new Silla(position = game.at(6, 7)))
+	game.addVisual(new SillaIzq(position = game.at(2, 2)))
+	game.addVisual(new SillaIzq(position = game.at(2, 4)))
+	game.addVisual(new SillaDer(position = game.at(6, 2)))
+	game.addVisual(new SillaDer(position = game.at(6, 4)))
+	game.addVisual(new SillaDer(position = game.at(1, 6)))
+
+	
+	
+	
+	// Movilidad 
+	game.addVisual(alumno)
 	keyboard.up().onPressDo({ movimiento.arriba(alumno) })
   	keyboard.down().onPressDo({ movimiento.abajo(alumno) })
   	keyboard.left().onPressDo({ movimiento.izquierda(alumno) })

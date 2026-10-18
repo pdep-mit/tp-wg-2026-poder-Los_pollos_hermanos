@@ -30,7 +30,7 @@ object alumno {
 
 
 object rasta {
-  var property position = game.at(0,0)
+  var property position = game.at(4,7)
   method image() = "x64sprites/personajes/rasta/rasta-frente.png"
   method esSolido() = true // Para que el personaje pueda chocar
   method esInteractuable() = true
@@ -131,6 +131,16 @@ object julianSilla {
 object agusSilla {
   var property position = game.at(6, 4)
   method image() = "x64sprites/personajes/agus/agus-silla-der-1.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
+object mati {
+  var property position = game.at(6, 5)
+  method image() = "x64sprites/personajes/mati/mati-izq.png"
   method esSolido() = true
   method esInteractuable() = true
 
