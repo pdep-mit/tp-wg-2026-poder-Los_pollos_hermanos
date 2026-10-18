@@ -1,9 +1,11 @@
+import habitaciones.*
 import wollok.game.*
 import personajes.*
 import movimientos.*
 import objetosUtiles.*
 import objetosDecorados.*
 import objetosParedes.*
+import pasilloBedelia.*
 
 import aula.*
 import pasillo.*
@@ -337,6 +339,59 @@ program Labo {
 	
 	
 	
+	// Movilidad 
+	game.addVisual(alumno)
+	keyboard.up().onPressDo({ movimiento.arriba(alumno) })
+  	keyboard.down().onPressDo({ movimiento.abajo(alumno) })
+  	keyboard.left().onPressDo({ movimiento.izquierda(alumno) })
+ 	keyboard.right().onPressDo({ movimiento.derecha(alumno) })
+	keyboard.e().onPressDo({ alumno.interactuar() })
+	game.start()
+}
+
+program pasilloBedelia{
+	game.title("Pasillo Bedelia")
+	game.height(9)
+	game.width(8)
+	game.cellSize(64)
+	game.ground("x64sprites/mapa/baldosa.png")
+
+	game.addVisual(new ParedFrente(position = game.at(1, 8)))
+	game.addVisual(new ParedFrente(position = game.at(2, 8)))
+	game.addVisual(new ParedFrente(position = game.at(3, 8)))
+	game.addVisual(new ParedFrente(position = game.at(4, 8)))
+	game.addVisual(new PuertaDecor(position = game.at(5, 8)))
+	game.addVisual(new ParedFrente(position = game.at(6, 8)))
+
+	game.addVisual(new ParedIzq(position = game.at(0, 0)))
+	game.addVisual(new ParedIzq(position = game.at(0, 1)))
+	game.addVisual(new ParedIzq(position = game.at(0, 2)))
+	game.addVisual(new ParedIzq(position = game.at(0, 3)))
+	game.addVisual(new ParedIzq(position = game.at(0, 4)))
+	game.addVisual(new ParedIzq(position = game.at(0, 7)))
+	game.addVisual(new ParedIzq(position = game.at(0, 8)))
+
+	game.addVisual(new ParedDer(position = game.at(7, 0)))
+	game.addVisual(new ParedDer(position = game.at(7, 1)))
+	game.addVisual(new ParedDer(position = game.at(7, 2)))
+	game.addVisual(new ParedDer(position = game.at(7, 3)))
+	game.addVisual(new ParedDer(position = game.at(7, 4)))
+	game.addVisual(new ParedDer(position = game.at(7, 5)))
+	game.addVisual(new ParedDer(position = game.at(7, 6)))
+	game.addVisual(new ParedDer(position = game.at(7, 7)))
+	game.addVisual(new ParedDer(position = game.at(7, 8)))
+
+	//PUERTAS
+	game.addVisual(puertaPasillo1DesdeBedelia)
+	game.addVisual(puertaPasillo2DesdeBedelia)
+	game.addVisual(puertaBuffetDesdeBedelia1)
+	game.addVisual(puertaBuffetDesdeBedelia2)
+
+	//MISC
+	game.addVisual(new Aguita(position = game.at(5, 7)))
+	game.addVisual(new CartelAgua(position = game.at(5, 7)))
+	
+
 	// Movilidad 
 	game.addVisual(alumno)
 	keyboard.up().onPressDo({ movimiento.arriba(alumno) })

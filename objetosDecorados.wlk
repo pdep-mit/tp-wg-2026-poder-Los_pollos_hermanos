@@ -192,3 +192,9 @@ class ComputadoraLaboDer {
   method esSolido() = true
   method esInteractuable() = false
 }
+class PuertaDecor {
+  const property position
+  method image() = "x64sprites/mapa/puerta-medio.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
