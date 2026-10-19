@@ -2,6 +2,8 @@ import personajes.*
 import objetosUtiles.*
 import objetosDecorados.*
 import objetosParedes.*
+import movimientos.*
+import wollok.game.*
 
 describe "Estados del TP" {
 
@@ -30,5 +32,13 @@ describe "Estados del TP" {
     assert.equals("???", sinTp.mensajeCompu())
     assert.equals("Completado", tpIncompleto.mensajeCompu())
     assert.equals("...", tpCompleto.mensajeCompu())
+  }
+
+  test "El movimiento respeta los límites de la habitación configurada" {
+    tablero.configurar(8, 9)
+
+    assert.that(tablero.estaDentro(game.at(7, 8)))
+    assert.that(!tablero.estaDentro(game.at(8, 8)))
+    assert.that(!tablero.estaDentro(game.at(7, 9)))
   }
 }

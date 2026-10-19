@@ -2,10 +2,20 @@ import wollok.game.*
 
 // El tablero conoce sus propias reglas: qué posiciones existen y cuáles están ocupadas.
 object tablero {
+  var property anchoHabitacion = null
+  var property altoHabitacion = null
+
+  method configurar(ancho, alto) {
+    anchoHabitacion = ancho
+    altoHabitacion = alto
+  }
+
+  method ancho() = if (anchoHabitacion == null) game.width() else anchoHabitacion
+  method alto() = if (altoHabitacion == null) game.height() else altoHabitacion
 
   // Las posiciones válidas van de 0 a (tamaño - 1) en cada eje
   method estaDentro(posicion) =
-    posicion.x().between(0, game.width() - 1) && posicion.y().between(0, game.height() - 1)
+    posicion.x().between(0, self.ancho() - 1) && posicion.y().between(0, self.alto() - 1)
 
   method hayObstaculoEn(posicion) =
     game.getObjectsIn(posicion).any({ objeto => objeto.esSolido() }) // getObjects devuelve TODOS los onjetos de cierta posición
