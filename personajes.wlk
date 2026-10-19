@@ -1,11 +1,13 @@
 import wollok.game.*
-import objetos.*
+import objetosUtiles.*
+import objetosDecorados.*
 
 
 //PERSONAJES INTERACTUABLES
 object alumno {
-  var property position = game.at(7, 0)
-  method image() = "x64sprites/personajes/wachington/wachington-frente.png"
+  var property position = game.at(3, 3)
+  var property imagen = "x64sprites/personajes/wachington/wachington-frente.png"
+  method image() = imagen
   method esSolido() = true
   const mochila = []
 
@@ -28,7 +30,7 @@ object alumno {
 
 
 object rasta {
-  var property position = game.at(0,0)
+  var property position = game.at(4,7)
   method image() = "x64sprites/personajes/rasta/rasta-frente.png"
   method esSolido() = true // Para que el personaje pueda chocar
   method esInteractuable() = true
@@ -75,10 +77,19 @@ object tecnico {
   // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
 
-//OBJETOS INTERACTUABLES
-object ascensor {
-  var property position = game.at(4, 9)
-  method image() = "x64sprites/mapa/ascensor.png"
+object hanz {
+  var property position = game.at(5, 4)
+  method image() = "x64sprites/personajes/hanz/hanz-frente.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
+object conserje {
+  var property position = game.at(9, 1)
+  method image() = "x64sprites/personajes/conserje/conserje-izq.png"
   method esSolido() = true
   method esInteractuable() = true
 
@@ -87,9 +98,9 @@ object ascensor {
   // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
 
-object puertaBaño {
-  var property position = game.at(2, 9)
-  method image() = "x64sprites/mapa/puerta-banio.png"
+object matos {
+  var property position = game.at(1, 7)
+  method image() = "x64sprites/personajes/matos/matos-frente.png"
   method esSolido() = true
   method esInteractuable() = true
 
@@ -97,10 +108,9 @@ object puertaBaño {
 
   // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
-
-object puertaAMMedio {
-  var property position = game.at(7, 9)
-  method image() = "x64sprites/mapa/puerta-am-medio.png"
+object deniseSilla {
+  var property position = game.at(4, 2)
+  method image() = "x64sprites/personajes/denise/denise-silla-der-1.png"
   method esSolido() = true
   method esInteractuable() = true
 
@@ -108,9 +118,9 @@ object puertaAMMedio {
 
   // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
-object puertaAMIzq {
-  var property position = game.at(6, 9)
-  method image() = "x64sprites/mapa/puerta-am-izq.png"
+object julianSilla {
+  var property position = game.at(2, 0)
+  method image() = "x64sprites/personajes/julian/julian-silla-izq-1.png"
   method esSolido() = true
   method esInteractuable() = true
 
@@ -118,9 +128,9 @@ object puertaAMIzq {
 
   // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
-object puertaAMDer {
-  var property position = game.at(8, 9)
-  method image() = "x64sprites/mapa/puerta-am-der.png"
+object agusSilla {
+  var property position = game.at(6, 4)
+  method image() = "x64sprites/personajes/agus/agus-silla-der-1.png"
   method esSolido() = true
   method esInteractuable() = true
 
@@ -128,39 +138,9 @@ object puertaAMDer {
 
   // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
-object puertaSalidaMedio {
-  var property position = game.at(7, 0)
-  method image() = "x64sprites/mapa/puerta-salida-medio.png"
-  method esSolido() = false
-  method esInteractuable() = true
-
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
-}
-object puertaSalidaIzq {
-  var property position = game.at(6, 0)
-  method image() = "x64sprites/mapa/puerta-salida-izq.png"
-  method esSolido() = false
-  method esInteractuable() = true
-
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
-}
-object puertaSalidaDer {
-  var property position = game.at(8, 0)
-  method image() = "x64sprites/mapa/puerta-salida-der.png"
-  method esSolido() = false
-  method esInteractuable() = true
-
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
-}
-object escalerasIzq {
-  var property position = game.at(11, 9)
-  method image() = "x64sprites/mapa/escaleras-izq.png"
+object mati {
+  var property position = game.at(6, 5)
+  method image() = "x64sprites/personajes/mati/mati-izq.png"
   method esSolido() = true
   method esInteractuable() = true
 
@@ -168,9 +148,29 @@ object escalerasIzq {
 
   // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
-object escalerasDer {
-  var property position = game.at(12, 9)
-  method image() = "x64sprites/mapa/escaleras-der.png"
+object bedelia {
+  var property position = game.at(7, 3)
+  method image() = "x64sprites/mapa/pared-bedelia.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
+object kiosquera {
+  var property position = game.at(4, 6)
+  method image() = "x64sprites/personajes/base-mujer/base-mujer-frente.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
+object facu {
+  var property position = game.at(13, 5)
+  method image() = "x64sprites/personajes/base-hombre/base-frente.png"
   method esSolido() = true
   method esInteractuable() = true
 
