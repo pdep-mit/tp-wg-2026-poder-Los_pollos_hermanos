@@ -158,3 +158,23 @@ object bedelia {
 
   // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
+object kiosquera {
+  var property position = game.at(4, 6)
+  method image() = "x64sprites/personajes/base-mujer/base-mujer-frente.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
+object facu {
+  var property position = game.at(13, 5)
+  method image() = "x64sprites/personajes/base-hombre/base-frente.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}

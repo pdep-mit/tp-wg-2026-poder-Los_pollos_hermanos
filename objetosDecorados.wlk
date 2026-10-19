@@ -198,3 +198,15 @@ class PuertaDecor {
   method esSolido() = true
   method esInteractuable() = false
 }
+class MesaArribaEIzq {
+  const property position
+  method image() = "x64sprites/mapa/mesa-arriba-izq.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class MesaAbajoEDer {
+  const property position
+  method image() = "x64sprites/mapa/mesa-abajo-der.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
