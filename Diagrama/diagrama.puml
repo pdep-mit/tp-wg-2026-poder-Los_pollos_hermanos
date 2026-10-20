@@ -1,7 +1,5 @@
 @startuml Juego
 
-
- 
 package personajes {
   class wachington  {
     position
@@ -100,7 +98,7 @@ class ascensor <<(O,#FFAA55) object>> {
 
 
 package decorados {
- class objetosDecorados {
+ class ObjetoDecorativo {
   position
     esInteractuable()
   }
@@ -132,5 +130,20 @@ interface EstadoTp {
     avanzarConCompu()
   }
 }
+
+
+' Relaciones ' 
+
+' Herencia' 
+ObjetoDecorativo <|-- ObjetoDecorativoSolido
+ObjetoDecorativo <|-- ObjetoDecorativoNoSolido
+
+Sala <|-d- salaEntrada
+Sala <|-d- salaPasillo
+Sala <|-u- salaAula
+Sala <|-u- salaLabo
+Sala <|-d- salaPasilloBedelia
+Sala <|-u- salaBuffet
+
 
 @enduml
