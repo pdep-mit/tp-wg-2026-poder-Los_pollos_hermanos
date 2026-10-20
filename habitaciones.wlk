@@ -58,8 +58,9 @@ object controles {
 
 object habitacionActual {
     var property salaActual = null
-    method irA(sala) {
+    method irA(sala, posicionLlegada) {
         game.clear()
         sala.cargar()
+        alumno.position(posicionLlegada)
     }
 }

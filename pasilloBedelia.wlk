@@ -4,6 +4,8 @@ import objetosDecorados.*
 import objetosParedes.*
 import personajes.*
 import habitaciones.*
+import pasillo.*
+import buffet.*
 
 object puertaPasillo1DesdeBedelia {
   var property position = game.at(0,5)
@@ -11,9 +13,9 @@ object puertaPasillo1DesdeBedelia {
   method esSolido() = true
   method esInteractuable() = true
 
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+  method interactuar() {
+    habitacionActual.irA(salaPasillo, game.at(16, 2))
+  }
 }
 object puertaPasillo2DesdeBedelia {
   var property position = game.at(0,6)
@@ -21,9 +23,9 @@ object puertaPasillo2DesdeBedelia {
   method esSolido() = true
   method esInteractuable() = true
 
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+  method interactuar() {
+    habitacionActual.irA(salaPasillo, game.at(16, 2))
+  }
 }
 object puertaBuffetDesdeBedelia1 {
   var property position = game.at(3,0)
@@ -31,9 +33,9 @@ object puertaBuffetDesdeBedelia1 {
   method esSolido() = false
   method esInteractuable() = true
 
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+  method interactuar() {
+    habitacionActual.irA(salaBuffet, game.at(7, 6))
+  }
 }
 object puertaBuffetDesdeBedelia2 {
   var property position = game.at(4,0)
@@ -41,9 +43,9 @@ object puertaBuffetDesdeBedelia2 {
   method esSolido() = false
   method esInteractuable() = true
 
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+  method interactuar() {
+    habitacionActual.irA(salaBuffet, game.at(7, 6))
+  }
 }
 
 object salaPasilloBedelia inherits Sala {

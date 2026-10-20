@@ -4,6 +4,7 @@ import objetosDecorados.*
 import objetosParedes.*
 import personajes.*
 import habitaciones.*
+import pasillo.*
 
 object puertaPasilloDesdeAula {
   var property position = game.at(8, 5)
@@ -11,9 +12,9 @@ object puertaPasilloDesdeAula {
   method esSolido() = true
   method esInteractuable() = true
 
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+  method interactuar() {
+    habitacionActual.irA(salaPasillo, game.at(1, 2))
+  }
 }
 
 object salaAula inherits Sala {

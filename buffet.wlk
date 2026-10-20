@@ -4,6 +4,7 @@ import objetosDecorados.*
 import objetosParedes.*
 import personajes.*
 import habitaciones.*
+import pasilloBedelia.*
 
 object puertaBedeliaDesdeBuffet1 {
   var property position = game.at(7,7)
@@ -11,9 +12,9 @@ object puertaBedeliaDesdeBuffet1 {
   method esSolido() = true
   method esInteractuable() = true
 
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+  method interactuar() {
+    habitacionActual.irA(salaPasilloBedelia, game.at(3, 1))
+  }
 }
 object puertaBedeliaDesdeBuffet2 {
   var property position = game.at(8,7)
@@ -21,9 +22,9 @@ object puertaBedeliaDesdeBuffet2 {
   method esSolido() = true
   method esInteractuable() = true
 
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+  method interactuar() {
+    habitacionActual.irA(salaPasilloBedelia, game.at(3, 1))
+  }
 }
 
 object salaBuffet inherits Sala {

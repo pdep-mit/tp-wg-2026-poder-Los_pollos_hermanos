@@ -4,6 +4,7 @@ import objetosDecorados.*
 import objetosParedes.*
 import personajes.*
 import habitaciones.*
+import pasillo.*
 
 //ACCESOS UTILES
 object ascensor {
@@ -12,9 +13,9 @@ object ascensor {
   method esSolido() = true
   method esInteractuable() = true
 
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+  method interactuar() {
+    habitacionActual.irA(salaPasillo, game.at(14, 0))
+  }
 }
 
 

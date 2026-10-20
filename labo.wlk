@@ -4,16 +4,17 @@ import objetosDecorados.*
 import objetosParedes.*
 import personajes.*
 import habitaciones.*
+import pasillo.*
 
 object puertaPasilloDesdeLabo {
   var property position = game.at(4, 0)
   method image() = "x64sprites/mapa/puerta-salida.png"
-  method esSolido() = false
+  method esSolido() = true
   method esInteractuable() = true
 
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+  method interactuar() {
+    habitacionActual.irA(salaPasillo, game.at(12, 4))
+  }
 }
 
 object salaLabo inherits Sala {
