@@ -1,5 +1,9 @@
 @startuml Juego
 
+' Mas espacio entre cajas para que las flechas no se pisen
+skinparam nodesep 60
+skinparam ranksep 80
+
 package personajes {
   class wachington  {
     position
@@ -94,6 +98,28 @@ class "puertas (puertaXDesdeY)" as puertas <<(O,#FFAA55) object>> {
 class ascensor <<(O,#FFAA55) object>> {
     interactuar()
   }
+
+class controles <<(O,#FFAA55) object>> {
+    configurar()
+  }
+
+class MascaraFueraDeSala {
+    position
+    image()
+  }
+}
+
+package historia {
+  interface Objetivo {
+    interactuarConPortero()
+    interactuarConTecnico()
+    interactuarConAscensor()
+  }
+
+  class objetivoLlegarAlAula <<(O,#FFAA55) object>>
+  class objetivoArreglarAscensor <<(O,#FFAA55) object>>
+  class objetivoConseguirLlave <<(O,#FFAA55) object>>
+  class objetivoLimpiarEntrada <<(O,#FFAA55) object>>
 }
 
 
@@ -185,11 +211,11 @@ portero ..> wachington : objetivo()
 tecnico ..> wachington : objetivo()
 ascensor ..> wachington : objetivo()
 
-controles ..> movimiento
+controles ..> Movimientos
 controles ..> wachington
-movimiento ..> tablero
+Movimientos ..> Tablero
 
-Sala ..> tablero : configurar()
+Sala ..> Tablero : configurar()
 Sala ..> controles
 Sala ..> habitacionActual
 Sala ..> MascaraFueraDeSala : crea
