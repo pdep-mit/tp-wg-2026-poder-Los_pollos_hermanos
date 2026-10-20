@@ -28,6 +28,8 @@ object wachington {
 
   method guardar(objeto) { mochila.guardar(objeto) }
   method tiene(objeto) = mochila.tiene(objeto)
+  method sacar(objeto) { mochila.sacar(objeto) }
+  method usar(objeto) { mochila.usar(objeto) }
 }
 
 
