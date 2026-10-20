@@ -171,4 +171,32 @@ Objetivo <|.. objetivoArreglarAscensor
 Objetivo <|.. objetivoConseguirLlave
 Objetivo <|.. objetivoLimpiarEntrada
 
+'asosiacion' 
+wachington --> Objetivo :objetivo
+wachington o--> tp :mochila
+wachington ..> Interactuable :interactuar()
+
+tp --> EstadoTp : estado
+rasta ..> tp
+companieroClase ..> tp
+computadora ..> tp
+
+portero ..> wachington : objetivo()
+tecnico ..> wachington : objetivo()
+ascensor ..> wachington : objetivo()
+
+controles ..> movimiento
+controles ..> wachington
+movimiento ..> tablero
+
+Sala ..> tablero : configurar()
+Sala ..> controles
+Sala ..> habitacionActual
+Sala ..> MascaraFueraDeSala : crea
+Sala o-->  ObjetoDecorativo : objetos()
+Sala o-->  Interactuable : objetos()
+
+habitacionActual --> Sala : salaActual
+puertas ..> habitacionActual : irA()
+
 @enduml
