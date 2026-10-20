@@ -24,11 +24,18 @@ Recuerden que para cada checkpoint hay [expectativas mínimas](https://docs.goog
 
 ## Objetivo
 
-Aprobar el TP a como de lugar. 
+Cumplir con todos los objetivos establecidos a través del tiempo, recorriendo la UTN, interactuando con personajes/objetos y culminando con la aprobación del Trabajo Práctico de Paradigmas de Programación a como dé lugar 
 
 ## Controles
+←: Moverse hacia la izquierda
+→: Moverse hacia la derecha
+↑: Moverse hacia arriba
+↓: Moverse hacia abajo
 
-E: Dialogar entre personajes
+E: Dialogar con personajes / Interactuar con objetos o entorno
+B: Acceder a la mochila
+  - 1: Visualizar la misión activa
+  - 2: Visualizar los objetos actualmente guardados en la mochila
 
 # Explicaciones
 
