@@ -74,6 +74,17 @@ object computadora {
   }
 }
 
+//BUFFET
+object yerba {
+  var property position = game.at(11, 6)
+  method image() = "x64sprites/mapa/yerba.png"
+  method esSolido() = true
+  method esInteractuable() = true
+
+  // method hablar(mensaje) { game.say(self, mensaje) } 
+
+  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+}
 
 //ESTADOS
 object tp {

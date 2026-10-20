@@ -73,3 +73,15 @@ class ParedBedelia {
   method esSolido() = true
   method esInteractuable() = false
 }
+class ParedCarteleraKioscoIzq {
+  const property position
+  method image() = "x64sprites/mapa/pared-cartelera-kiosco-izq.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class ParedCarteleraKioscoDer {
+  const property position
+  method image() = "x64sprites/mapa/pared-cartelera-kiosco-der.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}

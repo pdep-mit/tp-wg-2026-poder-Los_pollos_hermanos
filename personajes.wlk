@@ -160,7 +160,7 @@ object bedelia {
 }
 object kiosquera {
   var property position = game.at(4, 6)
-  method image() = "x64sprites/personajes/base-mujer/base-mujer-frente.png"
+  method image() = "x64sprites/personajes/kiosquera/kiosquera-frente.png"
   method esSolido() = true
   method esInteractuable() = true
 
@@ -170,7 +170,7 @@ object kiosquera {
 }
 object facu {
   var property position = game.at(13, 5)
-  method image() = "x64sprites/personajes/base-hombre/base-frente.png"
+  method image() = "x64sprites/personajes/facu/facu-frente.png"
   method esSolido() = true
   method esInteractuable() = true
 

@@ -35,8 +35,8 @@ object salaBuffet inherits Sala {
   override method objetos() = [
     new ParedFrente(position = game.at(1, 7)),
     new ParedFrente(position = game.at(2, 7)),
-    new ParedFrente(position = game.at(3, 7)),
-    new ParedFrente(position = game.at(4, 7)),
+    new ParedCarteleraKioscoIzq(position = game.at(3, 7)),
+    new ParedCarteleraKioscoDer(position = game.at(4, 7)),
     new ParedFrente(position = game.at(5, 7)),
     new ParedFrente(position = game.at(6, 7)),
     new ParedFrente(position = game.at(9, 7)),
@@ -94,6 +94,10 @@ object salaBuffet inherits Sala {
     new Mesa(position = game.at(12, 6)),
     new Mesa(position = game.at(13, 6)),
     new MesaDerecha(position = game.at(14, 6)),
+    new Mate(position = game.at(13, 6)),
+    new Termo1(position = game.at(12, 6)),
+    new Termo2(position = game.at(12, 7)),
+    yerba,
     kiosquera,
     facu
   ]

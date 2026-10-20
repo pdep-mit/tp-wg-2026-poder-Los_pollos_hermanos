@@ -210,3 +210,21 @@ class MesaAbajoEDer {
   method esSolido() = true
   method esInteractuable() = false
 }
+class Mate {
+  const property position
+  method image() = "x64sprites/mapa/mate.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class Termo1 {
+  const property position
+  method image() = "x64sprites/mapa/termo1.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
+class Termo2 {
+  const property position
+  method image() = "x64sprites/mapa/termo2.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
