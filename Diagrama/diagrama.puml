@@ -102,7 +102,21 @@ class ascensor <<(O,#FFAA55) object>> {
     esSolido()
   }
 
+' obejetos utiles  '
+class computadora {
+  hablar(mensaje)
+  interactuaur()
+}
 
+class tp <<(O,#FFAA55) Object>> {
+  estado
+}
 
-
+interface EstadoTp {
+    mensajeRasta()
+    mensajeCompa()
+    mensajeCompu()
+    avanzarConRasta()
+    avanzarConCompu()
+  }
 @enduml
