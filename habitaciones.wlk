@@ -16,8 +16,8 @@ class Sala {
     game.ground(self.fondo())
     self.objetos().forEach({ objeto => game.addVisual(objeto) })
     self.ocultarFueraDeSala(0, 0)
-    alumno.position(self.posicionInicial())
-    game.addVisual(alumno)
+    wachington.position(self.posicionInicial())
+    game.addVisual(wachington)
     controles.configurar()
     habitacionActual.salaActual(self)
   }
@@ -47,11 +47,11 @@ class MascaraFueraDeSala {
 
 object controles {
   method configurar() {
-    keyboard.up().onPressDo({ movimiento.arriba(alumno) })
-  	keyboard.down().onPressDo({ movimiento.abajo(alumno) })
-  	keyboard.left().onPressDo({ movimiento.izquierda(alumno) })
- 	  keyboard.right().onPressDo({ movimiento.derecha(alumno) })
-	  keyboard.e().onPressDo({ alumno.interactuar() })
+    keyboard.up().onPressDo({ movimiento.arriba(wachington) })
+  	keyboard.down().onPressDo({ movimiento.abajo(wachington) })
+  	keyboard.left().onPressDo({ movimiento.izquierda(wachington) })
+ 	  keyboard.right().onPressDo({ movimiento.derecha(wachington) })
+	  keyboard.e().onPressDo({ wachington.interactuar() })
     //keyboard.b().onPressDo({ mochila.abrir() })
   }
 }
@@ -61,6 +61,6 @@ object habitacionActual {
     method irA(sala, posicionLlegada) {
         game.clear()
         sala.cargar()
-        alumno.position(posicionLlegada)
+        wachington.position(posicionLlegada)
     }
 }

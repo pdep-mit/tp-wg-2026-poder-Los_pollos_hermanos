@@ -19,7 +19,7 @@ program AprobameRasta {
 	game.width(10)
 	game.cellSize(64)
 	game.ground("x64sprites/mapa/baldosa.png")
-	game.addVisual(alumno) //movemos el alumno de acuerdo a las flechas
+	game.addVisual(wachington) //movemos el wachington de acuerdo a las flechas
 	game.addVisual(rasta)
 	game.addVisual(companieroClase)
 	game.addVisual(new Mesa(position = game.at(1, 8)))
@@ -38,11 +38,11 @@ program AprobameRasta {
 
 
 	// Movilidad 
-	keyboard.up().onPressDo({ movimiento.arriba(alumno) })
-  	keyboard.down().onPressDo({ movimiento.abajo(alumno) })
-  	keyboard.left().onPressDo({ movimiento.izquierda(alumno) })
- 	keyboard.right().onPressDo({ movimiento.derecha(alumno) })
-	keyboard.e().onPressDo({ alumno.interactuar() })
+	keyboard.up().onPressDo({ movimiento.arriba(wachington) })
+  	keyboard.down().onPressDo({ movimiento.abajo(wachington) })
+  	keyboard.left().onPressDo({ movimiento.izquierda(wachington) })
+ 	keyboard.right().onPressDo({ movimiento.derecha(wachington) })
+	keyboard.e().onPressDo({ wachington.interactuar() })
 
 	game.start()
 }

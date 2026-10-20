@@ -4,8 +4,8 @@ import objetosDecorados.*
 
 
 //PERSONAJES INTERACTUABLES
-object alumno {
-  var property position = game.at(3, 3)
+object wachington {
+  var property position = game.at(7, 0)
   var property imagen = "x64sprites/personajes/wachington/wachington-frente.png"
   method image() = imagen
   method esSolido() = true

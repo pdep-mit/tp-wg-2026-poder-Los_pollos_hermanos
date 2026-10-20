@@ -99,7 +99,7 @@ object sinTp {
 
   method avanzarConRasta() {
     tp.estado(tpIncompleto)
-    alumno.guardar(tp)
+    wachington.guardar(tp)
   }
   method avanzarConCompu() {}
 }
