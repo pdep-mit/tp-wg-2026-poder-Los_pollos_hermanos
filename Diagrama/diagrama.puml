@@ -118,9 +118,11 @@ class computadora {
   interactuaur()
 }
 
-class tp <<(O,#FFAA55) Object>> {
+class tp {
   estado
+  
 }
+  
 
 interface EstadoTp {
     mensajeRasta()
@@ -129,6 +131,11 @@ interface EstadoTp {
     avanzarConRasta()
     avanzarConCompu()
   }
+
+class sinTp <<(O,#FFAA55) object>>
+class tpIncompleto <<(O,#FFAA55) object>>
+class tpCompleto <<(O,#FFAA55) object>>
+class tpEntregado <<(O,#FFAA55) object>>
 }
 
 
@@ -145,5 +152,23 @@ Sala <|-u- salaLabo
 Sala <|-d- salaPasilloBedelia
 Sala <|-u- salaBuffet
 
+' Implimentacion ' 
+Interactuable <|.. rasta
+Interactuable <|.. companieroClase
+Interactuable <|.. portero
+Interactuable <|.. tecnico
+Interactuable <|.. ascensor
+Interactuable <|.. puertas
+Interactuable <|.. computadora
+
+EstadoTp <|.. sinTp
+EstadoTp <|.. tpIncompleto
+EstadoTp <|.. tpCompleto
+EstadoTp <|.. tpEntregado
+
+Objetivo <|.. objetivoLlegarAlAula
+Objetivo <|.. objetivoArreglarAscensor
+Objetivo <|.. objetivoConseguirLlave
+Objetivo <|.. objetivoLimpiarEntrada
 
 @enduml
