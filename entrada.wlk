@@ -113,7 +113,7 @@ object escalerasDer {
 
 object salaEntrada inherits Sala {
   override method fondo() = "x64sprites/mapa/baldosa.png"
-  override method posicionInicial() = game.at(3, 3)
+  override method posicionInicial() = game.at(7, 0)
   override method ancho() = 15
   override method alto() = 10
   override method objetos() = [
