@@ -57,6 +57,41 @@ class Movimientos {
     derecha(personaje)
 }
 
+class Sala {
+  fondos()
+  objetos()
+  posicioninicial()
+  ancho()
+  alto()
+  cargar()
+  configurar()
+  ocultarFueraDeSala(x,y)
+}
+
+Object habitacionActual {
+  salaactual()
+  irA(sala,posicionllegada)
+}
+
+' El #FFAA55 le da el color naranja en el diagrama, es solo un detalle ' 
+' El O para referenciar que es un objeto (explicar en la presentacion)
+  class salaEntrada <<(O,#FFAA55) object>> 
+  class salaPasillo <<(O,#FFAA55) object>>
+  class salaAula <<(O,#FFAA55) object>>
+  class salaLabo <<(O,#FFAA55) object>>
+  class salaPasilloBedelia <<(O,#FFAA55) object>>
+  class salaBuffet <<(O,#FFAA55) object>>
+
+'lo pongo asi para diferenciar de las decorativas ' 
+class "puertas (puertaXDesdeY)" as puertas <<(O,#FFAA55) object>> {
+    interactuar()
+  }
+class ascensor <<(O,#FFAA55) object>> {
+    interactuar()
+  }
+
+
+
 
 
 @enduml
