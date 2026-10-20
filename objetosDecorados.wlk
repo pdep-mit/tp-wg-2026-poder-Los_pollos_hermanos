@@ -144,12 +144,6 @@ class EscritorioAgus {
   method esSolido() = true
   method esInteractuable() = false
 }
-class EscritorioLaptop {
-  const property position
-  method image() = "x64sprites/mapa/escritorio-laptop.png"
-  method esSolido() = true
-  method esInteractuable() = false
-}
 class Silla {
   const property position
   method image() = "x64sprites/mapa/silla-vacia.png"
@@ -210,12 +204,6 @@ class MesaAbajoEDer {
   method esSolido() = true
   method esInteractuable() = false
 }
-class Mate {
-  const property position
-  method image() = "x64sprites/mapa/mate.png"
-  method esSolido() = true
-  method esInteractuable() = false
-}
 class Termo1 {
   const property position
   method image() = "x64sprites/mapa/termo1.png"
@@ -227,4 +215,12 @@ class Termo2 {
   method image() = "x64sprites/mapa/termo2.png"
   method esSolido() = true
   method esInteractuable() = false
+}
+
+class Kiosquera {
+  const property position
+  method image() = "x64sprites/personajes/kiosquera/kiosquera-frente.png"
+  method esSolido() = true
+  method esInteractuable() = false
+
 }

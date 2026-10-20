@@ -51,6 +51,19 @@ object taraguiPiso {
   method esInteractuable() = true
 }
 
+//AULA
+object mate {
+  const property position = game.at(2, 3)
+  method image() = "x64sprites/mapa/mate.png"
+  method esSolido() = true
+  method esInteractuable() = true
+}
+object escritorioLaptop {
+  const property position = game.at(7, 7)
+  method image() = "x64sprites/mapa/escritorio-laptop.png"
+  method esSolido() = true
+  method esInteractuable() = false
+}
 
 //LABO
 object computadoraLabo {

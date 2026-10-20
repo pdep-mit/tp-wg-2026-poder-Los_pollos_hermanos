@@ -158,9 +158,9 @@ object bedelia {
 
   // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
 }
-object kiosquera {
-  var property position = game.at(4, 6)
-  method image() = "x64sprites/personajes/kiosquera/kiosquera-frente.png"
+object kiosqueraMesa {
+  var property position = game.at(4, 5)
+  method image() = "x64sprites/mapa/mesa-medio.png"
   method esSolido() = true
   method esInteractuable() = true
 

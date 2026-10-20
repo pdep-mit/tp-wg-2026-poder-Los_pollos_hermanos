@@ -48,20 +48,21 @@ object salaAula inherits Sala {
     new ParedDer(position = game.at(8, 7)),
     new ParedDer(position = game.at(8, 8)),
     puertaPasilloDesdeAula,
-    new EscritorioCerrado(position = game.at(2, 3)),
+    new Escritorio(position = game.at(2, 3)),
     new EscritorioCerrado(position = game.at(2, 5)),
     new EscritorioCerrado(position = game.at(4, 1)),
     new EscritorioCerrado(position = game.at(4, 5)),
     new EscritorioCerrado(position = game.at(6, 1)),
     new EscritorioCerrado(position = game.at(6, 3)),
-    new EscritorioLaptop(position = game.at(7, 7)),
     new EscritorioDenise(position = game.at(4, 3)),
     new EscritorioJulian(position = game.at(2, 1)),
     new EscritorioAgus(position = game.at(6, 5)),
+    escritorioLaptop,
     matos,
     julianSilla,
     deniseSilla,
-    agusSilla
+    agusSilla,
+    mate
   ]
 
   override method configurar() {

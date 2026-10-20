@@ -72,7 +72,6 @@ object salaBuffet inherits Sala {
     new MesaVertical(position = game.at(2, 4)),
     new MesaArribaEIzq(position = game.at(2, 5)),
     new Mesa(position = game.at(3, 5)),
-    new Mesa(position = game.at(4, 5)),
     new Mesa(position = game.at(5, 5)),
     new MesaAbajoEDer(position = game.at(6, 5)),
     new MesaVertical(position = game.at(6, 6)),
@@ -94,11 +93,11 @@ object salaBuffet inherits Sala {
     new Mesa(position = game.at(12, 6)),
     new Mesa(position = game.at(13, 6)),
     new MesaDerecha(position = game.at(14, 6)),
-    new Mate(position = game.at(13, 6)),
     new Termo1(position = game.at(12, 6)),
     new Termo2(position = game.at(12, 7)),
+    new Kiosquera(position = game.at(4, 6)),
     yerba,
-    kiosquera,
+    kiosqueraMesa,
     facu
   ]
 
