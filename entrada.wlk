@@ -5,6 +5,7 @@ import objetosParedes.*
 import personajes.*
 import habitaciones.*
 import pasillo.*
+import historiaEntrada.*
 
 //ACCESOS UTILES
 object ascensor {
@@ -14,7 +15,8 @@ object ascensor {
   method esInteractuable() = true
 
   method interactuar() {
-    habitacionActual.irA(salaPasillo, game.at(14, 0))
+    //habitacionActual.irA(salaPasillo, game.at(14, 0))
+    wachington.objetivo().interactuarConAscensor()
   }
 }
 

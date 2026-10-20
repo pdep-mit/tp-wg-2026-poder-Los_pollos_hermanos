@@ -1,7 +1,7 @@
 import wollok.game.*
 import objetosUtiles.*
 import objetosDecorados.*
-
+import historiaEntrada.*
 
 //PERSONAJES INTERACTUABLES
 object wachington {
@@ -10,6 +10,8 @@ object wachington {
   method image() = imagen
   method esSolido() = true
   const mochila = []
+  var property objetivo = objetivoLlegarAlAula
+
 
   method estaAlLadoDe(otro) = self.position().distance(otro.position()) == 1 // Chequea si esta al lado de otro personaje. 
   // Uno porque asi da el calculo que hace distance si esta al lado (no sirve si esta en diagonal)
@@ -63,7 +65,9 @@ object portero {
 
   // method hablar(mensaje) { game.say(self, mensaje) } 
 
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+  method interactuar() { 
+    wachington.objetivo().interactuarConPortero()
+      }
 }
 
 object tecnico {
@@ -74,7 +78,9 @@ object tecnico {
 
   // method hablar(mensaje) { game.say(self, mensaje) } 
 
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+  method interactuar() { 
+    wachington.objetivo().interactuarConTecnico()
+    }
 }
 
 object hanz {
