@@ -2,6 +2,7 @@ import wollok.game.*
 import objetosUtiles.*
 import objetosDecorados.*
 import historiaEntrada.*
+import mochila.*
 
 //PERSONAJES INTERACTUABLES
 object wachington {
@@ -9,7 +10,6 @@ object wachington {
   var property imagen = "x64sprites/personajes/wachington/wachington-frente.png"
   method image() = imagen
   method esSolido() = true
-  const mochila = []
   var property objetivo = objetivoLlegarAlAula
 
 
@@ -26,8 +26,8 @@ object wachington {
       }
   }
 
-  method guardar(objeto) { mochila.add(objeto) }
-  method tiene(objeto) = mochila.contains(objeto) 
+  method guardar(objeto) { mochila.guardar(objeto) }
+  method tiene(objeto) = mochila.tiene(objeto)
 }
 
 
