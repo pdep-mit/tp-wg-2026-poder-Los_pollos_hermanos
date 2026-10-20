@@ -1,5 +1,6 @@
 @startuml Juego
 
+' Personajes ' 
   class wachington  {
     position
     imagen
@@ -35,6 +36,27 @@
   class tecnico  {
     interactuar()
   }
+
+
+' Tablero y Movimientos ' 
+class Tablero {
+  anchoHabitacion
+    altoHabitacion
+    configurar(ancho, alto)
+    ancho()
+    alto()
+    estaDentro(posicion)
+    hayObstaculoEn(posicion)
+    puedeOcuparse(posicion)
+  }
+class Movimientos {
+  mover(personaje, destino)
+    arriba(personaje)
+    abajo(personaje)
+    izquierda(personaje)
+    derecha(personaje)
+}
+
 
 
 @enduml
