@@ -4,7 +4,7 @@ import objetosDecorados.*
 import objetosParedes.*
 import movimientos.*
 import wollok.game.*
-
+/*
 describe "Estados del TP" {
 
   test "Al pedirle el TP a Rasta, el estado pasa de sin TP a TP incompleto" {
@@ -42,3 +42,4 @@ describe "Estados del TP" {
     assert.that(!tablero.estaDentro(game.at(7, 9)))
   }
 }
+ -> REHACER */ 

@@ -1,226 +1,123 @@
 import wollok.game.*
 
-class ComputadoraDecorativa {
+class ObjetoDecorativo {
   const property position
+  method esInteractuable() = false
+}
+
+class ObjetoDecorativoSolido inherits ObjetoDecorativo {
+  method esSolido() = true
+}
+
+class ObjetoDecorativoNoSolido inherits ObjetoDecorativo {
+  method esSolido() = false
+}
+
+class ComputadoraDecorativa inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/pc.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class CajaHerramientas {
-  const property position
+class CajaHerramientas inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/caja-herramientas.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class CartelUTNIzq {
-  const property position
+class CartelUTNIzq inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/cartel-utn-izq.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class CartelUTNDer {
-  const property position
+class CartelUTNDer inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/cartel-utn-der.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class Mesa {
-  const property position
+class Mesa inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/mesa-medio.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class MesaIzquierda {
-  const property position
+class MesaIzquierda inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/mesa-izq.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-
-class MesaDerecha {
-  const property position
+class MesaDerecha inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/mesa-der.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-
-class MesaVertical {
-  const property position
+class MesaVertical inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/mesa-vertical-medio.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class MesaVerticalPapeles {
-  const property position
+class MesaVerticalPapeles inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/mesa-vertical-medio-papeles.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-
-class MesaArribaVertical {
-  const property position
+class MesaArribaVertical inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/mesa-vertical-arriba.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-
-class MesaAbajoVertical {
-  const property position
+class MesaAbajoVertical inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/mesa-vertical-abajo.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-
-class FlechaDer {
-  const property position
+class FlechaDer inherits ObjetoDecorativoNoSolido {
   method image() = "x64sprites/mapa/flecha-der.png"
-  method esSolido() = false
-  method esInteractuable() = false
 }
-
-class TaraguiPared {
-  const property position
+class TaraguiPared inherits ObjetoDecorativoNoSolido {
   method image() = "x64sprites/mapa/taragui-pared.png"
-  method esSolido() = false
-  method esInteractuable() = false
 }
-class CartelAgua {
-  const property position
+class CartelAgua inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/piso-mojado.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class Aguita {
-  const property position
+class Aguita inherits ObjetoDecorativoNoSolido {
   method image() = "x64sprites/mapa/aguita.png"
-  method esSolido() = false
-  method esInteractuable() = false
 }
-class Escritorio {
-  const property position
+class Escritorio inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/escritorio.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class EscritorioVertical {
-  const property position
+class EscritorioVertical inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/escritorio-vertical.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class EscritorioVerticalPC {
-  const property position
+class EscritorioVerticalPC inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/escritorio-vertical-pc.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class EscritorioCerrado {
-  const property position
+class EscritorioCerrado inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/escritorio-cerrado.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class EscritorioCerradoLleno {
-  const property position
+class EscritorioCerradoLleno inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/escritorio-cerrado-lleno.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class EscritorioDenise {
-  const property position
+class EscritorioDenise inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/personajes/denise/denise-silla-der-2.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class EscritorioJulian {
-  const property position
+class EscritorioJulian inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/personajes/julian/julian-silla-izq-2.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class EscritorioAgus {
-  const property position
+class EscritorioAgus inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/personajes/agus/agus-silla-der-2.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class Silla {
-  const property position
+class Silla inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/silla-vacia.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class SillaIzq {
-  const property position
+class SillaIzq inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/silla-izq.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class SillaDer {
-  const property position
+class SillaDer inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/silla-der.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class ComputadoraLabo {
-  const property position
+class ComputadoraLabo inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/escritorio-pc-1.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class ComputadoraLaboTop {
-  const property position
+class ComputadoraLaboTop inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/escritorio-pc-2.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class ComputadoraLaboIzq {
-  const property position
+class ComputadoraLaboIzq inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/escritorio-vertical-pc-izq.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class ComputadoraLaboDer {
-  const property position
+class ComputadoraLaboDer inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/escritorio-vertical-pc-der.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class PuertaDecor {
-  const property position
+class PuertaDecor inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/puerta-medio.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class MesaArribaEIzq {
-  const property position
+class MesaArribaEIzq inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/mesa-arriba-izq.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class MesaAbajoEDer {
-  const property position
+class MesaAbajoEDer inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/mesa-abajo-der.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class Termo1 {
-  const property position
+class Termo1 inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/termo1.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-class Termo2 {
-  const property position
+class Termo2 inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/termo2.png"
-  method esSolido() = true
-  method esInteractuable() = false
 }
-
-class Kiosquera {
-  const property position
+class Kiosquera inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/personajes/kiosquera/kiosquera-frente.png"
-  method esSolido() = true
-  method esInteractuable() = false
-
 }
