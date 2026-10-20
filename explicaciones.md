@@ -4,4 +4,4 @@
 
 # Diagramas
 
-*Incluír al menos un diagrama para comunicar su solución*
+![Diagrama de clases](Diagrama/Juego.png)
