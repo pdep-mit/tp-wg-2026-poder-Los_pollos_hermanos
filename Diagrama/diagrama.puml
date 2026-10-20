@@ -1,6 +1,8 @@
 @startuml Juego
 
-' Personajes ' 
+
+ 
+package personajes {
   class wachington  {
     position
     imagen
@@ -36,9 +38,11 @@
   class tecnico  {
     interactuar()
   }
+}
 
 
-' Tablero y Movimientos ' 
+
+package movimientos {
 class Tablero {
   anchoHabitacion
     altoHabitacion
@@ -55,8 +59,11 @@ class Movimientos {
     abajo(personaje)
     izquierda(personaje)
     derecha(personaje)
+ }
 }
 
+
+package salas {
 class Sala {
   fondos()
   objetos()
@@ -89,8 +96,10 @@ class "puertas (puertaXDesdeY)" as puertas <<(O,#FFAA55) object>> {
 class ascensor <<(O,#FFAA55) object>> {
     interactuar()
   }
+}
 
-' Decorados '
+
+package decorados {
  class objetosDecorados {
   position
     esInteractuable()
@@ -101,8 +110,11 @@ class ascensor <<(O,#FFAA55) object>> {
   class ObjetoDecorativoNoSolido {
     esSolido()
   }
+}
 
-' obejetos utiles  '
+
+
+package utiles {
 class computadora {
   hablar(mensaje)
   interactuaur()
@@ -119,4 +131,6 @@ interface EstadoTp {
     avanzarConRasta()
     avanzarConCompu()
   }
+}
+
 @enduml
