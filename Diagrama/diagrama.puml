@@ -1,0 +1,40 @@
+@startuml Juego
+
+  class wachington  {
+    position
+    imagen
+    mochila
+    objetivo
+    image()
+    esSolido()
+    estaAlLadoDe(otro)
+    interactuar()
+    guardar(objeto)
+    tiene(objeto)
+  }
+
+  interface Interactuable {
+    position()
+    image()
+    esSolido()
+    esInteractuable()
+    interactuar()
+  }
+
+  class rasta  {
+    hablar(mensaje)
+    interactuar()
+  }
+  class companieroClase {
+    hablar(mensaje)
+    interactuar()
+  }
+  class portero {
+    interactuar()
+  }
+  class tecnico  {
+    interactuar()
+  }
+
+
+@enduml
