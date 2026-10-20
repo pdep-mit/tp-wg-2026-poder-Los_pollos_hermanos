@@ -6,15 +6,43 @@ class Sala {
     method fondo()
     method objetos()
     method posicionInicial() 
+    method ancho()
+    method alto()
 
 
-method cargar() {
-    game.boardGround(self.fondo())
+  method cargar() {
+    self.configurar()
+    tablero.configurar(self.ancho(), self.alto())
+    game.ground(self.fondo())
     self.objetos().forEach({ objeto => game.addVisual(objeto) })
+    self.ocultarFueraDeSala(0, 0)
     alumno.position(self.posicionInicial())
     game.addVisual(alumno)
     controles.configurar()
+    habitacionActual.salaActual(self)
   }
+
+  method configurar() {}
+
+  method ocultarFueraDeSala(x, y) {
+    if (y < game.height()) {
+      if (x < game.width()) {
+        if (x >= self.ancho() || y >= self.alto()) {
+          game.addVisual(new MascaraFueraDeSala(position = game.at(x, y)))
+        }
+        self.ocultarFueraDeSala(x + 1, y)
+      } else {
+        self.ocultarFueraDeSala(0, y + 1)
+      }
+    }
+  }
+}
+
+class MascaraFueraDeSala {
+  const property position
+  method image() = "x64sprites/mapa/afuera-de-sala.png"
+  method esSolido() = false
+  method esInteractuable() = false
 }
 
 object controles {
@@ -29,34 +57,10 @@ object controles {
 }
 
 object habitacionActual {
-    var property salaActual = labo
-    method irA(sala) {
+    var property salaActual = null
+    method irA(sala, posicionLlegada) {
         game.clear()
-        salaActual = sala
         sala.cargar()
+        alumno.position(posicionLlegada)
     }
 }
-
-class Puerta {
-  const property position
-  const destino  
-
-  method image() = "bananita.png"
-
-  method interactuar() {
-    habitacionActual.irA(destino)
-  }
-}
-
-object labo inherits Sala {
-  override method fondo() = "gaga.png"
-  override method posicionInicial() = game.at(1, 1)
-  override method objetos() = [new Puerta(position = game.at(8, 4), destino = entrada)]
-}
-
-object entrada inherits Sala {
-  override method fondo() = "aula.png"
-  override method posicionInicial() = game.at(8, 4)
-  override method objetos() = [new Puerta(position = game.at(0, 4), destino = labo)]
-}
-
