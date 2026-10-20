@@ -90,6 +90,17 @@ class ascensor <<(O,#FFAA55) object>> {
     interactuar()
   }
 
+' Decorados '
+ class objetosDecorados {
+  position
+    esInteractuable()
+  }
+  class ObjetoDecorativoSolido {
+    esSolido()
+  }
+  class ObjetoDecorativoNoSolido {
+    esSolido()
+  }
 
 
 
