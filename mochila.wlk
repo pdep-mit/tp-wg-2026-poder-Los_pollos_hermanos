@@ -32,9 +32,9 @@ object mochila {
     objetos.removeAll(lista)
   }
 
-  // Usar objetos entre ellos: ej. yerba + termo lleno + mate -> mate armado
+  //  ej. yerba + termo lleno + mate -> mate armado
   method combinar(ingredientes, resultado) {
-    self.sacarTodos(ingredientes) // sacarTodos ya valida que esten todos
+    self.sacarTodos(ingredientes) // limpia lo usado
     self.guardar(resultado)
   }
 
