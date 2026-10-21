@@ -1,0 +1,103 @@
+import mochila.*
+
+// Objetos de prueba para no depender de los del juego
+object yerbaDePrueba {}
+object termoDePrueba {}
+object mateDePrueba {}
+object mateArmadoDePrueba {}
+object termoLlenoDePrueba {}
+
+describe "Mochila" {
+
+  test "Arranca vacia" {
+    assert.that(mochila.estaVacia())
+    assert.equals(0, mochila.cantidad())
+  }
+
+  test "Al guardar un objeto, la mochila lo tiene" {
+    mochila.guardar(mateDePrueba)
+
+    assert.that(mochila.tiene(mateDePrueba))
+    assert.equals(1, mochila.cantidad())
+  }
+
+  test "No se puede guardar dos veces el mismo objeto" {
+    mochila.guardar(mateDePrueba)
+
+    assert.throwsException({ mochila.guardar(mateDePrueba) })
+    assert.equals(1, mochila.cantidad())
+  }
+
+  test "Al sacar un objeto, la mochila ya no lo tiene" {
+    mochila.guardar(termoDePrueba)
+    mochila.sacar(termoDePrueba)
+
+    assert.notThat(mochila.tiene(termoDePrueba))
+  }
+
+  test "No se puede sacar un objeto que no esta" {
+    assert.throwsException({ mochila.sacar(termoDePrueba) })
+  }
+
+  test "Modificar la lista que devuelve objetos() no cambia la mochila" {
+    mochila.guardar(termoDePrueba)
+    mochila.objetos().clear()
+
+    assert.that(mochila.tiene(termoDePrueba))
+  }
+
+  test "tieneTodos es verdadero solo si estan todos los objetos" {
+    mochila.guardar(yerbaDePrueba)
+    mochila.guardar(termoDePrueba)
+
+    assert.that(mochila.tieneTodos([yerbaDePrueba, termoDePrueba]))
+    assert.notThat(mochila.tieneTodos([yerbaDePrueba, mateDePrueba]))
+  }
+
+  test "sacarTodos saca todos los objetos de la lista" {
+    mochila.guardar(yerbaDePrueba)
+    mochila.guardar(termoDePrueba)
+    mochila.guardar(mateDePrueba)
+    mochila.sacarTodos([yerbaDePrueba, termoDePrueba])
+
+    assert.equals([mateDePrueba], mochila.objetos())
+  }
+
+  test "Si falta algun objeto, sacarTodos no saca ninguno" {
+    mochila.guardar(yerbaDePrueba)
+
+    assert.throwsException({ mochila.sacarTodos([yerbaDePrueba, termoDePrueba]) })
+    assert.that(mochila.tiene(yerbaDePrueba))
+  }
+
+  test "Combinar saca los ingredientes y guarda el resultado" {
+    mochila.guardar(yerbaDePrueba)
+    mochila.guardar(termoLlenoDePrueba)
+    mochila.guardar(mateDePrueba)
+    mochila.combinar([yerbaDePrueba, termoLlenoDePrueba, mateDePrueba], mateArmadoDePrueba)
+
+    assert.equals([mateArmadoDePrueba], mochila.objetos())
+  }
+
+  test "Si falta un ingrediente, combinar no cambia nada" {
+    mochila.guardar(yerbaDePrueba)
+    mochila.guardar(mateDePrueba)
+
+    assert.throwsException({ mochila.combinar([yerbaDePrueba, termoLlenoDePrueba, mateDePrueba], mateArmadoDePrueba) })
+    assert.that(mochila.tieneTodos([yerbaDePrueba, mateDePrueba]))
+    assert.notThat(mochila.tiene(mateArmadoDePrueba))
+  }
+
+  test "Cambiar reemplaza un objeto por otro" {
+    mochila.guardar(termoDePrueba)
+    mochila.cambiar(termoDePrueba, termoLlenoDePrueba)
+
+    assert.notThat(mochila.tiene(termoDePrueba))
+    assert.that(mochila.tiene(termoLlenoDePrueba))
+  }
+
+  test "No se puede cambiar un objeto que no esta" {
+    assert.throwsException({ mochila.cambiar(termoDePrueba, termoLlenoDePrueba) })
+    assert.notThat(mochila.tiene(termoLlenoDePrueba))
+  }
+}
