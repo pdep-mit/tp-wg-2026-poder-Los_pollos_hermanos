@@ -26,7 +26,7 @@ class PapelDelPiso {
 
 object suciedadPapeles1 inherits PapelDelPiso(position = game.at(6, 5), imagen = "x64sprites/mapa/suciedad-papeles-1.png") {}
 object suciedadPapeles2 inherits PapelDelPiso(position = game.at(9, 6), imagen = "x64sprites/mapa/suciedad-papeles-1.png") {}
-object suciedadPapeles3 inherits PapelDelPiso(position = game.at(13, 8), imagen = "x64sprites/mapa/suciedad-papeles-2.png") {}
+object suciedadPapeles3 inherits PapelDelPiso(position = game.at(13, 7), imagen = "x64sprites/mapa/suciedad-papeles-2.png") {}
 object suciedadPapeles4 inherits PapelDelPiso(position = game.at(4, 1), imagen = "x64sprites/mapa/suciedad-papeles-2.png") {}
 object suciedadPapeles5 inherits PapelDelPiso(position = game.at(3, 7), imagen = "x64sprites/mapa/suciedad-papeles-3.png") {}
 
