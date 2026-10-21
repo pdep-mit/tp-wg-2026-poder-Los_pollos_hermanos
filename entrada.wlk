@@ -22,24 +22,21 @@ object ascensor {
 
 
 //ACCESOS INUTILES
-object puertaBaño inherits AccesoBloqueado(position = game.at(2, 9), imagen = "x64sprites/mapa/puerta-banio.png", mensaje = "No tengo tiempo ¡Debo llegar a la clase!") {}
-object puertaAMMedio inherits AccesoBloqueado(position = game.at(7, 9), imagen = "x64sprites/mapa/puerta-am-medio.png", mensaje = "No tengo tiempo ¡Debo llegar a la clase!") {}
-object puertaAMIzq inherits AccesoBloqueado(position = game.at(6, 9), imagen = "x64sprites/mapa/puerta-am-izq.png", mensaje = "No tengo tiempo ¡Debo llegar a la clase!") {}
-object puertaAMDer inherits AccesoBloqueado(position = game.at(8, 9), imagen = "x64sprites/mapa/puerta-am-der.png", mensaje = "No tengo tiempo ¡Debo llegar a la clase!") {}
-
-object puertaSalidaMedio inherits AccesoBloqueado(position = game.at(7, 0), imagen = "x64sprites/mapa/puerta-salida-medio.png", mensaje = "No tengo tiempo ¡Debo llegar a la clase!") {
+object puertaBaño inherits AccesoBloqueado(position = game.at(2, 9), imagen = "x64sprites/mapa/puerta-banio.png") {}
+object puertaAMMedio inherits AccesoBloqueado(position = game.at(7, 9), imagen = "x64sprites/mapa/puerta-am-medio.png") {}
+object puertaAMIzq inherits AccesoBloqueado(position = game.at(6, 9), imagen = "x64sprites/mapa/puerta-am-izq.png") {}
+object puertaAMDer inherits AccesoBloqueado(position = game.at(8, 9), imagen = "x64sprites/mapa/puerta-am-der.png") {}
+object puertaSalidaMedio inherits AccesoBloqueado(position = game.at(7, 0), imagen = "x64sprites/mapa/puerta-salida-medio.png") {
   override method esSolido() = false
 }
-object puertaSalidaIzq inherits AccesoBloqueado(position = game.at(6, 0), imagen = "x64sprites/mapa/puerta-salida-izq.png", mensaje = "No tengo tiempo ¡Debo llegar a la clase!") {
+object puertaSalidaIzq inherits AccesoBloqueado(position = game.at(6, 0), imagen = "x64sprites/mapa/puerta-salida-izq.png") {
   override method esSolido() = false
 }
-object puertaSalidaDer inherits AccesoBloqueado(position = game.at(8, 0), imagen = "x64sprites/mapa/puerta-salida-der.png", mensaje = "No tengo tiempo ¡Debo llegar a la clase!") {
+object puertaSalidaDer inherits AccesoBloqueado(position = game.at(8, 0), imagen = "x64sprites/mapa/puerta-salida-der.png") {
   override method esSolido() = false
 }
-
-object escalerasIzq inherits AccesoBloqueado(position = game.at(11, 9), imagen = "x64sprites/mapa/escaleras-izq.png", mensaje = "Si voy por las escaleras no voy a llegar más. ¡Tengo que subir por el ascensor!") {}
-object escalerasDer inherits AccesoBloqueado(position = game.at(12, 9), imagen = "x64sprites/mapa/escaleras-der.png", mensaje = "Si voy por las escaleras no voy a llegar más. ¡Tengo que subir por el ascensor!") {}
-
+object escalerasIzq inherits EscaleraEntrada(position = game.at(11, 9), imagen = "x64sprites/mapa/escaleras-izq.png") {}
+object escalerasDer inherits EscaleraEntrada(position = game.at(12, 9), imagen = "x64sprites/mapa/escaleras-der.png") {}
 object salaEntrada inherits Sala {
   override method fondo() = "x64sprites/mapa/baldosa.png"
   override method posicionInicial() = game.at(7, 0)
