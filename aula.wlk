@@ -6,15 +6,10 @@ import personajes.*
 import habitaciones.*
 import pasillo.*
 
-object puertaPasilloDesdeAula {
-  var property position = game.at(8, 5)
-  method image() = "x64sprites/mapa/puerta-der.png"
-  method esSolido() = true
-  method esInteractuable() = true
-
-  method interactuar() {
-    habitacionActual.irA(salaPasillo, game.at(1, 2))
-  }
+object puertaPasilloDesdeAula inherits Puerta(position = game.at(8, 5)) {
+  override method image() = "x64sprites/mapa/puerta-der.png"
+  override method destino() = salaPasillo
+  override method posicionLlegada() = game.at(1, 2)
 }
 
 object salaAula inherits Sala {

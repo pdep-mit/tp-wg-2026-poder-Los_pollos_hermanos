@@ -6,25 +6,15 @@ import personajes.*
 import habitaciones.*
 import pasilloBedelia.*
 
-object puertaBedeliaDesdeBuffet1 {
-  var property position = game.at(7,7)
-  method image() = "x64sprites/mapa/puerta-am-izq.png"
-  method esSolido() = true
-  method esInteractuable() = true
-
-  method interactuar() {
-    habitacionActual.irA(salaPasilloBedelia, game.at(3, 1))
-  }
+object puertaBedeliaDesdeBuffet1 inherits Puerta(position = game.at(7, 7)) {
+  override method image() = "x64sprites/mapa/puerta-am-izq.png"
+  override method destino() = salaPasilloBedelia
+  override method posicionLlegada() = game.at(3, 1)
 }
-object puertaBedeliaDesdeBuffet2 {
-  var property position = game.at(8,7)
-  method image() = "x64sprites/mapa/puerta-am-der.png"
-  method esSolido() = true
-  method esInteractuable() = true
-
-  method interactuar() {
-    habitacionActual.irA(salaPasilloBedelia, game.at(3, 1))
-  }
+object puertaBedeliaDesdeBuffet2 inherits Puerta(position = game.at(8, 7)) {
+  override method image() = "x64sprites/mapa/puerta-am-der.png"
+  override method destino() = salaPasilloBedelia
+  override method posicionLlegada() = game.at(3, 1)
 }
 
 object salaBuffet inherits Sala {
@@ -95,7 +85,7 @@ object salaBuffet inherits Sala {
     new MesaDerecha(position = game.at(14, 6)),
     new Termo1(position = game.at(12, 6)),
     new Termo2(position = game.at(12, 7)),
-    new Kiosquera(position = game.at(4, 6)),
+    kiosquera,
     yerba,
     kiosqueraMesa,
     facu

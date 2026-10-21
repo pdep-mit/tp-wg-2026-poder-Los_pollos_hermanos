@@ -118,6 +118,3 @@ class Termo1 inherits ObjetoDecorativoSolido {
 class Termo2 inherits ObjetoDecorativoSolido {
   method image() = "x64sprites/mapa/termo2.png"
 }
-class Kiosquera inherits ObjetoDecorativoSolido {
-  method image() = "x64sprites/personajes/kiosquera/kiosquera-frente.png"
-}

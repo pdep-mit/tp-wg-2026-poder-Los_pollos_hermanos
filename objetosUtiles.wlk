@@ -1,148 +1,107 @@
 import wollok.game.*
 import personajes.*
+import habitaciones.*
+
+// comparte mucho con Npc !!
+class Util {
+  var property position
+  method image()
+  method esSolido() = true
+  method esInteractuable() = true
+  method interactuar()
+}
+
+class Puerta inherits Util {
+  method destino()
+  method posicionLlegada()
+
+  method pasar() { habitacionActual.irA(self.destino(), self.posicionLlegada()) }
+  override method interactuar() { wachington.objetivo().pasarPor(self) }
+}
+
+class AccesoBloqueado inherits Util {
+  const imagen
+  const mensaje
+  override method image() = imagen
+  override method interactuar() { game.say(wachington, mensaje) }
+}
 
 //ENTRADA
-object tachoBasura {
-  var property position = game.at(13, 6)
-  method image() = "x64sprites/mapa/tacho-basura.png"
-  method esSolido() = true
-  method esInteractuable() = true
+object tachoBasura inherits Util(position = game.at(13, 6)) {
+  override method image() = "x64sprites/mapa/tacho-basura.png"
+  override method interactuar() { wachington.objetivo().interactuarConTacho() }
+}
 
-  // method hablar(mensaje) { game.say(self, mensaje) } 
+// Papeles recogibles. Son objects (no new) para que sean siempre los mismos
+// y la mochila pueda recordar cuales ya se juntaron
+class PapelDelPiso inherits Util {
+  const imagen
+  override method image() = imagen
+  override method esSolido() = false
+  override method interactuar() { wachington.objetivo().interactuarConPapel(self) }
+  method nombre() = "Papel"
+}
 
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
-}
-object suciedadPapeles1 {
-  const property position = game.at(6, 5)
-  method image() = "x64sprites/mapa/suciedad-papeles-1.png"
-  method esSolido() = false
-  method esInteractuable() = true
-}
-object suciedadPapeles2 {
-  const property position = game.at(9, 6)
-  method image() = "x64sprites/mapa/suciedad-papeles-1.png"
-  method esSolido() = false
-  method esInteractuable() = true
-}
-object suciedadPapeles3 {
-  const property position = game.at(13, 8)
-  method image() = "x64sprites/mapa/suciedad-papeles-2.png"
-  method esSolido() = false
-  method esInteractuable() = true
-}
-object suciedadPapeles4 {
-  const property position = game.at(4, 1)
-  method image() = "x64sprites/mapa/suciedad-papeles-2.png"
-  method esSolido() = false
-  method esInteractuable() = true
-}
-object suciedadPapeles5 {
-  const property position = game.at(3, 7)
-  method image() = "x64sprites/mapa/suciedad-papeles-3.png"
-  method esSolido() = false
-  method esInteractuable() = true
-}
+object suciedadPapeles1 inherits PapelDelPiso(position = game.at(6, 5), imagen = "x64sprites/mapa/suciedad-papeles-1.png") {}
+object suciedadPapeles2 inherits PapelDelPiso(position = game.at(9, 6), imagen = "x64sprites/mapa/suciedad-papeles-1.png") {}
+object suciedadPapeles3 inherits PapelDelPiso(position = game.at(13, 7), imagen = "x64sprites/mapa/suciedad-papeles-2.png") {}
+object suciedadPapeles4 inherits PapelDelPiso(position = game.at(4, 1), imagen = "x64sprites/mapa/suciedad-papeles-2.png") {}
+object suciedadPapeles5 inherits PapelDelPiso(position = game.at(3, 7), imagen = "x64sprites/mapa/suciedad-papeles-3.png") {}
 
 //PASILLO
-object taraguiPiso {
-  const property position = game.at(4, 4)
-  method image() = "x64sprites/mapa/taragui-piso.png"
-  method esSolido() = true
-  method esInteractuable() = true
+object taraguiPiso inherits Util(position = game.at(4, 4)) {
+  override method image() = "x64sprites/mapa/taragui-piso.png"
+  override method interactuar() { wachington.objetivo().interactuarConTaragui() }
 }
 
 //AULA
-object mate {
-  const property position = game.at(2, 3)
-  method image() = "x64sprites/mapa/mate.png"
-  method esSolido() = true
-  method esInteractuable() = true
+object mate inherits Util(position = game.at(2, 3)) {
+  override method image() = "x64sprites/mapa/mate.png"
+  override method interactuar() { wachington.objetivo().interactuarConMate() }
+  method nombre() = "Mate"
 }
-object escritorioLaptop {
-  const property position = game.at(7, 7)
-  method image() = "x64sprites/mapa/escritorio-laptop.png"
-  method esSolido() = true
-  method esInteractuable() = false
+
+object escritorioLaptop inherits Util(position = game.at(7, 7)) {
+  override method image() = "x64sprites/mapa/escritorio-laptop.png"
+  override method interactuar() { wachington.objetivo().interactuarConLaptop() }
 }
 
 //LABO
-object computadoraLabo {
-  const property position = game.at(2, 7)
-  method image() = "x64sprites/mapa/escritorio-pc-1.png"
-  method esSolido() = true
-  method esInteractuable() = true
-}
-
-object computadora {
-  var property position = game.at(1, 8)
-  method image() = "x64sprites/mapa/escritorio-pc-1.png"
-  method esSolido() = true
-  method esInteractuable() = true
-  
-  method hablar(mensaje) { game.say(self, mensaje) }
-
-  method interactuar() { 
-    self.hablar(tp.estado().mensajeCompu())
-    tp.estado().avanzarConCompu()
-  }
+object computadoraLabo inherits Util(position = game.at(2, 7)) {
+  override method image() = "x64sprites/mapa/escritorio-pc-1.png"
+  override method interactuar() { wachington.objetivo().interactuarConPcLabo() }
 }
 
 //BUFFET
-object yerba {
-  var property position = game.at(11, 6)
-  method image() = "x64sprites/mapa/yerba.png"
-  method esSolido() = true
-  method esInteractuable() = true
-
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+object yerba inherits Util(position = game.at(11, 6)) {
+  override method image() = "x64sprites/mapa/yerba.png"
+  override method interactuar() { wachington.objetivo().interactuarConYerba() }
+  method nombre() = "Yerba"
 }
 
-//ESTADOS
-object tp {
-  var property estado = sinTp
+//MOCHILA
+// Las imagenes marcadas como provisorias reusan sprites que ya existen
+object llaveInglesa {
+  method image() = "x64sprites/mapa/llave-inglesa.png"
+  method nombre() = "Llave inglesa"
 }
-
-
-object sinTp {
-  method mensajeRasta() = "Dame un segundo y te habilito el TP"
-  method mensajeCompa() = "Anda a pedirle a rasta que te de el TP"
-  method mensajeCompu() = "???"
-
-  method avanzarConRasta() {
-    tp.estado(tpIncompleto)
-    wachington.guardar(tp)
-  }
-  method avanzarConCompu() {}
+object termoVacio {
+  method image() = "x64sprites/mapa/termo.png"
+  method nombre() = "Termo vacío"
 }
-
-
-object tpIncompleto {
-  method mensajeRasta() = "Ya tenés acceso al repo. No pierdas tiempo y terminá el TP"
-  method mensajeCompa() = "Esta complicado el TP?? jaja"
-  method mensajeCompu() = "Completado"
-
-  method avanzarConRasta() {}
-  method avanzarConCompu() { tp.estado(tpCompleto) }
+object termoLleno {
+  method image() = "x64sprites/mapa/termo.png"
+  method nombre() = "Termo lleno"
 }
-
-
-object tpCompleto {
-  method mensajeRasta() = "Listooo"
-  method mensajeCompa() = "Entregalo"
-  method mensajeCompu() = "..."
-
-  method avanzarConRasta() { tp.estado(tpEntregado) }
-  method avanzarConCompu() {}
+object bizcochitos {
+  method image() = "x64sprites/mapa/bizcochitos.png" // provisoria
+  method nombre() = "Bizcochitos"
 }
-
-
-object tpEntregado {
-  method mensajeRasta() = "Ahora anda a buscarme un mate al buffet para que lo pueda corregir"
-  method mensajeCompa() = "..."
-  method mensajeCompu() = "..."
-
-  method avanzarConRasta() {}
-  method avanzarConCompu() {}
+object mateArmado {
+  method image() = "x64sprites/mapa/mate.png" // provisoria
+  method nombre() = "Mate armado"
+}
+object claveDeAcceso {
+  method image() = "x64sprites/mapa/pendrive-tp.png"
+  method nombre() = "Clave de acceso"
 }
