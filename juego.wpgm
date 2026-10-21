@@ -6,50 +6,10 @@ import pasillo.*
 import labo.*
 import buffet.* 
 
-program Entrada {
+program AprobameRasta {
 	game.cellSize(64)
 	game.width(18)
 	game.height(10)
 	salaEntrada.cargar()
-	game.start()
-}
-
-program Pasillo {
-	game.cellSize(64)
-	game.width(18)
-	game.height(10)
-	salaPasillo.cargar()
-	game.start()
-}
-
-program Aula {
-	game.cellSize(64)
-	game.width(18)
-	game.height(10)
-	salaAula.cargar()
-	game.start()
-}
-
-program Labo {
-	game.cellSize(64)
-	game.width(18)
-	game.height(10)
-	salaLabo.cargar()
-	game.start()
-}
-
-program PasilloBedelia {
-	game.cellSize(64)
-	game.width(18)
-	game.height(10)
-	salaPasilloBedelia.cargar()
-	game.start()
-}
-
-program Buffet {
-	game.cellSize(64)
-	game.width(18)
-	game.height(10)
-	salaBuffet.cargar()
 	game.start()
 }
