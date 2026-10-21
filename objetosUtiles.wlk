@@ -80,27 +80,15 @@ object yerba inherits Util(position = game.at(11, 6)) {
 }
 
 //MOCHILA
-object llaveInglesa {
-  method image() = "x64sprites/mapa/llave-inglesa.png"
-  method nombre() = "Llave inglesa"
+
+class Item{
+  const property nombre
+  const property image   
 }
-object termoVacio {
-  method image() = "x64sprites/mapa/termo.png"
-  method nombre() = "Termo vacío"
-}
-object termoLleno {
-  method image() = "x64sprites/mapa/termo.png"
-  method nombre() = "Termo lleno"
-}
-object bizcochitos {
-  method image() = "x64sprites/mapa/bizcochitos.png"
-  method nombre() = "Bizcochitos"
-}
-object mateArmado {
-  method image() = "x64sprites/mapa/mate.png"
-  method nombre() = "Mate armado"
-}
-object claveDeAcceso {
-  method image() = "x64sprites/mapa/pendrive-tp.png"
-  method nombre() = "Clave de acceso"
-}
+
+object llaveInglesa inherits Item(nombre = "Llave inglesa", image = "x64sprites/mapa/llave-inglesa.png") {}
+object termoVacio inherits Item(nombre = "Termo vacío", image = "x64sprites/mapa/termo.png") {}
+object termoLleno inherits Item(nombre = "Termo lleno", image = "x64sprites/mapa/termo.png") {}
+object bizcochitos inherits Item(nombre = "Bizcochitos", image = "x64sprites/mapa/bizcochitos.png") {}
+object mateArmado inherits Item(nombre = "Mate armado", image = "x64sprites/mapa/mate.png") {}
+object claveDeAcceso inherits Item(nombre = "Clave de acceso", image = "x64sprites/mapa/pendrive-tp.png") {}
