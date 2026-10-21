@@ -1,9 +1,7 @@
 import wollok.game.*
 
-//MOCHILA DEL PROTAGONISTA
-// Todo objeto que se guarde tiene que entender:
-//  - usar()       -> lo que hace el objeto cuando se usa
-//  - seConsume()  -> true si desaparece de la mochila despues de usarlo
+//MOCHILA DEL PROTA
+
 object mochila {
   const objetos = []
 
@@ -23,11 +21,11 @@ object mochila {
     self.validarQueTiene(objeto)
     objetos.remove(objeto)
   }
-
+//usar()- lo que hace el objeto cuando se usa
   method usar(objeto) {
     self.validarQueTiene(objeto)
     objeto.usar()
-    if (objeto.seConsume()) {
+    if (objeto.seConsume()) { // seConsume()¿- true si desaparece de la mochila despues de usarlo
       objetos.remove(objeto)
     }
   }
