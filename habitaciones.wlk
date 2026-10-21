@@ -1,6 +1,7 @@
 import personajes.*
 import wollok.game.*
 import movimientos.*
+import mochila.*
 
 class Sala {
     method fondo()
@@ -14,7 +15,7 @@ class Sala {
     self.configurar()
     tablero.configurar(self.ancho(), self.alto())
     game.ground(self.fondo())
-    self.objetos().forEach({ objeto => game.addVisual(objeto) })
+    self.objetosEnElMapa().forEach({ objeto => game.addVisual(objeto) })
     self.ocultarFueraDeSala(0, 0)
     wachington.position(self.posicionInicial())
     game.addVisual(wachington)
@@ -23,6 +24,9 @@ class Sala {
   }
 
   method configurar() {}
+
+  // Lo que ya se recogio no se vuelve a dibujar al volver a la sala
+  method objetosEnElMapa() = self.objetos().filter({ objeto => !mochila.fueRecogido(objeto) })
 
   method ocultarFueraDeSala(x, y) {
     if (y < game.height()) {
