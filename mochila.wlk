@@ -4,8 +4,10 @@ import wollok.game.*
 
 object mochila {
   const objetos = []
+  const recogidos = #{}
 
   method objetos() = objetos.copy() // Copia para que nadie modifique la mochila desde afuera
+  method fueRecogido(objeto) = recogidos.contains(objeto)
   method cantidad() = objetos.size()
   method estaVacia() = objetos.isEmpty()
   method tiene(objeto) = objetos.contains(objeto)
@@ -16,6 +18,7 @@ object mochila {
       self.error("Ya tengo eso en la mochila")
     }
     objetos.add(objeto)
+    recogidos.add(objeto)
   }
 
   method sacar(objeto) {
@@ -50,3 +53,4 @@ object mochila {
     }
   }
 }
+
