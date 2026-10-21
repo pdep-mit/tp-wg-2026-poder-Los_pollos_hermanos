@@ -2,6 +2,7 @@ import personajes.*
 import wollok.game.*
 import movimientos.*
 import mochila.*
+import panelMochila.*
 
 class Sala {
     method fondo()
@@ -51,12 +52,19 @@ class MascaraFueraDeSala {
 
 object controles {
   method configurar() {
-    keyboard.up().onPressDo({ movimiento.arriba(wachington) })
-  	keyboard.down().onPressDo({ movimiento.abajo(wachington) })
-  	keyboard.left().onPressDo({ movimiento.izquierda(wachington) })
- 	  keyboard.right().onPressDo({ movimiento.derecha(wachington) })
-	  keyboard.e().onPressDo({ wachington.interactuar() })
-    //keyboard.b().onPressDo({ mochila.abrir() })
+    keyboard.up().onPressDo({ self.siEstaJugando({ movimiento.arriba(wachington) }) })
+    keyboard.down().onPressDo({ self.siEstaJugando({ movimiento.abajo(wachington) }) })
+    keyboard.left().onPressDo({ self.siEstaJugando({ movimiento.izquierda(wachington) }) })
+    keyboard.right().onPressDo({ self.siEstaJugando({ movimiento.derecha(wachington) }) })
+    keyboard.e().onPressDo({ self.siEstaJugando({ wachington.interactuar() }) })
+    keyboard.b().onPressDo({ panelMochila.alternar() })
+    keyboard.num1().onPressDo({ panelMochila.mostrar(pestaniaMision) })
+    keyboard.num2().onPressDo({ panelMochila.mostrar(pestaniaObjetos) })
+  }
+
+  // Con la mochila abierta Wachington no se mueve ni interactua
+  method siEstaJugando(accion) {
+    if (!panelMochila.estaAbierto()) accion.apply()
   }
 }
 
