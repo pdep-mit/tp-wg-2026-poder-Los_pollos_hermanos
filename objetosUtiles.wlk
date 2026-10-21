@@ -86,15 +86,15 @@ object llaveInglesa {
   method nombre() = "Llave inglesa"
 }
 object termoVacio {
-  method image() = "x64sprites/mapa/termo1.png"
+  method image() = "x64sprites/mapa/termo.png"
   method nombre() = "Termo vacío"
 }
 object termoLleno {
-  method image() = "x64sprites/mapa/termo2.png"
+  method image() = "x64sprites/mapa/termo.png"
   method nombre() = "Termo lleno"
 }
 object bizcochitos {
-  method image() = "x64sprites/mapa/mochila.png" // provisoria
+  method image() = "x64sprites/mapa/bizcochitos.png" // provisoria
   method nombre() = "Bizcochitos"
 }
 object mateArmado {
