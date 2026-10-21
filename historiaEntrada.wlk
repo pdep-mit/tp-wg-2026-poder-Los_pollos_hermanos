@@ -45,7 +45,7 @@ object objetivoConseguirLlave inherits Objetivo {
 object objetivoLimpiarEntrada inherits Objetivo{
   override method descripcion() = "LIMPIAR LA ENTRADA"
 
-  method papeles() = [suciedadPapeles1, suciedadPapeles2, suciedadPapeles3, suciedadPapeles4, suciedadPapeles5]
+  method papeles() = papelesDelPiso.todos()
   method juntoTodosLosPapeles() = mochila.tieneTodos(self.papeles())
 
   override method interactuarConPortero() {
@@ -72,7 +72,7 @@ object objetivoTirarBasuraAlTacho inherits Objetivo{
   }
 
   override method interactuarConTacho() {
-    mochila.sacarTodos(objetivoLimpiarEntrada.papeles())
+    mochila.sacarTodos(papelesDelPiso.todos())
     game.say(wachington, "Ya esta, voy a pedirle la llave al portero")
     wachington.objetivo(objetivoBuscarLlave)
   }
