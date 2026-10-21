@@ -27,6 +27,12 @@ object wachington {
   }
 
   method guardar(objeto) { mochila.guardar(objeto) }
+
+  
+  method recoger(objeto) {
+    mochila.guardar(objeto)
+    game.removeVisual(objeto)
+  }
   method tiene(objeto) = mochila.tiene(objeto)
   method sacar(objeto) { mochila.sacar(objeto) }
 }
