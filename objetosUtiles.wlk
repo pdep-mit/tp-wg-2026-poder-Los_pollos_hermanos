@@ -39,6 +39,7 @@ class PapelDelPiso inherits Util {
   override method image() = imagen
   override method esSolido() = false
   override method interactuar() { wachington.objetivo().interactuarConPapel(self) }
+  method nombre() = "Papel"
 }
 
 object suciedadPapeles1 inherits PapelDelPiso(position = game.at(6, 5), imagen = "x64sprites/mapa/suciedad-papeles-1.png") {}
@@ -57,6 +58,7 @@ object taraguiPiso inherits Util(position = game.at(4, 4)) {
 object mate inherits Util(position = game.at(2, 3)) {
   override method image() = "x64sprites/mapa/mate.png"
   override method interactuar() { wachington.objetivo().interactuarConMate() }
+  method nombre() = "Mate"
 }
 
 object escritorioLaptop inherits Util(position = game.at(7, 7)) {
@@ -74,12 +76,32 @@ object computadoraLabo inherits Util(position = game.at(2, 7)) {
 object yerba inherits Util(position = game.at(11, 6)) {
   override method image() = "x64sprites/mapa/yerba.png"
   override method interactuar() { wachington.objetivo().interactuarConYerba() }
+  method nombre() = "Yerba"
 }
 
 //MOCHILA
-object llaveInglesa { method image() = "x64sprites/mapa/llave-inglesa.png" }
-object termoVacio {}
-object termoLleno {}
-object bizcochitos {}
-object mateArmado {}
-object claveDeAcceso {}
+// Las imagenes marcadas como provisorias reusan sprites que ya existen
+object llaveInglesa {
+  method image() = "x64sprites/mapa/llave-inglesa.png"
+  method nombre() = "Llave inglesa"
+}
+object termoVacio {
+  method image() = "x64sprites/mapa/termo1.png"
+  method nombre() = "Termo vacío"
+}
+object termoLleno {
+  method image() = "x64sprites/mapa/termo2.png"
+  method nombre() = "Termo lleno"
+}
+object bizcochitos {
+  method image() = "x64sprites/mapa/mochila.png" // provisoria
+  method nombre() = "Bizcochitos"
+}
+object mateArmado {
+  method image() = "x64sprites/mapa/mate.png" // provisoria
+  method nombre() = "Mate armado"
+}
+object claveDeAcceso {
+  method image() = "x64sprites/mapa/pendrive-tp.png"
+  method nombre() = "Clave de acceso"
+}
