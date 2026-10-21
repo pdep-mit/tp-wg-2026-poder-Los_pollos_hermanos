@@ -26,6 +26,9 @@ class Sala {
 
   method configurar() {}
 
+  // Cada sala le avisa al objetivo que entraron, asi el objetivo no pregunta en que sala esta
+  method recibir(objetivo) {}
+
   // Lo que ya se recogio no se vuelve a dibujar al volver a la sala
   method objetosEnElMapa() = self.objetos().filter({ objeto => !mochila.fueRecogido(objeto) })
 

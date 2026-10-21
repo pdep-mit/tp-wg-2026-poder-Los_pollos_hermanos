@@ -17,6 +17,7 @@ object salaLabo inherits Sala {
   override method posicionInicial() = game.at(3, 3)
   override method ancho() = 9
   override method alto() = 9
+  override method recibir(objetivo) { objetivo.alEntrarAlLabo() }
   override method objetos() = [
     new ParedFrente(position = game.at(1, 8)),
     new ParedFrente(position = game.at(2, 8)),

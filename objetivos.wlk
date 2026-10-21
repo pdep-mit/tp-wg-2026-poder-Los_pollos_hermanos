@@ -14,13 +14,15 @@ class Objetivo {
   // para las puertas
   method salasPermitidas() = []
   method mensajeBloqueo() = "Todavía no puedo ir para ahí"
-  method alIrA(sala) {}
+  // la sala avisa a donde se entro (ver Sala.recibir)
+  method alEntrarAlAula() {}
+  method alEntrarAlLabo() {}
 
   method pasarPor(puerta) {
     const sala = puerta.destino()
     if (self.salasPermitidas().contains(sala)) {
       puerta.pasar()
-      self.alIrA(sala)
+      sala.recibir(self)
     } else {
       game.say(wachington, self.mensajeBloqueo())
     }
