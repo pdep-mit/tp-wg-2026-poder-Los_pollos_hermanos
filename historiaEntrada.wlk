@@ -6,6 +6,8 @@ import mochila.*
 import habitaciones.*
 import pasillo.*
 
+
+/*
 //ESTADO 0: recien llegamos a la facu
 object objetivoLlegarAlAula{
     method interactuarConPortero(){
@@ -135,6 +137,52 @@ object objetivoBuscarLlave{
   }
 }
 
+//Estado 6: tenemos q darle la llave al tecnico
 object objetivoEntregarLlave {
-  
+   method interactuarConPortero() {
+    game.say(portero, "¿Qué clase de apellido es Wachington...?")
+  }
+  method interactuarConTecnico() {
+    game.say(tecnico, "¡De una! Enseguida ajusto los cables y el motor.")
+    wachington.sacar(llaveInglesa) // Le das la llave al técnico
+    wachington.objetivo(objetivoSubirAscensor) // Pasa al Estado 7
+  }
+  method interactuarConAscensor() {
+    game.say(wachington, "Soy de sistemas, no de mecánica...")
+  }
+  method interactuarConTacho() {
+    game.say(wachington, "Ya está limpio.")
+  }
+  method interactuarConPapel(papel) {}
 }
+*/
+
+// VERSION 1.1: como los dialogos se repetian mucho entre cada objetivo, creamos una clase Objetivos con los dialogos default.
+
+class Objetivo {
+  method descripcion() 
+  // dialogos default :
+  method interactuarConPortero() { game.say(portero, "Bienvenido a la facultad") }
+  method interactuarConTecnico() { game.say(tecnico, "Necesitas algo?") }
+  method interactuarConAscensor() { game.say(wachington, "Soy de sistemas, no de mecánica...") }
+  method interactuarConPapel(papel) { game.say(wachington, "Que gente sucia tira la basura en cualquier lado") }
+  method interactuarConTacho() { game.say(wachington, "Un tacho común y corriente") }
+}
+
+// Estado 0: Recién llegamos y nuestro obejtivo es llegar al aula
+object objetivoLlegarAlAula inherits Objetivo {
+  override method descripcion() = "LLEGAR AL AULA"
+  override method interactuarConAscensor() {
+    game.say(ascensor, "Dice FUERA DE SERVICIO")
+    wachington.objetivo(objetivoArreglarAscensor)
+  }
+}
+
+//Estado 1: necesitamos arreglar el ascensor 
+object objetivoArreglarAscensor inherits Objetivo{
+  override method descripcion()="ARREGLAR EL ASCENSOR"
+  override method interactuarConTecnico(){
+
+  }
+}
+
