@@ -9,69 +9,35 @@ import labo.*
 import pasilloBedelia.*
 
 //ACCESOS UTILES
-object puertaAulaDesdePasillo {
-  var property position = game.at(0, 2)
-  method image() = "x64sprites/mapa/puerta-izq.png"
-  method esSolido() = true
-  method esInteractuable() = true
 
-  method interactuar() {
-    habitacionActual.irA(salaAula, game.at(7, 5))
-  }
+object puertaAulaDesdePasillo inherits Puerta(position = game.at(0, 2)) {
+  override method image() = "x64sprites/mapa/puerta-izq.png"
+  override method destino() = salaAula
+  override method posicionLlegada() = game.at(7, 5)
 }
-object puertaLaboDesdePasillo {
-  var property position = game.at(12, 5)
-  method image() = "x64sprites/mapa/puerta-medio.png"
-  method esSolido() = true
-  method esInteractuable() = true
-
-  method interactuar() {
-    habitacionActual.irA(salaLabo, game.at(4, 1))
-  }
+object puertaLaboDesdePasillo inherits Puerta(position = game.at(12, 5)) {
+  override method image() = "x64sprites/mapa/puerta-medio.png"
+  override method destino() = salaLabo
+  override method posicionLlegada() = game.at(4, 1)
 }
-object puertaBedelia1DesdePasillo {
-  var property position = game.at(17,2)
-  method image() = "x64sprites/mapa/puerta-der.png"
-  method esSolido() = true
-  method esInteractuable() = true
-
-  method interactuar() {
-    habitacionActual.irA(salaPasilloBedelia, game.at(1, 5))
-  }
+object puertaBedelia1DesdePasillo inherits Puerta(position = game.at(17, 2)) {
+  override method image() = "x64sprites/mapa/puerta-der.png"
+  override method destino() = salaPasilloBedelia
+  override method posicionLlegada() = game.at(1, 5)
 }
-object puertaBedelia2DesdePasillo {
-  var property position = game.at(17,3)
-  method image() = "x64sprites/mapa/puerta-der.png"
-  method esSolido() = true
-  method esInteractuable() = true
-
-  method interactuar() {
-    habitacionActual.irA(salaPasilloBedelia, game.at(1, 5))
-  }
+object puertaBedelia2DesdePasillo inherits Puerta(position = game.at(17, 3)) {
+  override method image() = "x64sprites/mapa/puerta-der.png"
+  override method destino() = salaPasilloBedelia
+  override method posicionLlegada() = game.at(1, 5)
 }
-
 
 
 //ACCESOS INUTILES
-object escalerasDesdePasillo1 {
-  var property position = game.at(3, 0)
-  method image() = "x64sprites/mapa/puerta-salida-izq.png"
-  method esSolido() = false
-  method esInteractuable() = true
-
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+object escalerasDesdePasillo1 inherits AccesoBloqueado(position = game.at(3, 0), imagen = "x64sprites/mapa/puerta-salida-izq.png", mensaje = "No me puedo ir hasta terminar el TP") {
+  override method esSolido() = false
 }
-object escalerasDesdePasillo2 {
-  var property position = game.at(4, 0)
-  method image() = "x64sprites/mapa/puerta-salida-der.png"
-  method esSolido() = false
-  method esInteractuable() = true
-
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+object escalerasDesdePasillo2 inherits AccesoBloqueado(position = game.at(4, 0), imagen = "x64sprites/mapa/puerta-salida-der.png", mensaje = "No me puedo ir hasta terminar el TP") {
+  override method esSolido() = false
 }
 
 object salaPasillo inherits Sala {

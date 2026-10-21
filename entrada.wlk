@@ -22,96 +22,23 @@ object ascensor {
 
 
 //ACCESOS INUTILES
-object puertaBaño {
-  var property position = game.at(2, 9)
-  method image() = "x64sprites/mapa/puerta-banio.png"
-  method esSolido() = true
-  method esInteractuable() = true
+object puertaBaño inherits AccesoBloqueado(position = game.at(2, 9), imagen = "x64sprites/mapa/puerta-banio.png", mensaje = "No tengo tiempo ¡Debo llegar a la clase!") {}
+object puertaAMMedio inherits AccesoBloqueado(position = game.at(7, 9), imagen = "x64sprites/mapa/puerta-am-medio.png", mensaje = "No tengo tiempo ¡Debo llegar a la clase!") {}
+object puertaAMIzq inherits AccesoBloqueado(position = game.at(6, 9), imagen = "x64sprites/mapa/puerta-am-izq.png", mensaje = "No tengo tiempo ¡Debo llegar a la clase!") {}
+object puertaAMDer inherits AccesoBloqueado(position = game.at(8, 9), imagen = "x64sprites/mapa/puerta-am-der.png", mensaje = "No tengo tiempo ¡Debo llegar a la clase!") {}
 
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+object puertaSalidaMedio inherits AccesoBloqueado(position = game.at(7, 0), imagen = "x64sprites/mapa/puerta-salida-medio.png", mensaje = "No tengo tiempo ¡Debo llegar a la clase!") {
+  override method esSolido() = false
 }
-object puertaAMMedio {
-  var property position = game.at(7, 9)
-  method image() = "x64sprites/mapa/puerta-am-medio.png"
-  method esSolido() = true
-  method esInteractuable() = true
-
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+object puertaSalidaIzq inherits AccesoBloqueado(position = game.at(6, 0), imagen = "x64sprites/mapa/puerta-salida-izq.png", mensaje = "No tengo tiempo ¡Debo llegar a la clase!") {
+  override method esSolido() = false
 }
-object puertaAMIzq {
-  var property position = game.at(6, 9)
-  method image() = "x64sprites/mapa/puerta-am-izq.png"
-  method esSolido() = true
-  method esInteractuable() = true
-
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+object puertaSalidaDer inherits AccesoBloqueado(position = game.at(8, 0), imagen = "x64sprites/mapa/puerta-salida-der.png", mensaje = "No tengo tiempo ¡Debo llegar a la clase!") {
+  override method esSolido() = false
 }
-object puertaAMDer {
-  var property position = game.at(8, 9)
-  method image() = "x64sprites/mapa/puerta-am-der.png"
-  method esSolido() = true
-  method esInteractuable() = true
 
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
-}
-object puertaSalidaMedio {
-  var property position = game.at(7, 0)
-  method image() = "x64sprites/mapa/puerta-salida-medio.png"
-  method esSolido() = false
-  method esInteractuable() = true
-
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
-}
-object puertaSalidaIzq {
-  var property position = game.at(6, 0)
-  method image() = "x64sprites/mapa/puerta-salida-izq.png"
-  method esSolido() = false
-  method esInteractuable() = true
-
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
-}
-object puertaSalidaDer {
-  var property position = game.at(8, 0)
-  method image() = "x64sprites/mapa/puerta-salida-der.png"
-  method esSolido() = false
-  method esInteractuable() = true
-
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
-}
-object escalerasIzq {
-  var property position = game.at(11, 9)
-  method image() = "x64sprites/mapa/escaleras-izq.png"
-  method esSolido() = true
-  method esInteractuable() = true
-
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
-}
-object escalerasDer {
-  var property position = game.at(12, 9)
-  method image() = "x64sprites/mapa/escaleras-der.png"
-  method esSolido() = true
-  method esInteractuable() = true
-
-  // method hablar(mensaje) { game.say(self, mensaje) } 
-
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
-}
+object escalerasIzq inherits AccesoBloqueado(position = game.at(11, 9), imagen = "x64sprites/mapa/escaleras-izq.png", mensaje = "Si voy por las escaleras no voy a llegar más. ¡Tengo que subir por el ascensor!") {}
+object escalerasDer inherits AccesoBloqueado(position = game.at(12, 9), imagen = "x64sprites/mapa/escaleras-der.png", mensaje = "Si voy por las escaleras no voy a llegar más. ¡Tengo que subir por el ascensor!") {}
 
 object salaEntrada inherits Sala {
   override method fondo() = "x64sprites/mapa/baldosa.png"
