@@ -226,7 +226,18 @@ object objetivoLimpiarEntrada inherits Objetivo{
 }
 
 //Estado 4 
-object objetivoTirarBasuraAlTacho{
+object objetivoTirarBasuraAlTacho inherits Objetivo{
+  override method descripcion()= "BUSCAR LA LLAVE INGLESA"
+
+    override method interactuarConPortero() {
+    game.say(portero, "Como soy un hombre de palabra, tomá, aca tenes la llave inglesa.")
+    wachington.guardar(llaveInglesa)
+    wachington.objetivo(objetivoEntregarLlave)
+  }
+}
+
+//Estado 5 
+object objetivoEntregarLlave{
 
 }
 
