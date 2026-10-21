@@ -2,6 +2,7 @@ import wollok.game.*
 import personajes.*
 import entrada.*
 import objetosUtiles.*
+import mochila.*
 
 //ESTADO 0: recien llegamos a la facu
 object objetivoLlegarAlAula{
@@ -14,6 +15,9 @@ object objetivoLlegarAlAula{
     method interactuarConAscensor(){
         game.say(ascensor, "Dice FUERA DE SERVICIO")
         wachington.objetivo(objetivoArreglarAscensor)
+    }
+    method interactuarConPapel(papel){
+        game.say(wachington, "...")
     }
 }
 
@@ -29,6 +33,9 @@ object objetivoArreglarAscensor{
     method interactuarConAscensor(){
         game.say(wachington, "Soy de sistemas, no de mecanica...")
     }
+    method interactuarConPapel(papel){
+        game.say(wachington, "...")
+    }
 }
 
 //Estado 2: conseguir la llaveee
@@ -43,11 +50,23 @@ object objetivoConseguirLlave {
   method interactuarConAscensor() {
     game.say(wachington, "Soy de Sistemas, no de mecanica...")
   }
+  method interactuarConPapel(papel) {
+    game.say(wachington, "...")
+  }
 }
 
 //Estado 3:
 object objetivoLimpiarEntrada{
-    // var papelesJuntados = 0
+    method papeles() = [suciedadPapeles1, suciedadPapeles2, suciedadPapeles3, suciedadPapeles4, suciedadPapeles5]
+    method juntoTodosLosPapeles() = mochila.tieneTodos(self.papeles())
+
+    method interactuarConPapel(papel) {
+      wachington.recoger(papel)
+      if (self.juntoTodosLosPapeles()) {
+        game.say(wachington, "¡Listo! Ahora a tirarlos al tacho")
+        // TODO: pasar al objetivo TIRAR LOS PAPELES (estado 4)
+      }
+    }
 
     method interactuarConPortero() {
       game.say(portero, "Juntame los 5 papeles del piso y te doy la llave")
