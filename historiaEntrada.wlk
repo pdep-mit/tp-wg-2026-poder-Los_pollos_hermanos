@@ -19,6 +19,9 @@ object objetivoLlegarAlAula{
     method interactuarConPapel(papel){
         game.say(wachington, "...")
     }
+    method interactuarConTacho() {
+        game.say(wachington, "Un tacho común y corriente.")
+    }
 }
 
 //Estado 1: el objetivo ahora es arreglar el ascensor
@@ -29,12 +32,15 @@ object objetivoArreglarAscensor{
     method interactuarConTecnico() {
     game.say(tecnico, "Necesito una llave inglesa para arreglarlo.")
     wachington.objetivo(objetivoConseguirLlave)
-  }
+    }
     method interactuarConAscensor(){
         game.say(wachington, "Soy de sistemas, no de mecanica...")
     }
     method interactuarConPapel(papel){
         game.say(wachington, "...")
+    }
+    method interactuarConTacho() {
+        game.say(wachington, "Un tacho común y corriente.")
     }
 }
 
@@ -53,9 +59,12 @@ object objetivoConseguirLlave {
   method interactuarConPapel(papel) {
     game.say(wachington, "...")
   }
+  method interactuarConTacho() {
+    game.say(wachington, "Un tacho común y corriente.")
+  }
 }
 
-//Estado 3:
+//Estado 3: tenemos q juntar los papeles 
 object objetivoLimpiarEntrada{
     method papeles() = [suciedadPapeles1, suciedadPapeles2, suciedadPapeles3, suciedadPapeles4, suciedadPapeles5]
     method juntoTodosLosPapeles() = mochila.tieneTodos(self.papeles())
@@ -64,23 +73,38 @@ object objetivoLimpiarEntrada{
       wachington.recoger(papel)
       if (self.juntoTodosLosPapeles()) {
         game.say(wachington, "¡Listo! Ahora a tirarlos al tacho")
-        // aca continuar: pasar al objetivo TIRAR LOS PAPELES (estado 4)
+        wachington.objetivo(objetivoTirarBasuraAlTacho)
       }
     }
-
+    method interactuarConTacho() {
+      game.say(wachington, "Acá puedo dejar los papeles cuando termine de juntarlos")
+      
+    }
     method interactuarConPortero() {
       game.say(portero, "Juntame los 5 papeles del piso y te doy la llave")
     }
 
     method interactuarConTecnico(){
-        game.say(tecnico, "Hasta que no me consigas la llvae, no puedo hacer nada")
+        game.say(tecnico, "Hasta que no me consigas la llave, no puedo hacer nada")
     }
 
     method interactuarConAscensor(){
         game.say(wachington, "Soy de Sistemas, no de mecanica...")
     }
-
 }
 
-
-
+//Estado 4: ya tenemos los papeles, ahora hay q tirarlos 
+object objetivoTirarBasuraAlTacho{
+  method interactuarConPortero() {
+    game.say(portero, "Tiralos al tacho y te doy la llave")
+  }
+  method interactuarConTecnico() {
+    game.say(tecnico, "Hasta que no me consigas la llave, no puedo hacer nada")
+  }
+   method interactuarConAscensor() {
+    game.say(wachington, "Soy de sistemas, no de mecánica...")
+  }
+  //falta implementar
+  method interactuarConPapel(papel) {}
+  method interactuarConTacho() {}
+}

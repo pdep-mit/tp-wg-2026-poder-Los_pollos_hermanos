@@ -10,7 +10,9 @@ object tachoBasura {
 
   // method hablar(mensaje) { game.say(self, mensaje) } 
 
-  // method interactuar() { self.hablar(tp.estado().mensajeCompa()) }
+  method interactuar() { 
+    wachington.objetivo().interactuarConTacho()
+    }
 }
 // Papeles recogibles. Son objects (no new) para que sean siempre los mismos
 // y la mochila pueda recordar cuales ya se juntaron
