@@ -3,6 +3,8 @@ import personajes.*
 import entrada.*
 import objetosUtiles.*
 import mochila.*
+import habitaciones.*
+import pasillo.*
 
 //ESTADO 0: recien llegamos a la facu
 object objetivoLlegarAlAula{
@@ -104,7 +106,14 @@ object objetivoTirarBasuraAlTacho{
    method interactuarConAscensor() {
     game.say(wachington, "Soy de sistemas, no de mecánica...")
   }
-  //falta implementar
-  method interactuarConPapel(papel) {}
-  method interactuarConTacho() {}
+
+  method interactuarConTacho() {
+    mochila.sacarTodos(objetivoLimpiarEntrada.papeles())
+    game.say(wachington, "Listoooo, papeles tirados. Ahora a pedirle la llave al portero.")
+    wachington.objetivo(objetivoBuscarLlave)
+  }
+}
+
+//Estado 5: el portero nos tiene q dar la llave 
+object objetivoBuscarLlave{
 }

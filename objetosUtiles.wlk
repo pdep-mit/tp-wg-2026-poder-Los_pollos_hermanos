@@ -32,6 +32,10 @@ object suciedadPapeles3 inherits PapelDelPiso(position = game.at(13, 7), imagen 
 object suciedadPapeles4 inherits PapelDelPiso(position = game.at(4, 1), imagen = "x64sprites/mapa/suciedad-papeles-2.png") {}
 object suciedadPapeles5 inherits PapelDelPiso(position = game.at(3, 7), imagen = "x64sprites/mapa/suciedad-papeles-3.png") {}
 
+object llaveInglesa {
+  method image() = "x64sprites/mapa/llave inglesa.png"
+}
+
 //PASILLO
 object taraguiPiso {
   const property position = game.at(4, 4)
