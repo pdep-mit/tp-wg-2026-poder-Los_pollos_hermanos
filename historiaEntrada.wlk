@@ -161,10 +161,10 @@ object objetivoEntregarLlave {
 
 class Objetivo {
   method descripcion() 
-  // dialogos default :
+  // dialogos que mas se repiten :
   method interactuarConPortero() { game.say(portero, "Bienvenido a la facultad") }
-  method interactuarConTecnico() { game.say(tecnico, "Necesitas algo?") }
-  method interactuarConAscensor() { game.say(wachington, "Soy de sistemas, no de mecánica...") }
+  method interactuarConTecnico() { game.say(tecnico, "Hasta que no me consigas la llave, no puedo hacer nada") }
+  method interactuarConAscensor() { game.say(wachington, "Soy de sistemas, no de mecánica...") } //TODO: modificar si del estaod 0 no sabe todavia q tiene q buscarle la llave inglesa, q siga diciendo fuera de servivio top 10 mejores explicaciones 
   method interactuarConPapel(papel) { game.say(wachington, "Que gente sucia tira la basura en cualquier lado") }
   method interactuarConTacho() { game.say(wachington, "Un tacho común y corriente") }
 }
@@ -172,6 +172,9 @@ class Objetivo {
 // Estado 0: Recién llegamos y nuestro obejtivo es llegar al aula
 object objetivoLlegarAlAula inherits Objetivo {
   override method descripcion() = "LLEGAR AL AULA"
+  override method interactuarConTecnico() { 
+    game.say(tecnico, "¿Necesitas algo?") 
+  }
   override method interactuarConAscensor() {
     game.say(ascensor, "Dice FUERA DE SERVICIO")
     wachington.objetivo(objetivoArreglarAscensor)
@@ -181,8 +184,25 @@ object objetivoLlegarAlAula inherits Objetivo {
 //Estado 1: necesitamos arreglar el ascensor 
 object objetivoArreglarAscensor inherits Objetivo{
   override method descripcion()="ARREGLAR EL ASCENSOR"
-  override method interactuarConTecnico(){
-
+  override method interactuarConPortero(){
+      game.say(portero, "¿Está roto el ascensor? Pedile ayuda al técnico.")
   }
+  override method interactuarConTecnico() {
+    game.say(tecnico, "Necesito una llave inglesa para arreglarlo")
+    wachington.objetivo(objetivoConseguirLlave)
+  }
+}
+
+//Estado 2: hay q darle la llave al tecnico
+object objetivoConseguirLlave inherits Objetivo {
+  override method descripcion() = "CONSEGUIR UNA LLAVE INGLESA"
+  override method interactuarConPortero() {
+    game.say(portero, "Ah, sí… La llave inglesa… Ayudame a limpiar un poco y te la doy…")
+    wachington.objetivo(objetivoLimpiarEntrada)
+  }
+}
+
+object objetivoLimpiarEntrada{
+
 }
 
