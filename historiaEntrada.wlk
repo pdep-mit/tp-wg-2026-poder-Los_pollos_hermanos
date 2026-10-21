@@ -188,7 +188,7 @@ object objetivoArreglarAscensor inherits Objetivo{
       game.say(portero, "¿Está roto el ascensor? Pedile ayuda al técnico.")
   }
   override method interactuarConTecnico() {
-    game.say(tecnico, "Necesito una llave inglesa para arreglarlo")
+    game.say(tecnico, "Necesitas ayuda para que arreglar el ascensor? para eso necesito una llave inglesa")
     wachington.objetivo(objetivoConseguirLlave)
   }
 }
@@ -251,10 +251,34 @@ object objetivoBuscarLlave inherits Objetivo{
   }
 }
 
-//Estado 5 
-object objetivoEntregarLlave{
-
+//Estado 6 
+object objetivoEntregarLlave inherits Objetivo{
+ override method descripcion() = "ENTREGAR LA LLAVE INGLESA"
+  override method interactuarConPortero() {
+    game.say(portero, "¿Qué clase de apellido es Wachington...?")
+  }
+  override method interactuarConTecnico() {
+    game.say(tecnico, "Joyaa, enseguida lo arreglo")
+    wachington.sacar(llaveInglesa)
+    wachington.objetivo(objetivoSubirAscensor)
+  }
 }
 
+//Estado 7: 
+object objetivoSubirAscensor inherits Objetivo{
+  override method descripcion() = "SUBIR POR EL ASCENSOR"
+
+  override method interactuarConPortero() {
+    game.say(portero, "¿Qué clase de apellido es Wachington...?")
+  }
+
+  override method interactuarConTecnico() {
+    game.say(tecnico, "Ahi lo arregle, ya podés subir al 4to piso.")
+  }
+  override method interactuarConAscensor() {
+    habitacionActual.irA(salaPasillo, game.at(14, 0))
+  }
+
+}
 
 
