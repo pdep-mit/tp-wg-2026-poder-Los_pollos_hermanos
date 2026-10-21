@@ -37,16 +37,10 @@ object wachington {
   method sacar(objeto) { mochila.sacar(objeto) }
 }
 
-class Npc {
-  var property position
-  method image()
-  method esSolido() = true
-  method esInteractuable() = true
-
-  method hablar(mensaje) { game.say(self, mensaje) }
-
-  method interactuar() { self.dialogar(wachington.objetivo()) }
-
+class Npc inherits Interactuable{
+   override method reaccionarA(objetivo) { 
+    self.dialogar(objetivo) 
+  }
   method dialogar(objetivo)
 }
 

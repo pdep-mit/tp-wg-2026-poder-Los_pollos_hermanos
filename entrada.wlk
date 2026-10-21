@@ -8,16 +8,9 @@ import pasillo.*
 import historiaEntrada.*
 
 //ACCESOS UTILES
-object ascensor {
-  var property position = game.at(4, 9)
-  method image() = "x64sprites/mapa/ascensor.png"
-  method esSolido() = true
-  method esInteractuable() = true
-
-  method interactuar() {
-    //habitacionActual.irA(salaPasillo, game.at(14, 0))
-    wachington.objetivo().interactuarConAscensor()
-  }
+object ascensor inherits Interactuable(position = game.at(4, 9)) {
+  override method image() = "x64sprites/mapa/ascensor.png"
+  override method reaccionarA(objetivo) { objetivo.interactuarConAscensor() }
 }
 
 

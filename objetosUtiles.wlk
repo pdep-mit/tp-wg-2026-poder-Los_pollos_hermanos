@@ -2,24 +2,29 @@ import wollok.game.*
 import personajes.*
 import habitaciones.*
 
-// comparte mucho con Npc !!
-class Util {
+class Interactuable {
   var property position
   method image()
   method esSolido() = true
   method esInteractuable() = true
-  method interactuar()
+  method interactuar(){
+    self.reaccionarA(wachington.objetivo())
+  }
+
+  method reaccionarA(objetivo){}
+  method hablar(mensaje){
+    game.say(self, mensaje)
+  }
 }
 
-class Puerta inherits Util {
+class Puerta inherits Interactuable {
   method destino()
   method posicionLlegada()
 
   method pasar() { habitacionActual.irA(self.destino(), self.posicionLlegada()) }
-  override method interactuar() { wachington.objetivo().pasarPor(self) }
-}
+  override method reaccionarA(objetivo) { objetivo.pasarPor(self) }}
 
-class AccesoBloqueado inherits Util {
+class AccesoBloqueado inherits Interactuable {
   const imagen
   var property mensaje = "No tengo tiempo ¡Debo llegar a la clase!"
 
@@ -32,14 +37,13 @@ class EscaleraEntrada inherits AccesoBloqueado {
 }
 
 //ENTRADA
-object tachoBasura inherits Util(position = game.at(13, 6)) {
+object tachoBasura inherits Interactuable(position = game.at(13, 6)) {
   override method image() = "x64sprites/mapa/tacho-basura.png"
-  override method interactuar() { wachington.objetivo().interactuarConTacho() }
-}
+  override method reaccionarA(objetivo) { objetivo.interactuarConTacho() }}
 
 // Papeles recogibles. Son objects (no new) para que sean siempre los mismos
 // y la mochila pueda recordar cuales ya se juntaron
-class PapelDelPiso inherits Util {
+class PapelDelPiso inherits Interactuable {
   const imagen
   override method image() = imagen
   override method esSolido() = false
@@ -58,33 +62,31 @@ object papelesDelPiso{
 }
 
 //PASILLO
-object taraguiPiso inherits Util(position = game.at(4, 4)) {
+object taraguiPiso inherits Interactuable(position = game.at(4, 4)) {
   override method image() = "x64sprites/mapa/taragui-piso.png"
-  override method interactuar() { wachington.objetivo().interactuarConTaragui() }
+  override method reaccionarA(objetivo) { objetivo.interactuarConTaragui() }  method nombre() = "Yerba"
 }
 
 //AULA
-object mate inherits Util(position = game.at(2, 3)) {
+object mate inherits Interactuable(position = game.at(2, 3)) {
   override method image() = "x64sprites/mapa/mate.png"
-  override method interactuar() { wachington.objetivo().interactuarConMate() }
+  override method reaccionarA(objetivo) { objetivo.interactuarConMate() }
   method nombre() = "Mate"
 }
 
-object escritorioLaptop inherits Util(position = game.at(7, 7)) {
+object escritorioLaptop inherits Interactuable(position = game.at(7, 7)) {
   override method image() = "x64sprites/mapa/escritorio-laptop.png"
-  override method interactuar() { wachington.objetivo().interactuarConLaptop() }
-}
+  override method reaccionarA(objetivo) { objetivo.interactuarConLaptop() }}
 
 //LABO
-object computadoraLabo inherits Util(position = game.at(2, 7)) {
+object computadoraLabo inherits Interactuable(position = game.at(2, 7)) {
   override method image() = "x64sprites/mapa/escritorio-pc-1.png"
-  override method interactuar() { wachington.objetivo().interactuarConPcLabo() }
-}
+  override method reaccionarA(objetivo) { objetivo.interactuarConPcLabo() }}
 
 //BUFFET
-object yerba inherits Util(position = game.at(11, 6)) {
+object yerba inherits Interactuable(position = game.at(11, 6)) {
   override method image() = "x64sprites/mapa/yerba.png"
-  override method interactuar() { wachington.objetivo().interactuarConYerba() }
+  override method reaccionarA(objetivo) { objetivo.interactuarConYerba() }
   method nombre() = "Yerba"
 }
 
