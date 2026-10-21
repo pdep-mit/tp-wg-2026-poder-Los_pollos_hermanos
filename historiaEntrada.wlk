@@ -116,4 +116,25 @@ object objetivoTirarBasuraAlTacho{
 
 //Estado 5: el portero nos tiene q dar la llave 
 object objetivoBuscarLlave{
+   method interactuarConPortero() {
+    game.say(portero, "Que bien, un laburo menos. Como soy un hombre de palabra, tomá, aca tenes la llave inglesa")
+    wachington.guardar(llaveInglesa)
+    wachington.objetivo(objetivoEntregarLlave) 
+  }
+
+  method interactuarConTecnico() {
+    game.say(tecnico, "Hasta que no me consigas la llave, no puedo hacer nada")
+  }
+
+  method interactuarConAscensor(){
+    game.say(wachington, "Soy de sistemas, no de mecanica")
+  }
+
+  method interactuarConTacho() {
+    game.say(wachington, "Ya está todo limpio")
+  }
+}
+
+object objetivoEntregarLlave {
+  
 }
