@@ -225,12 +225,27 @@ object objetivoLimpiarEntrada inherits Objetivo{
   }
 }
 
-//Estado 4 
+//Estado 4:
 object objetivoTirarBasuraAlTacho inherits Objetivo{
+   override method descripcion() = "TIRAR LOS PAPELES"
+  override method interactuarConPortero() {
+    game.say(portero, "Tiralos al tacho y te doy la llave...")
+  }
+
+  override method interactuarConTacho() {
+    mochila.sacarTodos(objetivoLimpiarEntrada.papeles())
+    game.say(wachington, "Ya esta, voy a pedirle la llave al portero")
+    wachington.objetivo(objetivoBuscarLlave)
+  }
+}
+
+
+//Estado 5 
+object objetivoBuscarLlave inherits Objetivo{
   override method descripcion()= "BUSCAR LA LLAVE INGLESA"
 
     override method interactuarConPortero() {
-    game.say(portero, "Como soy un hombre de palabra, tomá, aca tenes la llave inglesa.")
+    game.say(portero, "Como soy un hombre de palabra, tomá, aca tenes la llave inglesa")
     wachington.guardar(llaveInglesa)
     wachington.objetivo(objetivoEntregarLlave)
   }
