@@ -96,6 +96,21 @@ describe "Mochila" {
     assert.that(mochila.tiene(termoLlenoDePrueba))
   }
 
+  test "Un objeto guardado queda como recogido" {
+    mochila.guardar(yerbaDePrueba)
+
+    assert.that(mochila.fueRecogido(yerbaDePrueba))
+    assert.notThat(mochila.fueRecogido(termoDePrueba))
+  }
+
+  test "Un objeto sigue contando como recogido aunque se saque de la mochila" {
+    mochila.guardar(yerbaDePrueba)
+    mochila.sacar(yerbaDePrueba)
+
+    assert.notThat(mochila.tiene(yerbaDePrueba))
+    assert.that(mochila.fueRecogido(yerbaDePrueba))
+  }
+
   test "No se puede cambiar un objeto que no esta" {
     assert.throwsException({ mochila.cambiar(termoDePrueba, termoLlenoDePrueba) })
     assert.notThat(mochila.tiene(termoLlenoDePrueba))
