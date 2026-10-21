@@ -64,7 +64,7 @@ object objetivoLimpiarEntrada{
       wachington.recoger(papel)
       if (self.juntoTodosLosPapeles()) {
         game.say(wachington, "¡Listo! Ahora a tirarlos al tacho")
-        // TODO: pasar al objetivo TIRAR LOS PAPELES (estado 4)
+        // aca continuar: pasar al objetivo TIRAR LOS PAPELES (estado 4)
       }
     }
 
@@ -83,38 +83,4 @@ object objetivoLimpiarEntrada{
 }
 
 
-/* OPINION DE UN EXPERTO: heredar! 
 
-class Objetivo {
-  method descripcion()
-
-  // respuestas por defecto: solo se redefine lo que cambia en cada estado
-  method interactuarConPortero() { game.say(portero, "...") }
-  method interactuarConTecnico() { game.say(tecnico, "...") }
-  method interactuarConAscensor() { game.say(wachington, "Soy de sistemas, no de mecánica...") }
-  method interactuarConBasura() { game.say(wachington, "...") }
-  method interactuarConTacho() { game.say(wachington, "...") }
-}
-
-object objetivoConseguirLlave inherits Objetivo {
-  override method descripcion() = "CONSEGUIR UNA LLAVE INGLESA"
-
-  override method interactuarConPortero() {
-    game.say(portero, "Ah, sí… La llave inglesa… Ayudame a limpiar un poco y te la doy…")
-    wachington.pasarA(objetivoLimpiarEntrada)
-  }
-  override method interactuarConTecnico() {
-    game.say(tecnico, "Hasta que no me consigas la llave, no puedo hacer nada")
-  }
-  // ascensor, basura y tacho: heredan el comportamiento por defecto
-}
-
-object portero inherits Interactuable {
-  var property position = game.at(2, 5)
-  method image() = "x64sprites/personajes/portero/portero-der.png"
-  override method interactuar() { wachington.objetivo().interactuarConPortero() }
-}
-
-
-
-*/
