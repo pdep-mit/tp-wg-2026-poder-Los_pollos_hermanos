@@ -21,9 +21,14 @@ class Puerta inherits Util {
 
 class AccesoBloqueado inherits Util {
   const imagen
-  const mensaje
+  var property mensaje = "No tengo tiempo ¡Debo llegar a la clase!"
+
   override method image() = imagen
   override method interactuar() { game.say(wachington, mensaje) }
+}
+
+class EscaleraEntrada inherits AccesoBloqueado {
+  override method mensaje() = "Si voy por las escaleras no voy a llegar más. ¡Tengo que subir por el ascensor!"
 }
 
 //ENTRADA
