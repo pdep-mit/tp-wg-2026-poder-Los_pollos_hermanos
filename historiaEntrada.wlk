@@ -202,7 +202,33 @@ object objetivoConseguirLlave inherits Objetivo {
   }
 }
 
-object objetivoLimpiarEntrada{
+//Estado 3 : limpiamos el piso para q nos den la llave 
+object objetivoLimpiarEntrada inherits Objetivo{
+  override method descripcion() = "LIMPIAR LA ENTRADA"
+
+  method papeles() = [suciedadPapeles1, suciedadPapeles2, suciedadPapeles3, suciedadPapeles4, suciedadPapeles5]
+  method juntoTodosLosPapeles() = mochila.tieneTodos(self.papeles())
+
+  override method interactuarConPortero() {
+    game.say(portero, "Juntame los 5 papeles del piso y te doy la llave")
+  }
+
+  override method interactuarConTacho() {
+    game.say(wachington, "Acá puedo dejar los papeles cuando termine de juntarlos")
+  }
+  override method interactuarConPapel(papel) {
+    wachington.recoger(papel)
+    if (self.juntoTodosLosPapeles()) {
+      game.say(wachington, "Listooo, ahora a tirarlos al tacho")
+      wachington.objetivo(objetivoTirarBasuraAlTacho)
+    } 
+  }
+}
+
+//Estado 4 
+object objetivoTirarBasuraAlTacho{
 
 }
+
+
 
