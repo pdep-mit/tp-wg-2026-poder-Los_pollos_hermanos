@@ -18,7 +18,7 @@ object objetivoIrAlAula inherits Objetivo {
   override method mensajeBloqueo() = "Debo llegar al aula, estoy llegando tarde"
 
   override method interactuarConHanz() { game.say(hanz, "¿El aula? A mi derecha, negro") }
-  override method alIrA(sala) { wachington.objetivo(objetivoPonerseAlDia) }
+  override method alEntrarAlAula() { wachington.objetivo(objetivoPonerseAlDia) }
 }
 
 // Estado 12
@@ -29,11 +29,7 @@ object objetivoIrAlLabo inherits ObjetivoCuestionario {
 
   override method interactuarConHanz() { game.say(hanz, "¿El labo? A mi izquierda, negro") }
   override method interactuarConLaptop() { game.say(wachington, "¡Listo! Ahora al labo") }
-  override method alIrA(sala) {
-    if (sala == salaLabo) {
-      wachington.objetivo(objetivoResolverTp)
-    }
-  }
+  override method alEntrarAlLabo() { wachington.objetivo(objetivoResolverTp) }
 }
 
 // Estados 28/29

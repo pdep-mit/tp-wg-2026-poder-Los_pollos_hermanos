@@ -17,6 +17,7 @@ object salaAula inherits Sala {
   override method posicionInicial() = game.at(3, 3)
   override method ancho() = 9
   override method alto() = 9
+  override method recibir(objetivo) { objetivo.alEntrarAlAula() }
   override method objetos() = [
     new ParedPizarraIzq(position = game.at(1, 8)),
     new ParedPizarraMedio(position = game.at(2, 8)),

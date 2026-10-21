@@ -80,7 +80,6 @@ object yerba inherits Util(position = game.at(11, 6)) {
 }
 
 //MOCHILA
-// Las imagenes marcadas como provisorias reusan sprites que ya existen
 object llaveInglesa {
   method image() = "x64sprites/mapa/llave-inglesa.png"
   method nombre() = "Llave inglesa"
@@ -94,11 +93,11 @@ object termoLleno {
   method nombre() = "Termo lleno"
 }
 object bizcochitos {
-  method image() = "x64sprites/mapa/bizcochitos.png" // provisoria
+  method image() = "x64sprites/mapa/bizcochitos.png"
   method nombre() = "Bizcochitos"
 }
 object mateArmado {
-  method image() = "x64sprites/mapa/mate.png" // provisoria
+  method image() = "x64sprites/mapa/mate.png"
   method nombre() = "Mate armado"
 }
 object claveDeAcceso {
