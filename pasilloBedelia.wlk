@@ -1,7 +1,5 @@
 import wollok.game.*
-import objetosUtiles.*
-import objetosDecorados.*
-import objetosParedes.*
+import objetos.*
 import personajes.*
 import habitaciones.*
 import pasillo.*
@@ -36,36 +34,36 @@ object salaPasilloBedelia inherits Sala {
   override method ancho() = 8
   override method alto() = 9
   override method objetos() = [
-    new ParedFrente(position = game.at(1, 8)),
-    new ParedFrente(position = game.at(2, 8)),
-    new ParedFrente(position = game.at(3, 8)),
-    new ParedFrente(position = game.at(4, 8)),
-    new PuertaDecor(position = game.at(5, 8)),
-    new ParedFrente(position = game.at(6, 8)),
-    new ParedIzq(position = game.at(0, 0)),
-    new ParedIzq(position = game.at(0, 1)),
-    new ParedIzq(position = game.at(0, 2)),
-    new ParedIzq(position = game.at(0, 3)),
-    new ParedIzq(position = game.at(0, 4)),
-    new ParedIzq(position = game.at(0, 7)),
-    new ParedIzq(position = game.at(0, 8)),
-    new ParedDer(position = game.at(7, 0)),
-    new ParedDer(position = game.at(7, 1)),
-    new ParedBedelia(position = game.at(7, 2)),
-    new ParedDer(position = game.at(7, 3)),
-    new ParedBedelia(position = game.at(7, 4)),
-    new ParedDer(position = game.at(7, 5)),
-    new ParedDer(position = game.at(7, 6)),
-    new ParedDer(position = game.at(7, 7)),
-    new ParedDer(position = game.at(7, 8)),
+    new ObjetoDecorativoSolido(position = game.at(1, 8), image = "x64sprites/mapa/pared-frente.png"),
+    new ObjetoDecorativoSolido(position = game.at(2, 8), image = "x64sprites/mapa/pared-frente.png"),
+    new ObjetoDecorativoSolido(position = game.at(3, 8), image = "x64sprites/mapa/pared-frente.png"),
+    new ObjetoDecorativoSolido(position = game.at(4, 8), image = "x64sprites/mapa/pared-frente.png"),
+    new ObjetoDecorativoSolido(position = game.at(5, 8), image = "x64sprites/mapa/puerta-medio.png"),
+    new ObjetoDecorativoSolido(position = game.at(6, 8), image = "x64sprites/mapa/pared-frente.png"),
+    new ObjetoDecorativoSolido(position = game.at(0, 0), image = "x64sprites/mapa/pared-lado-izq.png"),
+    new ObjetoDecorativoSolido(position = game.at(0, 1), image = "x64sprites/mapa/pared-lado-izq.png"),
+    new ObjetoDecorativoSolido(position = game.at(0, 2), image = "x64sprites/mapa/pared-lado-izq.png"),
+    new ObjetoDecorativoSolido(position = game.at(0, 3), image = "x64sprites/mapa/pared-lado-izq.png"),
+    new ObjetoDecorativoSolido(position = game.at(0, 4), image = "x64sprites/mapa/pared-lado-izq.png"),
+    new ObjetoDecorativoSolido(position = game.at(0, 7), image = "x64sprites/mapa/pared-lado-izq.png"),
+    new ObjetoDecorativoSolido(position = game.at(0, 8), image = "x64sprites/mapa/pared-lado-izq.png"),
+    new ObjetoDecorativoSolido(position = game.at(7, 0), image = "x64sprites/mapa/pared-lado-der.png"),
+    new ObjetoDecorativoSolido(position = game.at(7, 1), image = "x64sprites/mapa/pared-lado-der.png"),
+    new ObjetoDecorativoSolido(position = game.at(7, 2), image = "x64sprites/mapa/pared-bedelia.png"),
+    new ObjetoDecorativoSolido(position = game.at(7, 3), image = "x64sprites/mapa/pared-lado-der.png"),
+    new ObjetoDecorativoSolido(position = game.at(7, 4), image = "x64sprites/mapa/pared-bedelia.png"),
+    new ObjetoDecorativoSolido(position = game.at(7, 5), image = "x64sprites/mapa/pared-lado-der.png"),
+    new ObjetoDecorativoSolido(position = game.at(7, 6), image = "x64sprites/mapa/pared-lado-der.png"),
+    new ObjetoDecorativoSolido(position = game.at(7, 7), image = "x64sprites/mapa/pared-lado-der.png"),
+    new ObjetoDecorativoSolido(position = game.at(7, 8), image = "x64sprites/mapa/pared-lado-der.png"),
     bedelia,
     puertaPasillo1DesdeBedelia,
     puertaPasillo2DesdeBedelia,
     puertaBuffetDesdeBedelia1,
     puertaBuffetDesdeBedelia2,
-    new Aguita(position = game.at(5, 7)),
-    new CartelAgua(position = game.at(5, 7)),
-    new FlechaDer(position = game.at(6, 3))
+    new ObjetoDecorativoNoSolido(position = game.at(5, 7), image = "x64sprites/mapa/aguita.png"),
+    new ObjetoDecorativoSolido(position = game.at(5, 7), image = "x64sprites/mapa/piso-mojado.png"),
+    new ObjetoDecorativoNoSolido(position = game.at(6, 3), image = "x64sprites/mapa/flecha-der.png")
   ]
 
   override method configurar() {

@@ -1,6 +1,6 @@
 import wollok.game.*
 import personajes.*
-import objetosUtiles.*
+import objetos.*
 import mochila.*
 import historiaEntrada.*
 import historiaAula.*

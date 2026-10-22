@@ -1,7 +1,7 @@
 import wollok.game.*
 import personajes.*
 import entrada.*
-import objetosUtiles.*
+import objetos.*
 import mochila.*
 import habitaciones.*
 import pasillo.*

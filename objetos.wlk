@@ -2,6 +2,20 @@ import wollok.game.*
 import personajes.*
 import habitaciones.*
 
+class ObjetoDecorativo {
+  const property position
+  method esInteractuable() = false
+  const property image
+}
+
+class ObjetoDecorativoSolido inherits ObjetoDecorativo {
+  method esSolido() = true
+}
+
+class ObjetoDecorativoNoSolido inherits ObjetoDecorativo {
+  method esSolido() = false
+}
+
 class Interactuable {
   var property position
   method image()

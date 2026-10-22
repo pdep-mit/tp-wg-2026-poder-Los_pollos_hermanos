@@ -3,7 +3,7 @@ import personajes.*
 import movimientos.*
 import habitaciones.*
 import panelMochila.*
-import objetosDecorados.*
+import objetos.*
 
 describe "Panel de la mochila y movimiento" {
 
@@ -40,7 +40,7 @@ describe "Panel de la mochila y movimiento" {
   }
 
   test "Wachington no atraviesa objetos sólidos ni sale de la sala" {
-    game.addVisual(new Mesa(position = game.at(3, 2)))
+    game.addVisual(new ObjetoDecorativoSolido(position = game.at(3, 2), image = "x64sprites/mapa/mesa-medio.png"))
     wachington.position(game.at(2, 2))
 
     movimiento.derecha(wachington)
