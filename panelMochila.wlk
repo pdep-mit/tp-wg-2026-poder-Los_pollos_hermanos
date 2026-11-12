@@ -104,7 +104,7 @@ class FondoPanel {
   const property position
   method image() = "x64sprites/mapa/fondo-mochila.png"
   method esSolido() = false
-  method esInteractuable() = false
+  method interactuar() {}
 }
 
 class TextoPanel {
@@ -113,7 +113,8 @@ class TextoPanel {
   method text() = texto
   method textColor() = "FFFFFFFF"
   method esSolido() = false
-  method esInteractuable() = false
+  method interactuar() {}
+
 }
 
 class IconoPanel {
@@ -121,5 +122,5 @@ class IconoPanel {
   const objeto
   method image() = objeto.image()
   method esSolido() = false
-  method esInteractuable() = false
+  method interactuar() {}
 }

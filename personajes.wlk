@@ -16,13 +16,9 @@ object wachington {
   // Uno porque asi da el calculo que hace distance si esta al lado (no sirve si esta en diagonal)
 
    method interactuar() {
-      const cercanos = game.allVisuals().filter({ obj => self.estaAlLadoDe(obj) && obj.esInteractuable()})
+      const cercanos = game.allVisuals().filter({ obj => self.estaAlLadoDe(obj)})
+      cercanos.forEach({obj => obj.interactuar()})
       
-      if (cercanos.isEmpty()) {
-          game.say(self, "Acá no hay nadie con quien hablar...")
-      } else {
-          cercanos.first().interactuar()
-      }
   }
 
   method guardar(objeto) { mochila.guardar(objeto) }
@@ -81,7 +77,6 @@ object facu inherits Npc(position = game.at(13, 5)) {
 // esta atras del mostrador: no se llega a ella, solo se la ve
 object kiosquera inherits Npc(position = game.at(4, 6)) {
   override method image() = "x64sprites/personajes/kiosquera/kiosquera-frente.png"
-  override method esInteractuable() = false
   override method dialogar(objetivo) {}
 }
 

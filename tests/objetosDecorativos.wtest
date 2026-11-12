@@ -3,12 +3,11 @@ import wollok.game.*
 
 describe "Objetos decorativos" {
 
-  test "Los objetos sólidos heredan posición, solidez e interactuabilidad" {
+  test "Los objetos sólidos heredan posición y solidez" {
     const mesa = new ObjetoDecorativoSolido(position = game.at(1, 2), image = "x64sprites/mapa/mesa-medio.png")
 
     assert.equals(game.at(1, 2), mesa.position())
     assert.that(mesa.esSolido())
-    assert.that(!mesa.esInteractuable())
   }
 
   test "Los objetos no sólidos heredan su comportamiento" {
@@ -16,7 +15,6 @@ describe "Objetos decorativos" {
 
     assert.equals(game.at(3, 4), flecha.position())
     assert.that(!flecha.esSolido())
-    assert.that(!flecha.esInteractuable())
   }
 
   test "Las paredes usan la superclase de objetos sólidos" {
@@ -24,6 +22,5 @@ describe "Objetos decorativos" {
 
     assert.equals(game.at(5, 6), pared.position())
     assert.that(pared.esSolido())
-    assert.that(!pared.esInteractuable())
   }
 }

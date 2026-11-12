@@ -50,7 +50,7 @@ class MascaraFueraDeSala {
   const property position
   method image() = "x64sprites/mapa/afuera-de-sala.png"
   method esSolido() = false
-  method esInteractuable() = false
+  method interactuar() {}
 }
 
 object controles {

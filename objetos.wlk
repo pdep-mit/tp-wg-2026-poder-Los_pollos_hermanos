@@ -4,7 +4,7 @@ import habitaciones.*
 
 class ObjetoDecorativo {
   const property position
-  method esInteractuable() = false
+  method interactuar(){}
   const property image
 }
 
@@ -20,7 +20,6 @@ class Interactuable {
   var property position
   method image()
   method esSolido() = true
-  method esInteractuable() = true
   method interactuar(){
     self.reaccionarA(wachington.objetivo())
   }
