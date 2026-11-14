@@ -3,8 +3,8 @@ import entrada.*
 import habitaciones.*
 
 object imagenPortada {
-  var property position = game.at(4, 0)
-  method image() = "x64sprites/mapa/portada.gif" // Asegurate de que esté en la carpeta assets
+  var property position = game.at(0, 0)
+  method image() = "mapa/aprobame-rasta-carga.gif" // Asegurate de que esté en la carpeta assets
   method interactuar() {}
 }
 
