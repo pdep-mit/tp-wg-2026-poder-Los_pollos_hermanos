@@ -6,9 +6,11 @@ import panelMochila.*
 import objetosParedes.*
 
 class Sala {
+    var objetosCreados = null
+
     method fondo()
-    method objetos()
-    method posicionInicial() 
+    method crearObjetos()
+    method posicionInicial()
     method ancho()
     method alto()
 
@@ -29,6 +31,14 @@ class Sala {
 
   // Cada sala le avisa al objetivo que entraron, asi el objetivo no pregunta en que sala esta
   method recibir(objetivo) {}
+
+  // Los objetos se crean una sola vez (la primera vez que se piden) y despues se reutilizan
+  method objetos() {
+    if (objetosCreados == null) {
+      objetosCreados = self.crearObjetos()
+    }
+    return objetosCreados
+  }
 
   // Lo que ya se recogio no se vuelve a dibujar al volver a la sala
   method objetosEnElMapa() = self.objetos().filter({ objeto => !mochila.fueRecogido(objeto) })
