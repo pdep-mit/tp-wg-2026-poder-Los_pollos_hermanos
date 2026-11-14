@@ -22,7 +22,7 @@ object salaBuffet inherits Sala {
   override method posicionInicial() = game.at(3, 3)
   override method ancho() = 16
   override method alto() = 8
-  override method objetos() = [
+  override method crearObjetos() = [
     self.paredesFrente(1, 2),
     [
     new ParedCarteleraKioscoIzq(position = game.at(3, 7)),

@@ -18,7 +18,7 @@ object salaLabo inherits Sala {
   override method ancho() = 9
   override method alto() = 9
   override method recibir(objetivo) { objetivo.alEntrarAlLabo() }
-  override method objetos() = [
+  override method crearObjetos() = [
     self.paredesFrente(1, 2),
     [
     new ParedPizarraIzq(position = game.at(3, 8)),

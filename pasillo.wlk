@@ -45,7 +45,7 @@ object salaPasillo inherits Sala {
   override method posicionInicial() = game.at(13, 0)
   override method ancho() = 18
   override method alto() = 6
-  override method objetos() = [
+  override method crearObjetos() = [
     self.paredesFrente(1, 6),
     [
     new ParedCarteleraIzq(position = game.at(7, 5)),

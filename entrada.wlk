@@ -45,7 +45,7 @@ object salaEntrada inherits Sala {
   override method posicionInicial() = game.at(7, 0)
   override method ancho() = 15
   override method alto() = 10
-  override method objetos() = [
+  override method crearObjetos() = [
     self.paredesFrente(1, 10),
     self.paredesFrente(13, 14),
     self.paredesIzq(0, 9),

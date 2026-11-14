@@ -35,7 +35,7 @@ object salaPasilloBedelia inherits Sala {
   override method posicionInicial() = game.at(3, 3)
   override method ancho() = 8
   override method alto() = 9
-  override method objetos() = [
+  override method crearObjetos() = [
     self.paredesFrente(1, 4),
     [new PuertaDecor(position = game.at(5, 8))],
     self.paredesFrente(6, 6),
