@@ -1,4 +1,5 @@
 import wollok.game.*
+import portada.*
 import entrada.*
 import pasilloBedelia.*
 import aula.*
@@ -6,6 +7,9 @@ import pasillo.*
 import labo.*
 import buffet.* 
 
+program Juego {
+  pantallaInicio.iniciar()
+}
 program Entrada {
 	game.cellSize(64)
 	game.width(18)
