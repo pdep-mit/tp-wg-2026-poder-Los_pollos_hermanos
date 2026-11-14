@@ -6,14 +6,14 @@ import pasillo.*
 import labo.*
 import buffet.* 
 
-program Entrada {
+program AprobameRasta {
 	game.cellSize(64)
 	game.width(18)
 	game.height(10)
 	salaEntrada.cargar()
 	game.start()
 }
-
+// Accesos para pruebas
 program Pasillo {
 	game.cellSize(64)
 	game.width(18)
