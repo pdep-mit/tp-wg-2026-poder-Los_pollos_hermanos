@@ -46,30 +46,19 @@ object salaPasillo inherits Sala {
   override method ancho() = 18
   override method alto() = 6
   override method objetos() = [
-    new ParedFrente(position = game.at(1, 5)),
-    new ParedFrente(position = game.at(2, 5)),
-    new ParedFrente(position = game.at(3, 5)),
-    new ParedFrente(position = game.at(4, 5)),
-    new ParedFrente(position = game.at(5, 5)),
-    new ParedFrente(position = game.at(6, 5)),
+    self.paredesFrente(1, 6),
+    [
     new ParedCarteleraIzq(position = game.at(7, 5)),
     new ParedCarteleraLlena(position = game.at(8, 5)),
-    new ParedCarteleraDer(position = game.at(9, 5)),
-    new ParedFrente(position = game.at(10, 5)),
-    new ParedFrente(position = game.at(11, 5)),
-    new ParedFrente(position = game.at(13, 5)),
-    new ParedFrente(position = game.at(14, 5)),
-    new ParedFrente(position = game.at(15, 5)),
-    new ParedFrente(position = game.at(16, 5)),
-    new ParedIzq(position = game.at(0, 0)),
-    new ParedIzq(position = game.at(0, 1)),
-    new ParedIzq(position = game.at(0, 3)),
-    new ParedIzq(position = game.at(0, 4)),
-    new ParedIzq(position = game.at(0, 5)),
-    new ParedDer(position = game.at(17, 0)),
-    new ParedDer(position = game.at(17, 1)),
-    new ParedDer(position = game.at(17, 4)),
-    new ParedDer(position = game.at(17, 5)),
+    new ParedCarteleraDer(position = game.at(9, 5))
+    ],
+    self.paredesFrente(10, 11),
+    self.paredesFrente(13, 16),
+    self.paredesIzq(0, 1),
+    self.paredesIzq(3, 5),
+    self.paredesDer(0, 1),
+    self.paredesDer(4, 5),
+    [
     puertaAulaDesdePasillo,
     puertaLaboDesdePasillo,
     puertaBedelia1DesdePasillo,
@@ -84,7 +73,8 @@ object salaPasillo inherits Sala {
     taraguiPiso,
     hanz,
     conserje
-  ]
+    ]
+  ].flatten()
 
   override method configurar() {
     game.title("Pasillo")

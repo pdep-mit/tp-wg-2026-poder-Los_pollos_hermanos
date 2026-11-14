@@ -36,28 +36,17 @@ object salaPasilloBedelia inherits Sala {
   override method ancho() = 8
   override method alto() = 9
   override method objetos() = [
-    new ParedFrente(position = game.at(1, 8)),
-    new ParedFrente(position = game.at(2, 8)),
-    new ParedFrente(position = game.at(3, 8)),
-    new ParedFrente(position = game.at(4, 8)),
-    new PuertaDecor(position = game.at(5, 8)),
-    new ParedFrente(position = game.at(6, 8)),
-    new ParedIzq(position = game.at(0, 0)),
-    new ParedIzq(position = game.at(0, 1)),
-    new ParedIzq(position = game.at(0, 2)),
-    new ParedIzq(position = game.at(0, 3)),
-    new ParedIzq(position = game.at(0, 4)),
-    new ParedIzq(position = game.at(0, 7)),
-    new ParedIzq(position = game.at(0, 8)),
-    new ParedDer(position = game.at(7, 0)),
-    new ParedDer(position = game.at(7, 1)),
-    new ParedBedelia(position = game.at(7, 2)),
-    new ParedDer(position = game.at(7, 3)),
-    new ParedBedelia(position = game.at(7, 4)),
-    new ParedDer(position = game.at(7, 5)),
-    new ParedDer(position = game.at(7, 6)),
-    new ParedDer(position = game.at(7, 7)),
-    new ParedDer(position = game.at(7, 8)),
+    self.paredesFrente(1, 4),
+    [new PuertaDecor(position = game.at(5, 8))],
+    self.paredesFrente(6, 6),
+    self.paredesIzq(0, 4),
+    self.paredesIzq(7, 8),
+    self.paredesDer(0, 1),
+    [new ParedBedelia(position = game.at(7, 2))],
+    self.paredesDer(3, 3),
+    [new ParedBedelia(position = game.at(7, 4))],
+    self.paredesDer(5, 8),
+    [
     bedelia,
     puertaPasillo1DesdeBedelia,
     puertaPasillo2DesdeBedelia,
@@ -66,7 +55,8 @@ object salaPasilloBedelia inherits Sala {
     new Aguita(position = game.at(5, 7)),
     new CartelAgua(position = game.at(5, 7)),
     new FlechaDer(position = game.at(6, 3))
-  ]
+    ]
+  ].flatten()
 
   override method configurar() {
     game.title("Pasillo Bedelia")
