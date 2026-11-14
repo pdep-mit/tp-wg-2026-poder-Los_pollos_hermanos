@@ -6,18 +6,23 @@ import aula.*
 import pasillo.*
 import labo.*
 import buffet.* 
-
 program Juego {
-  pantallaInicio.iniciar()
+	game.cellSize(64)
+	game.width(18)
+	game.height(10)
+	salaEntrada.cargar()
+	portada.mostrar()
+	game.start()
 }
+
 program Entrada {
 	game.cellSize(64)
 	game.width(18)
 	game.height(10)
 	salaEntrada.cargar()
+	portada.mostrar()
 	game.start()
 }
-
 program Pasillo {
 	game.cellSize(64)
 	game.width(18)
