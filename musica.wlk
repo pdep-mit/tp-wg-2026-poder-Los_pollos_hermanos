@@ -8,6 +8,7 @@ object musica {
       sonido = game.sound("sonido/angry-birds-musica.mp3")
       sonido.shouldLoop(true)
       sonido.play()
+      
     }
   }
   method pausar() { if (sonido != null) sonido.pause() }

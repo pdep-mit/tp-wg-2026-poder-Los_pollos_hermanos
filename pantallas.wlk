@@ -29,7 +29,9 @@ object pantallaInicio {
     game.cellSize(64)
     game.width(18)
     game.height(10)
-    
+    // El piso hay que definirlo ANTES de game.start(): despues ya no se actualiza
+    game.ground("x64sprites/mapa/baldosa.png")
+
     // Mostramos la portada
     game.addVisual(imagenPortada)
     
@@ -45,7 +47,8 @@ object pantallaInicio {
   method comenzar() {
     game.clear()          // Limpia la imagen de portada y los clicks
     musica.iniciar()
-    pantallaContexto.mostrar()
+    // TODO: volver a usar pantallaContexto.mostrar() cuando se suba assets/mapa/aprobame-rasta-contexto.png
+    salaEntrada.cargar()
   }
 }
 
