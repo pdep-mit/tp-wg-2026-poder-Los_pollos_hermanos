@@ -1,0 +1,56 @@
+import wollok.game.*
+import personajes.*
+import movimientos.*
+import habitaciones.*
+import panelMochila.*
+import objetos.*
+
+describe "Panel de la mochila y movimiento" {
+
+  method initialize() {
+    tablero.configurar(9, 9)
+  }
+
+  test "La B abre y cierra el panel de la mochila" {
+    panelMochila.alternar()
+    assert.that(panelMochila.estaAbierto())
+
+    panelMochila.alternar()
+    assert.notThat(panelMochila.estaAbierto())
+  }
+
+  test "Al cerrar el panel se sacan todos sus visuales" {
+    const visualesAntes = game.allVisuals().size()
+    panelMochila.abrir()
+    assert.that(game.allVisuals().size() > visualesAntes)
+
+    panelMochila.cerrar()
+    assert.equals(visualesAntes, game.allVisuals().size())
+  }
+
+  test "Con la mochila abierta los controles del juego no hacen nada" {
+    var acciones = 0
+    panelMochila.abrir()
+    controles.siEstaJugando({ acciones += 1 })
+    assert.equals(0, acciones)
+
+    panelMochila.cerrar()
+    controles.siEstaJugando({ acciones += 1 })
+    assert.equals(1, acciones)
+  }
+
+  test "Wachington no atraviesa objetos sólidos ni sale de la sala" {
+    game.addVisual(new ObjetoDecorativoSolido(position = game.at(3, 2), image = "x64sprites/mapa/mesa-medio.png"))
+    wachington.position(game.at(2, 2))
+
+    movimiento.derecha(wachington)
+    assert.equals(game.at(2, 2), wachington.position())
+
+    wachington.position(game.at(0, 0))
+    movimiento.izquierda(wachington)
+    assert.equals(game.at(0, 0), wachington.position())
+
+    movimiento.arriba(wachington)
+    assert.equals(game.at(0, 1), wachington.position())
+  }
+}

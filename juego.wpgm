@@ -1,31 +1,59 @@
 import wollok.game.*
-import personajes.*
-import movimientos.*
-
-program AprobameRasta {
-	game.title("Grupo: Los Pollos Hermanos | Aprobame, Rasta")
-	game.height(10)
-	game.width(10)
+import pantallas.*
+import entrada.*
+import pasilloBedelia.*
+import aula.*
+import pasillo.*
+import labo.*
+import buffet.* 
+program Juego {
+	// pantallaInicio configura tamaño, piso y hace el game.start()
+	pantallaInicio.iniciar()
+}
+// entradas para hacer pruebas
+program Entrada {
 	game.cellSize(64)
-	game.ground("x64sprites/mapa/baldosa.png")
-	game.addVisual(alumno) //movemos el alumno de acuerdo a las flechas
-	game.addVisual(rasta)
-	game.addVisual(companieroClase)
-	game.addVisual(new Mesa(position = game.at(1, 8)))
-	game.addVisual(new Mesa(position = game.at(4, 8)))
-	game.addVisual(new Mesa(position = game.at(7, 8)))
-	game.addVisual(computadora)
-	game.addVisual(new ComputadoraDecorativa(position = game.at(4, 8)))
-	game.addVisual(new ComputadoraDecorativa(position = game.at(7, 8)))
+	game.width(18)
+	game.height(10)
+	salaEntrada.cargar()
+	game.start()
+}
+program Pasillo {
+	game.cellSize(64)
+	game.width(18)
+	game.height(10)
+	salaPasillo.cargar()
+	game.start()
+}
 
+program Aula {
+	game.cellSize(64)
+	game.width(18)
+	game.height(10)
+	salaAula.cargar()
+	game.start()
+}
 
+program Labo {
+	game.cellSize(64)
+	game.width(18)
+	game.height(10)
+	salaLabo.cargar()
+	game.start()
+}
 
-	// Movilidad 
-	keyboard.up().onPressDo({ movimiento.arriba(alumno) })
-  	keyboard.down().onPressDo({ movimiento.abajo(alumno) })
-  	keyboard.left().onPressDo({ movimiento.izquierda(alumno) })
- 	keyboard.right().onPressDo({ movimiento.derecha(alumno) })
-	keyboard.e().onPressDo({ alumno.interactuar() })
+program PasilloBedelia {
+	game.cellSize(64)
+	game.width(18)
+	game.height(10)
+	salaPasilloBedelia.cargar()
+	game.start()
+}
 
+program Buffet {
+	game.cellSize(64)
+	game.width(18)
+	game.height(10)
+	salaBuffet.cargar()
 	game.start()
 }

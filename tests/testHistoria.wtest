@@ -1,0 +1,71 @@
+import wollok.game.*
+import personajes.*
+import objetos.*
+import mochila.*
+import pasillo.*
+import historiaEntrada.*
+import historiaAula.*
+import historiaPasillo.*
+import historiaLabo.*
+
+describe "Avance de la historia" {
+
+  method papeles() = objetivoLimpiarEntrada.papeles()
+
+  test "Estado 0: al revisar el ascensor el objetivo pasa a arreglarlo" {
+    wachington.objetivo(objetivoLlegarAlAula)
+    wachington.objetivo().interactuarConAscensor()
+
+    assert.equals(objetivoArreglarAscensor, wachington.objetivo())
+  }
+
+  test "Estado 3: recién al juntar los 5 papeles el objetivo pasa a tirarlos" {
+    wachington.objetivo(objetivoLimpiarEntrada)
+    self.papeles().forEach({ papel => game.addVisual(papel) })
+
+    self.papeles().take(4).forEach({ papel => wachington.objetivo().interactuarConPapel(papel) })
+    assert.equals(objetivoLimpiarEntrada, wachington.objetivo())
+
+    wachington.objetivo().interactuarConPapel(self.papeles().last())
+    assert.equals(objetivoTirarBasuraAlTacho, wachington.objetivo())
+  }
+
+  test "Estado 4: el tacho vacía los papeles de la mochila" {
+    self.papeles().forEach({ papel => mochila.guardar(papel) })
+    wachington.objetivo(objetivoTirarBasuraAlTacho)
+    wachington.objetivo().interactuarConTacho()
+
+    assert.that(mochila.estaVacia())
+    assert.equals(objetivoBuscarLlave, wachington.objetivo())
+  }
+
+  test "Estado 10: hay que hablar con los tres chicos, repetir uno no cuenta" {
+    wachington.objetivo(objetivoConseguirRespuestas)
+    wachington.objetivo().interactuarConAgus()
+    wachington.objetivo().interactuarConAgus()
+    wachington.objetivo().interactuarConDenise()
+    assert.equals(objetivoConseguirRespuestas, wachington.objetivo())
+
+    wachington.objetivo().interactuarConJulian()
+    assert.equals(objetivoResponderCuestionario, wachington.objetivo())
+  }
+
+  test "Estado 30: Hanz combina yerba, termo lleno y mate en un mate armado" {
+    [yerba, termoLleno, mate].forEach({ objeto => mochila.guardar(objeto) })
+    wachington.objetivo(objetivoArmarMate)
+    wachington.objetivo().interactuarConHanz()
+
+    assert.equals([mateArmado], mochila.objetos())
+    assert.equals(objetivoEntregarMate, wachington.objetivo())
+  }
+
+  test "Una puerta a una sala no permitida no deja pasar ni cambia el objetivo" {
+    game.addVisual(wachington)
+    wachington.position(game.at(12, 4))
+    wachington.objetivo(objetivoIrAlAula)
+    puertaLaboDesdePasillo.interactuar()
+
+    assert.equals(game.at(12, 4), wachington.position())
+    assert.equals(objetivoIrAlAula, wachington.objetivo())
+  }
+}
