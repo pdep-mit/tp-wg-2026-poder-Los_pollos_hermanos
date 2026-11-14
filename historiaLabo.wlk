@@ -6,6 +6,7 @@ import historiaEntrada.*
 import historiaAula.*
 import labo.*
 import objetivos.*
+import pantallas.*
 
 // Estado 13
 object objetivoResolverTp inherits Objetivo {
@@ -80,7 +81,7 @@ object objetivoNotificarRasta inherits ObjetivoTpEnCurso {
   override method interactuarConRasta() {
     game.say(wachington, "¡Ya está! ¡Aprobame RASTA!")
     wachington.objetivo(objetivoJuegoTerminado)
-    game.schedule(3000, { game.stop() })   // provisorio, después pueden poner una pantalla final
+    game.schedule(3000, { pantallaFinal.mostrar() })
   }
 }
 
