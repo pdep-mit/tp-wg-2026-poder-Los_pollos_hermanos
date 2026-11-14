@@ -37,6 +37,48 @@ package "double dispatch" {
   }
 }
 
+package "actualizacion de estados" {
+  class wachington <<(O,#FFAA55) object>> {
+    objetivo
+    objetivo(nuevoObjetivo)
+  }
+
+  class objetivoSubirAscensor <<(O,#FFAA55) object>> {
+    interactuarConAscensor()
+  }
+
+  class objetivoIrAlAula <<(O,#FFAA55) object>> {
+    alEntrarAlAula()
+  }
+
+  class objetivoPonerseAlDia <<(O,#FFAA55) object>> {
+    interactuarConMatos()
+  }
+}
+
+package "mochila y panel" {
+  class mochila <<(O,#FFAA55) object>> {
+    objetos : List
+    recogidos : Set
+    objetos()
+    fueRecogido(objeto)
+    combinar(ingredientes, resultado)
+    cambiar(viejo, nuevo)
+  }
+
+  class panelMochila <<(O,#FFAA55) object>> {
+    pestania
+    mostrar(nuevaPestania)
+    dibujar()
+    escribir(x, y, texto)
+  }
+
+  class "pestaniaMision / pestaniaObjetos" as pestanias <<(O,#FFAA55) object>> {
+    titulo()
+    dibujarEn(panel)
+  }
+}
+
 Npc <|-- npcs
 Objetivo <|-- objetivos
 Sala <|-- salas
@@ -44,5 +86,17 @@ Sala <|-- salas
 npcs ..> Objetivo : interactuarConPortero()\ninteractuarConHanz()
 Objetivo ..> Sala : recibir(self)
 salas ..> Objetivo : alEntrarAlAula()\nalEntrarAlLabo()
+
+Objetivo <|-- objetivoSubirAscensor
+Objetivo <|-- objetivoIrAlAula
+Objetivo <|-- objetivoPonerseAlDia
+
+wachington --> Objetivo : objetivo
+objetivoSubirAscensor ..> objetivoIrAlAula : wachington.objetivo(...)
+objetivoIrAlAula ..> objetivoPonerseAlDia : wachington.objetivo(...)
+
+panelMochila --> pestanias : pestania.dibujarEn(self)
+pestanias ..> panelMochila : escribir(x, y, texto)
+pestanias ..> mochila : objetos()
 
 @enduml
