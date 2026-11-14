@@ -3,6 +3,7 @@ import wollok.game.*
 import movimientos.*
 import mochila.*
 import panelMochila.*
+import musica.*
 
 class Sala {
     method fondo()
@@ -63,6 +64,8 @@ object controles {
     keyboard.b().onPressDo({ panelMochila.alternar() })
     keyboard.num1().onPressDo({ panelMochila.mostrar(pestaniaMision) })
     keyboard.num2().onPressDo({ panelMochila.mostrar(pestaniaObjetos) })
+    keyboard.m().onPressDo({ musica.pausar() })
+    keyboard.n().onPressDo({ musica.reanudar() })
   }
 
   // Con la mochila abierta Wachington no se mueve ni interactua

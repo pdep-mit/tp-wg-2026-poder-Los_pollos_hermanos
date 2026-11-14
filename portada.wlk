@@ -1,6 +1,7 @@
 import wollok.game.*
 import entrada.*
 import habitaciones.*
+import musica.*
 
 object imagenPortada {
   var property position = game.at(0, 0)
@@ -29,6 +30,7 @@ object pantallaInicio {
 
   method comenzar() {
     game.clear()          // Limpia la imagen de portada y los clicks
+    musica.iniciar()
     salaEntrada.cargar()  // CARGA LA ENTRADA CON TODA SU HISTORIA INTACTA
   }
 }
