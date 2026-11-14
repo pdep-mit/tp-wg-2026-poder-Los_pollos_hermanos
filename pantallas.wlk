@@ -47,8 +47,7 @@ object pantallaInicio {
   method comenzar() {
     game.clear()          // Limpia la imagen de portada y los clicks
     musica.iniciar()
-    // TODO: volver a usar pantallaContexto.mostrar() cuando se suba assets/mapa/aprobame-rasta-contexto.png
-    salaEntrada.cargar()
+    pantallaContexto.mostrar()
   }
 }
 

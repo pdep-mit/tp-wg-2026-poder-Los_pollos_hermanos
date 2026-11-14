@@ -7,20 +7,15 @@ import pasillo.*
 import labo.*
 import buffet.* 
 program Juego {
-	game.cellSize(64)
-	game.width(18)
-	game.height(10)
-	salaEntrada.cargar()
-	portada.mostrar()
-	game.start()
+	// pantallaInicio configura tamaño, piso y hace el game.start()
+	pantallaInicio.iniciar()
 }
-
+// entradas para hacer pruebas
 program Entrada {
 	game.cellSize(64)
 	game.width(18)
 	game.height(10)
 	salaEntrada.cargar()
-	portada.mostrar()
 	game.start()
 }
 program Pasillo {
