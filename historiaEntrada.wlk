@@ -13,7 +13,7 @@ import historiaPasillo.*
 object objetivoLlegarAlAula inherits Objetivo {
   override method descripcion() = "LLEGAR AL AULA"
   override method interactuarConTecnico() { 
-    dialogo.mostrar(tecnico, "¿Necesitas algo?")
+    dialogo.decir(tecnico, "¿Necesitas algo?", "sonido/tecnico-4.mp3")
   }
   override method interactuarConAscensor() {
     dialogo.mostrar(ascensor, "Dice FUERA DE SERVICIO")
@@ -28,7 +28,7 @@ object objetivoArreglarAscensor inherits Objetivo{
       dialogo.decir(portero, "¿Está roto el ascensor? Pedile ayuda al técnico.", "sonido/portero-7.mp3")
   }
   override method interactuarConTecnico() {
-    dialogo.mostrar(tecnico, "¿Necesitas ayuda para arreglar el ascensor? Para eso necesito una llave inglesa")
+    dialogo.decir(tecnico, "¿Necesitas ayuda para arreglar el ascensor? Para eso necesito una llave inglesa", "sonido/tecnico-3.mp3")
     wachington.objetivo(objetivoConseguirLlave)
   }
 }
@@ -98,7 +98,7 @@ object objetivoEntregarLlave inherits Objetivo{
     dialogo.decir(portero, "¿Qué clase de apellido es Wachington...?", "sonido/portero-1.mp3")
   }
   override method interactuarConTecnico() {
-    dialogo.mostrar(tecnico, "Joya, enseguida lo arreglo")
+    dialogo.decir(tecnico, "Joya, enseguida lo arreglo", "sonido/tecnico-2.mp3")
     wachington.sacar(llaveInglesa)
     wachington.objetivo(objetivoSubirAscensor)
   }
@@ -113,7 +113,7 @@ object objetivoSubirAscensor inherits Objetivo{
   }
 
   override method interactuarConTecnico() {
-    dialogo.mostrar(tecnico, "Ahi lo arregle, ya podés subir al 4to piso.")
+    dialogo.decir(tecnico, "Ahi lo arregle, ya podés subir al 4to piso.", "sonido/tecnico-1.mp3")
   }
   override method interactuarConAscensor() {
     wachington.objetivo(objetivoIrAlAula)

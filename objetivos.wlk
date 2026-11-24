@@ -7,7 +7,7 @@ class Objetivo {
   method descripcion()
 
   method interactuarConPortero() { dialogo.decir(portero, "Bienvenido a la facultad", "sonido/portero-6.mp3") }
-  method interactuarConTecnico() { dialogo.mostrar(tecnico, "Hasta que no me consigas la llave, no puedo hacer nada") }
+  method interactuarConTecnico() { dialogo.decir(tecnico, "Hasta que no me consigas la llave, no puedo hacer nada", "sonido/tecnico-5.mp3") }
   method interactuarConAscensor() { dialogo.mostrar(wachington, "Soy de sistemas, no de mecánica...") }
   method interactuarConPapel(papel) { dialogo.mostrar(wachington, "Que gente sucia tira la basura en cualquier lado") }
   method interactuarConTacho() { dialogo.mostrar(wachington, "Un tacho común y corriente") }
