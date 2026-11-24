@@ -11,12 +11,13 @@ object wachington {
   method esSolido() = true
   var property objetivo = objetivoLlegarAlAula
 
-
   method estaAlLadoDe(otro) = self.position().distance(otro.position()) == 1 // Chequea si esta al lado de otro personaje. 
   // Uno porque asi da el calculo que hace distance si esta al lado (no sirve si esta en diagonal)
 
+  method estaEncimaDe(otro) = self.position() == otro.position()
+
   method interactuar() {
-      const cercanos = game.allVisuals().filter({ obj => self.estaAlLadoDe(obj)})
+      const cercanos = game.allVisuals().filter({ obj => obj != self && (self.estaAlLadoDe(obj) || self.estaEncimaDe(obj))})
       if(cercanos.isEmpty()){
         game.say(self, "Acá no hay nadie con quien hablar...")
       }

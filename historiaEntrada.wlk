@@ -27,7 +27,7 @@ object objetivoArreglarAscensor inherits Objetivo{
       game.say(portero, "¿Está roto el ascensor? Pedile ayuda al técnico.")
   }
   override method interactuarConTecnico() {
-    game.say(tecnico, "¿Necesitas ayuda para que arreglar el ascensor? Para eso necesito una llave inglesa")
+    game.say(tecnico, "¿Necesitas ayuda para arreglar el ascensor? Para eso necesito una llave inglesa")
     wachington.objetivo(objetivoConseguirLlave)
   }
 }
@@ -120,5 +120,3 @@ object objetivoSubirAscensor inherits Objetivo{
   }
 
 }
-
-

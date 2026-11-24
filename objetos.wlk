@@ -60,7 +60,9 @@ class PapelDelPiso inherits Interactuable {
   const imagen
   override method image() = imagen
   override method esSolido() = false
-  override method interactuar() { wachington.objetivo().interactuarConPapel(self) }
+  override method interactuar() { 
+    if (wachington.estaEncimaDe(self)) { wachington.objetivo().interactuarConPapel(self) }
+  }
   method nombre() = "Papel"
 }
 
