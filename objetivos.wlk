@@ -29,18 +29,18 @@ class Objetivo {
     }
   }
 
-  method interactuarConHanz() { dialogo.mostrar(hanz, "¿Ya cursaste operativos? La que te espera…") }
+  method interactuarConHanz() { dialogo.decir(hanz, "¿Ya cursaste operativos? La que te espera…", "sonido/hanz-3.mp3") }
   method interactuarConTaragui() { dialogo.mostrar(wachington, "No encuentro una forma de que esto me sea util") }
 
   method interactuarConMatos() { dialogo.decir(matos, "¿Sabías que algunos de los personajes de este juego son reales?", "sonido/matos1.mp3")}
-  method interactuarConAgus() { dialogo.mostrar(agusSilla, "¡El TP de hoy es una papa!") }
+  method interactuarConAgus() { dialogo.decir(agusSilla, "¡El TP de hoy es una papa!", "sonido/agus-1.mp3") }
   method interactuarConDenise() { dialogo.mostrar(deniseSilla, "¡El TP de hoy es super estresante!") }
-  method interactuarConJulian() { dialogo.mostrar(julianSilla, "¡¿Había TP hoy?!") }
+  method interactuarConJulian() { dialogo.decir(julianSilla, "¡¿Había TP hoy?!", "sonido/julian-3.mp3") }
   method interactuarConMate() { dialogo.mostrar(wachington, "¿Un mate? ¿Para qué lo quiero?") }
   method interactuarConLaptop() { dialogo.mostrar(wachington, "...") }
 
   method interactuarConRasta() { dialogo.decir(rasta, "¿Te parece llegar a esta hora?", "sonido/rasta1.mp3")}
-  method interactuarConMati() { dialogo.mostrar(mati, "¿Sabes hacer mate al menos?") }
+  method interactuarConMati() { dialogo.decir(mati, "¿Sabes hacer mate al menos?", "sonido/mati-6.mp3") }
   method interactuarConPcLabo() { dialogo.mostrar(wachington, "Si el Rasta no me habilita el TP, no voy a poder hacerlo…") }
 
   method interactuarConBedelia() { dialogo.mostrar(bedelia, "...") }
