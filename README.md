@@ -32,7 +32,7 @@ Cumplir con todos los objetivos establecidos a través del tiempo, recorriendo l
 ↑: Moverse hacia arriba
 ↓: Moverse hacia abajo
 
-E: Dialogar con personajes / Interactuar con objetos o entorno
+E: Dialogar con personajes / Interactuar con objetos o entorno; presionar E otra vez para cerrar el diálogo
 B: Acceder a la mochila
   - 1: Visualizar la misión activa
   - 2: Visualizar los objetos actualmente guardados en la mochila

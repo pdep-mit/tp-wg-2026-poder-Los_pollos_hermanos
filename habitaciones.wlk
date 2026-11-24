@@ -4,6 +4,7 @@ import movimientos.*
 import mochila.*
 import panelMochila.*
 import musica.*
+import dialogos.*
 
 class Sala {
     method fondo()
@@ -60,23 +61,33 @@ object controles {
     keyboard.down().onPressDo({ self.siEstaJugando({ movimiento.abajo(wachington) }) })
     keyboard.left().onPressDo({ self.siEstaJugando({ movimiento.izquierda(wachington) }) })
     keyboard.right().onPressDo({ self.siEstaJugando({ movimiento.derecha(wachington) }) })
-    keyboard.e().onPressDo({ self.siEstaJugando({ wachington.interactuar() }) })
-    keyboard.b().onPressDo({ panelMochila.alternar() })
-    keyboard.num1().onPressDo({ panelMochila.mostrar(pestaniaMision) })
-    keyboard.num2().onPressDo({ panelMochila.mostrar(pestaniaObjetos) })
+    keyboard.e().onPressDo({
+      if (dialogo.estaVisible()) dialogo.ocultar()
+      else self.siEstaJugando({ wachington.interactuar() })
+    })
+    keyboard.b().onPressDo({
+      if (!dialogo.estaVisible()) panelMochila.alternar()
+    })
+    keyboard.num1().onPressDo({
+      if (!dialogo.estaVisible()) panelMochila.mostrar(pestaniaMision)
+    })
+    keyboard.num2().onPressDo({
+      if (!dialogo.estaVisible()) panelMochila.mostrar(pestaniaObjetos)
+    })
     keyboard.m().onPressDo({ musica.pausar() })
     keyboard.n().onPressDo({ musica.reanudar() })
   }
 
   // Con la mochila abierta Wachington no se mueve ni interactua
   method siEstaJugando(accion) {
-    if (!panelMochila.estaAbierto()) accion.apply()
+    if (!panelMochila.estaAbierto() && !dialogo.estaVisible()) accion.apply()
   }
 }
 
 object habitacionActual {
     var property salaActual = null
     method irA(sala, posicionLlegada) {
+        dialogo.ocultar()
         game.clear()
         sala.cargar()
         wachington.position(posicionLlegada)

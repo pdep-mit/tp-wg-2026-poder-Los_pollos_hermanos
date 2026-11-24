@@ -1,4 +1,5 @@
 import wollok.game.*
+import dialogos.*
 import personajes.*
 import habitaciones.*
 
@@ -26,7 +27,7 @@ class Interactuable {
 
   method reaccionarA(objetivo){}
   method hablar(mensaje){
-    game.say(self, mensaje)
+    dialogo.mostrar(self, mensaje)
   }
 }
 
@@ -42,7 +43,7 @@ class AccesoBloqueado inherits Interactuable {
   var property mensaje = "No tengo tiempo ¡Debo llegar a la clase!"
 
   override method image() = imagen
-  override method interactuar() { game.say(wachington, mensaje) }
+  override method interactuar() { dialogo.mostrar(wachington, mensaje) }
 }
 
 class EscaleraEntrada inherits AccesoBloqueado {

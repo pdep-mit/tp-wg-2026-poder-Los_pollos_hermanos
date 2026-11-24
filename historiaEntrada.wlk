@@ -1,4 +1,5 @@
 import wollok.game.*
+import dialogos.*
 import personajes.*
 import entrada.*
 import objetos.*
@@ -12,10 +13,10 @@ import historiaPasillo.*
 object objetivoLlegarAlAula inherits Objetivo {
   override method descripcion() = "LLEGAR AL AULA"
   override method interactuarConTecnico() { 
-    game.say(tecnico, "¿Necesitas algo?") 
+    dialogo.mostrar(tecnico, "¿Necesitas algo?")
   }
   override method interactuarConAscensor() {
-    game.say(ascensor, "Dice FUERA DE SERVICIO")
+    dialogo.mostrar(ascensor, "Dice FUERA DE SERVICIO")
     wachington.objetivo(objetivoArreglarAscensor)
   }
 }
@@ -24,10 +25,10 @@ object objetivoLlegarAlAula inherits Objetivo {
 object objetivoArreglarAscensor inherits Objetivo{
   override method descripcion()="ARREGLAR EL ASCENSOR"
   override method interactuarConPortero(){
-      game.say(portero, "¿Está roto el ascensor? Pedile ayuda al técnico.")
+      dialogo.mostrar(portero, "¿Está roto el ascensor? Pedile ayuda al técnico.")
   }
   override method interactuarConTecnico() {
-    game.say(tecnico, "¿Necesitas ayuda para arreglar el ascensor? Para eso necesito una llave inglesa")
+    dialogo.mostrar(tecnico, "¿Necesitas ayuda para arreglar el ascensor? Para eso necesito una llave inglesa")
     wachington.objetivo(objetivoConseguirLlave)
   }
 }
@@ -36,7 +37,7 @@ object objetivoArreglarAscensor inherits Objetivo{
 object objetivoConseguirLlave inherits Objetivo {
   override method descripcion() = "CONSEGUIR UNA LLAVE INGLESA"
   override method interactuarConPortero() {
-    game.say(portero, "Ah, sí… La llave inglesa… Ayudame a limpiar un poco y te la doy")
+    dialogo.mostrar(portero, "Ah, sí… La llave inglesa… Ayudame a limpiar un poco y te la doy")
     wachington.objetivo(objetivoLimpiarEntrada)
   }
 }
@@ -49,16 +50,16 @@ object objetivoLimpiarEntrada inherits Objetivo{
   method juntoTodosLosPapeles() = mochila.tieneTodos(self.papeles())
 
   override method interactuarConPortero() {
-    game.say(portero, "Juntame los 5 papeles del piso y te doy la llave")
+    dialogo.mostrar(portero, "Juntame los 5 papeles del piso y te doy la llave")
   }
 
   override method interactuarConTacho() {
-    game.say(wachington, "Acá puedo dejar los papeles cuando termine de juntarlos")
+    dialogo.mostrar(wachington, "Acá puedo dejar los papeles cuando termine de juntarlos")
   }
   override method interactuarConPapel(papel) {
     wachington.recoger(papel)
     if (self.juntoTodosLosPapeles()) {
-      game.say(wachington, "Listooo, ahora a tirarlos al tacho")
+      dialogo.mostrar(wachington, "Listooo, ahora a tirarlos al tacho")
       wachington.objetivo(objetivoTirarBasuraAlTacho)
     } 
   }
@@ -68,12 +69,12 @@ object objetivoLimpiarEntrada inherits Objetivo{
 object objetivoTirarBasuraAlTacho inherits Objetivo{
    override method descripcion() = "TIRAR LOS PAPELES"
   override method interactuarConPortero() {
-    game.say(portero, "Tiralos al tacho y te doy la llave...")
+    dialogo.mostrar(portero, "Tiralos al tacho y te doy la llave...")
   }
 
   override method interactuarConTacho() {
     mochila.sacarTodos(papelesDelPiso.todos())
-    game.say(wachington, "Ya esta, voy a pedirle la llave al portero")
+    dialogo.mostrar(wachington, "Ya esta, voy a pedirle la llave al portero")
     wachington.objetivo(objetivoBuscarLlave)
   }
 }
@@ -84,7 +85,7 @@ object objetivoBuscarLlave inherits Objetivo{
   override method descripcion()= "BUSCAR LA LLAVE INGLESA"
 
     override method interactuarConPortero() {
-    game.say(portero, "Como soy un hombre de palabra, tomá, aca tenes la llave inglesa")
+    dialogo.mostrar(portero, "Como soy un hombre de palabra, tomá, aca tenes la llave inglesa")
     wachington.guardar(llaveInglesa)
     wachington.objetivo(objetivoEntregarLlave)
   }
@@ -94,10 +95,10 @@ object objetivoBuscarLlave inherits Objetivo{
 object objetivoEntregarLlave inherits Objetivo{
  override method descripcion() = "ENTREGAR LA LLAVE INGLESA"
   override method interactuarConPortero() {
-    game.say(portero, "¿Qué clase de apellido es Wachington...?")
+    dialogo.mostrar(portero, "¿Qué clase de apellido es Wachington...?")
   }
   override method interactuarConTecnico() {
-    game.say(tecnico, "Joya, enseguida lo arreglo")
+    dialogo.mostrar(tecnico, "Joya, enseguida lo arreglo")
     wachington.sacar(llaveInglesa)
     wachington.objetivo(objetivoSubirAscensor)
   }
@@ -108,11 +109,11 @@ object objetivoSubirAscensor inherits Objetivo{
   override method descripcion() = "SUBIR POR EL ASCENSOR"
 
   override method interactuarConPortero() {
-    game.say(portero, "¿Qué clase de apellido es Wachington...?")
+    dialogo.mostrar(portero, "¿Qué clase de apellido es Wachington...?")
   }
 
   override method interactuarConTecnico() {
-    game.say(tecnico, "Ahi lo arregle, ya podés subir al 4to piso.")
+    dialogo.mostrar(tecnico, "Ahi lo arregle, ya podés subir al 4to piso.")
   }
   override method interactuarConAscensor() {
     wachington.objetivo(objetivoIrAlAula)

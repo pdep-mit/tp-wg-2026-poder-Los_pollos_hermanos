@@ -5,7 +5,7 @@ object musica {
 
   method iniciar() {
     if (sonido == null) {
-      sonido = game.sound("sonido/angry-birds-musica.mp3")
+      sonido = game.sound("sonido/musica-fondo.mp3")
       sonido.shouldLoop(true)
       sonido.play()
       

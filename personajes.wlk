@@ -1,4 +1,5 @@
 import wollok.game.*
+import dialogos.*
 import objetos.*
 import historiaEntrada.*
 import mochila.*
@@ -19,7 +20,7 @@ object wachington {
   method interactuar() {
       const cercanos = game.allVisuals().filter({ obj => obj != self && (self.estaAlLadoDe(obj) || self.estaEncimaDe(obj))})
       if(cercanos.isEmpty()){
-        game.say(self, "Acá no hay nadie con quien hablar...")
+        dialogo.mostrar(self, "Acá no hay nadie con quien hablar...")
       }
       else{
       cercanos.forEach({obj => obj.interactuar()})

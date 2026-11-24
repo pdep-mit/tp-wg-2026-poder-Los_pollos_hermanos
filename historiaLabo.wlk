@@ -15,7 +15,7 @@ object objetivoResolverTp inherits Objetivo {
   override method mensajeBloqueo() = "¡Tengo que resolver el TP primero!"
 
   override method interactuarConMati() {
-    game.say(mati, "Uhh… Estas re tarde, se va a enojar el Rasta ¡Un mate lo calmaría!")
+    dialogo.mostrar(mati, "Uhh… Estas re tarde, se va a enojar el Rasta ¡Un mate lo calmaría!")
     wachington.objetivo(objetivoEncontrarMate)
   }
 }
@@ -26,8 +26,8 @@ object objetivoEntregarMate inherits Objetivo {
   override method salasPermitidas() = [salaLabo]
   override method mensajeBloqueo() = "¡Tengo que llevarle el mate al Rasta!"
 
-  override method interactuarConHanz() { game.say(hanz, "Suerte con el TP, negro") }
-  override method interactuarConMati() { game.say(mati, "¡Llevale el mate al Rasta!") }
+  override method interactuarConHanz() { dialogo.mostrar(hanz, "Suerte con el TP, negro") }
+  override method interactuarConMati() { dialogo.mostrar(mati, "¡Llevale el mate al Rasta!") }
   override method interactuarConRasta() {
     dialogo.decir(rasta, "Hmmm… Te la dejo pasar solo porque no está lavado… Tomá la clave de acceso…", "sonido/rasta2.mp3")
     mochila.cambiar(mateArmado, claveDeAcceso)
@@ -45,9 +45,9 @@ class ObjetivoTpEnCurso inherits Objetivo {
 object objetivoHacerTp inherits ObjetivoTpEnCurso {
   override method descripcion() = "HACER EL TP"
   override method interactuarConRasta() { dialogo.decir(rasta, "Tenés habilitado el TP ¡Y que sea rápido!", "sonido/rasta3.mp3") }
-  override method interactuarConMati() { game.say(mati, "Menos mal que se calmó… Ya estaba hablando de boxear gente de nuevo") }
+  override method interactuarConMati() { dialogo.mostrar(mati, "Menos mal que se calmó… Ya estaba hablando de boxear gente de nuevo") }
   override method interactuarConPcLabo() {
-    game.say(wachington, "No tengo ni idea de como encarar esto…")
+    dialogo.mostrar(wachington, "No tengo ni idea de como encarar esto…")
     wachington.objetivo(objetivoBuscarAyuda)
   }
 }
@@ -55,9 +55,9 @@ object objetivoHacerTp inherits ObjetivoTpEnCurso {
 // Estado 33
 object objetivoBuscarAyuda inherits ObjetivoTpEnCurso {
   override method descripcion() = "BUSCAR AYUDA"
-  override method interactuarConPcLabo() { game.say(wachington, "Mati debe saber que hacer…") }
+  override method interactuarConPcLabo() { dialogo.mostrar(wachington, "Mati debe saber que hacer…") }
   override method interactuarConMati() {
-    game.say(mati, "En 'wollok.org' está toda la guía de lenguaje… ¡Ayudate con eso!")
+    dialogo.mostrar(mati, "En 'wollok.org' está toda la guía de lenguaje… ¡Ayudate con eso!")
     wachington.objetivo(objetivoRealizarTp)
   }
 }
@@ -65,9 +65,9 @@ object objetivoBuscarAyuda inherits ObjetivoTpEnCurso {
 // Estado 34
 object objetivoRealizarTp inherits ObjetivoTpEnCurso {
   override method descripcion() = "REALIZAR TP"
-  override method interactuarConMati() { game.say(mati, "¡Apurate!") }
+  override method interactuarConMati() { dialogo.mostrar(mati, "¡Apurate!") }
   override method interactuarConPcLabo() {
-    game.say(wachington, "¡Ahora sí! ¡Justo a tiempo!")
+    dialogo.mostrar(wachington, "¡Ahora sí! ¡Justo a tiempo!")
     wachington.objetivo(objetivoNotificarRasta)
   }
 }
@@ -77,10 +77,10 @@ object objetivoNotificarRasta inherits ObjetivoTpEnCurso {
   override method descripcion() = "NOTIFICAR AL RASTA"
   override method mensajeBloqueo() = "Tengo que avisarle al Rasta que terminé"
 
-  override method interactuarConMati() { game.say(mati, "¿Terminaste?") }
-  override method interactuarConPcLabo() { game.say(wachington, "...") }
+  override method interactuarConMati() { dialogo.mostrar(mati, "¿Terminaste?") }
+  override method interactuarConPcLabo() { dialogo.mostrar(wachington, "...") }
   override method interactuarConRasta() {
-    game.say(wachington, "¡Ya está! ¡Aprobame RASTA!")
+    dialogo.mostrar(wachington, "¡Ya está! ¡Aprobame RASTA!")
     wachington.objetivo(objetivoJuegoTerminado)
     game.schedule(3000, { pantallaFinal.mostrar() })
   }
