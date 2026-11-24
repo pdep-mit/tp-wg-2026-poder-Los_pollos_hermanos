@@ -7,6 +7,7 @@ import historiaAula.*
 import labo.*
 import objetivos.*
 import pantallas.*
+import dialogos.*
 
 // Estado 13
 object objetivoResolverTp inherits Objetivo {
@@ -28,7 +29,7 @@ object objetivoEntregarMate inherits Objetivo {
   override method interactuarConHanz() { game.say(hanz, "Suerte con el TP, negro") }
   override method interactuarConMati() { game.say(mati, "¡Llevale el mate al Rasta!") }
   override method interactuarConRasta() {
-    game.say(rasta, "Hmmm… Te la dejo pasar solo porque no está lavado… Tomá la clave de acceso…")
+    dialogo.decir(rasta, "Hmmm… Te la dejo pasar solo porque no está lavado… Tomá la clave de acceso…", "sonido/rasta2.mp3")
     mochila.cambiar(mateArmado, claveDeAcceso)
     wachington.objetivo(objetivoHacerTp)
   }
@@ -37,13 +38,13 @@ object objetivoEntregarMate inherits Objetivo {
 // Estados 32 a 35 comparten el bloqueo y el reto de Rasta
 class ObjetivoTpEnCurso inherits Objetivo {
   override method mensajeBloqueo() = "Tengo que completar el TP"
-  override method interactuarConRasta() { game.say(rasta, "¡No te veo trabajando, Wachington!") }
+  override method interactuarConRasta() { dialogo.decir(rasta, "¡No te veo trabajando, Wachington!", "sonido/rasta4.mp3") }
 }
 
 // Estado 32
 object objetivoHacerTp inherits ObjetivoTpEnCurso {
   override method descripcion() = "HACER EL TP"
-  override method interactuarConRasta() { game.say(rasta, "Tenés habilitado el TP ¡Y que sea rápido!") }
+  override method interactuarConRasta() { dialogo.decir(rasta, "Tenés habilitado el TP ¡Y que sea rápido!", "sonido/rasta3.mp3") }
   override method interactuarConMati() { game.say(mati, "Menos mal que se calmó… Ya estaba hablando de boxear gente de nuevo") }
   override method interactuarConPcLabo() {
     game.say(wachington, "No tengo ni idea de como encarar esto…")

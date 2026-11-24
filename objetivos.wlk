@@ -1,5 +1,6 @@
 import wollok.game.*
 import personajes.*
+import dialogos.*
 
 // para los diálogos default
 class Objetivo {
@@ -31,14 +32,14 @@ class Objetivo {
   method interactuarConHanz() { game.say(hanz, "¿Ya cursaste operativos? La que te espera…") }
   method interactuarConTaragui() { game.say(wachington, "No encuentro una forma de que esto me sea util") }
 
-  method interactuarConMatos() { game.say(matos, "¿Sabías que algunos de los personajes de este juego son reales?") }
+  method interactuarConMatos() { dialogo.decir(matos, "¿Sabías que algunos de los personajes de este juego son reales?", "sonido/matos1.mp3")}
   method interactuarConAgus() { game.say(agusSilla, "¡El TP de hoy es una papa!") }
   method interactuarConDenise() { game.say(deniseSilla, "¡El TP de hoy es super estresante!") }
   method interactuarConJulian() { game.say(julianSilla, "¡¿Había TP hoy?!") }
   method interactuarConMate() { game.say(wachington, "¿Un mate? ¿Para qué lo quiero?") }
   method interactuarConLaptop() { game.say(wachington, "...") }
 
-  method interactuarConRasta() { game.say(rasta, "¿Te parece llegar a esta hora?") }
+  method interactuarConRasta() { dialogo.decir(rasta, "¿Te parece llegar a esta hora?", "sonido/rasta1.mp3")}
   method interactuarConMati() { game.say(mati, "¿Sabes hacer mate al menos?") }
   method interactuarConPcLabo() { game.say(wachington, "Si el Rasta no me habilita el TP, no voy a poder hacerlo…") }
 

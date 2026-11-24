@@ -8,12 +8,13 @@ import historiaBuffet.*
 import aula.*
 import pasillo.*
 import objetivos.*
+import dialogos.*
 
 // Matos y el bloqueo de salida son iguales en los estados 10, 11 y 12
 class ObjetivoCuestionario inherits Objetivo {
   override method mensajeBloqueo() = "¡Tengo que responder el cuestionario primero!"
   override method interactuarConMatos() {
-    game.say(matos, "En el Labo vas a poder hacer el TP ¡pero respondé el cuestionario primero!")
+    dialogo.decir(matos, "En el Labo vas a poder hacer el TP ¡pero respondé el cuestionario primero!", "sonido/matos3.mp3")
   }
 }
 
@@ -23,7 +24,7 @@ object objetivoPonerseAlDia inherits Objetivo {
   override method mensajeBloqueo() = "¡Tengo que ponerme al día primero!"
 
   override method interactuarConMatos() {
-    game.say(matos, "Yo ya dí la actividad… Si querés acceder al repositorio del TP, respondé bien el cuestionario…")
+    dialogo.decir(matos, "Yo ya dí la actividad… Si querés acceder al repositorio del TP, respondé bien el cuestionario…", "sonido/matos2.mp3")
     wachington.objetivo(objetivoConseguirRespuestas)
   }
   override method interactuarConAgus() { game.say(agusSilla, "¡Consultale a la profe que hay que hacer!") }
