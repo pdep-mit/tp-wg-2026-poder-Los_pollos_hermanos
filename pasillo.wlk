@@ -43,31 +43,20 @@ object salaPasillo inherits Sala {
   override method posicionInicial() = game.at(13, 0)
   override method ancho() = 18
   override method alto() = 6
-  override method objetos() = [
-    new ObjetoDecorativoSolido(position = game.at(1, 5), image = "x64sprites/mapa/pared-frente.png"),
-    new ObjetoDecorativoSolido(position = game.at(2, 5), image = "x64sprites/mapa/pared-frente.png"),
-    new ObjetoDecorativoSolido(position = game.at(3, 5), image = "x64sprites/mapa/pared-frente.png"),
-    new ObjetoDecorativoSolido(position = game.at(4, 5), image = "x64sprites/mapa/pared-frente.png"),
-    new ObjetoDecorativoSolido(position = game.at(5, 5), image = "x64sprites/mapa/pared-frente.png"),
-    new ObjetoDecorativoSolido(position = game.at(6, 5), image = "x64sprites/mapa/pared-frente.png"),
-    new ObjetoDecorativoSolido(position = game.at(7, 5), image = "x64sprites/mapa/pared-cartelera-izq.png"),
-    new ObjetoDecorativoSolido(position = game.at(8, 5), image = "x64sprites/mapa/pared-cartelera-medio.png"),
-    new ObjetoDecorativoSolido(position = game.at(9, 5), image = "x64sprites/mapa/pared-cartelera-der.png"),
-    new ObjetoDecorativoSolido(position = game.at(10, 5), image = "x64sprites/mapa/pared-frente.png"),
-    new ObjetoDecorativoSolido(position = game.at(11, 5), image = "x64sprites/mapa/pared-frente.png"),
-    new ObjetoDecorativoSolido(position = game.at(13, 5), image = "x64sprites/mapa/pared-frente.png"),
-    new ObjetoDecorativoSolido(position = game.at(14, 5), image = "x64sprites/mapa/pared-frente.png"),
-    new ObjetoDecorativoSolido(position = game.at(15, 5), image = "x64sprites/mapa/pared-frente.png"),
-    new ObjetoDecorativoSolido(position = game.at(16, 5), image = "x64sprites/mapa/pared-frente.png"),
-    new ObjetoDecorativoSolido(position = game.at(0, 0), image = "x64sprites/mapa/pared-lado-izq.png"),
-    new ObjetoDecorativoSolido(position = game.at(0, 1), image = "x64sprites/mapa/pared-lado-izq.png"),
-    new ObjetoDecorativoSolido(position = game.at(0, 3), image = "x64sprites/mapa/pared-lado-izq.png"),
-    new ObjetoDecorativoSolido(position = game.at(0, 4), image = "x64sprites/mapa/pared-lado-izq.png"),
-    new ObjetoDecorativoSolido(position = game.at(0, 5), image = "x64sprites/mapa/pared-lado-izq.png"),
-    new ObjetoDecorativoSolido(position = game.at(17, 0), image = "x64sprites/mapa/pared-lado-der.png"),
-    new ObjetoDecorativoSolido(position = game.at(17, 1), image = "x64sprites/mapa/pared-lado-der.png"),
-    new ObjetoDecorativoSolido(position = game.at(17, 4), image = "x64sprites/mapa/pared-lado-der.png"),
-    new ObjetoDecorativoSolido(position = game.at(17, 5), image = "x64sprites/mapa/pared-lado-der.png"),
+  override method crearObjetos() = [
+    self.paredesFrente(1, 6),
+    [
+    new ParedCarteleraIzq(position = game.at(7, 5)),
+    new ParedCarteleraLlena(position = game.at(8, 5)),
+    new ParedCarteleraDer(position = game.at(9, 5))
+    ],
+    self.paredesFrente(10, 11),
+    self.paredesFrente(13, 16),
+    self.paredesIzq(0, 1),
+    self.paredesIzq(3, 5),
+    self.paredesDer(0, 1),
+    self.paredesDer(4, 5),
+    [
     puertaAulaDesdePasillo,
     puertaLaboDesdePasillo,
     puertaBedelia1DesdePasillo,
@@ -82,7 +71,8 @@ object salaPasillo inherits Sala {
     taraguiPiso,
     hanz,
     conserje
-  ]
+    ]
+  ].flatten()
 
   override method configurar() {
     game.title("Pasillo")

@@ -5,11 +5,14 @@ import mochila.*
 import panelMochila.*
 import musica.*
 import dialogos.*
+import objetos.*
 
 class Sala {
+    var objetosCreados = null
+
     method fondo()
-    method objetos()
-    method posicionInicial() 
+    method crearObjetos()
+    method posicionInicial()
     method ancho()
     method alto()
 
@@ -31,8 +34,25 @@ class Sala {
   // Cada sala le avisa al objetivo que entraron, asi el objetivo no pregunta en que sala esta
   method recibir(objetivo) {}
 
+  // Los objetos se crean una sola vez (la primera vez que se piden) y despues se reutilizan
+  method objetos() {
+    if (objetosCreados == null) {
+      objetosCreados = self.crearObjetos()
+    }
+    return objetosCreados
+  }
+
   // Lo que ya se recogio no se vuelve a dibujar al volver a la sala
   method objetosEnElMapa() = self.objetos().filter({ objeto => !mochila.fueRecogido(objeto) })
+
+  // Arman una fila o columna de objetos iguales. "crear" es un bloque que recibe la posicion y devuelve el objeto
+  method fila(y, desde, hasta, crear) = (desde .. hasta).map({ x => crear.apply(game.at(x, y)) })
+  method columna(x, desde, hasta, crear) = (desde .. hasta).map({ y => crear.apply(game.at(x, y)) })
+
+  // Paredes de los bordes: la de frente va en la ultima fila y la derecha en la ultima columna
+  method paredesFrente(desde, hasta) = self.fila(self.alto() - 1, desde, hasta, { posicion => new ParedFrente(position = posicion) })
+  method paredesIzq(desde, hasta) = self.columna(0, desde, hasta, { posicion => new ParedIzq(position = posicion) })
+  method paredesDer(desde, hasta) = self.columna(self.ancho() - 1, desde, hasta, { posicion => new ParedDer(position = posicion) })
 
   method ocultarFueraDeSala(x, y) {
     if (y < game.height()) {

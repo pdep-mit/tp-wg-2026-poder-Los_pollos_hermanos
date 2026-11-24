@@ -16,31 +16,19 @@ object salaAula inherits Sala {
   override method ancho() = 9
   override method alto() = 9
   override method recibir(objetivo) { objetivo.alEntrarAlAula() }
-  override method objetos() = [
-new ObjetoDecorativoSolido(position = game.at(1, 8), image = "x64sprites/mapa/pared-frente-pizarra-izq.png"),
-    new ObjetoDecorativoSolido(position = game.at(2, 8), image = "x64sprites/mapa/pared-frente-pizarra.png"),
-    new ObjetoDecorativoSolido(position = game.at(3, 8), image = "x64sprites/mapa/pared-frente-pizarra.png"),
-    new ObjetoDecorativoSolido(position = game.at(4, 8), image = "x64sprites/mapa/pared-frente-pizarra-escrito.png"),
-    new ObjetoDecorativoSolido(position = game.at(5, 8), image = "x64sprites/mapa/pared-frente-pizarra-der.png"),
-    new ObjetoDecorativoSolido(position = game.at(6, 8), image = "x64sprites/mapa/pared-frente.png"),
-    new ObjetoDecorativoSolido(position = game.at(7, 8), image = "x64sprites/mapa/pared-frente.png"),
-    new ObjetoDecorativoSolido(position = game.at(0, 0), image = "x64sprites/mapa/pared-lado-izq.png"),
-    new ObjetoDecorativoSolido(position = game.at(0, 1), image = "x64sprites/mapa/pared-lado-izq.png"),
-    new ObjetoDecorativoSolido(position = game.at(0, 2), image = "x64sprites/mapa/pared-lado-izq.png"),
-    new ObjetoDecorativoSolido(position = game.at(0, 3), image = "x64sprites/mapa/pared-lado-izq.png"),
-    new ObjetoDecorativoSolido(position = game.at(0, 4), image = "x64sprites/mapa/pared-lado-izq.png"),
-    new ObjetoDecorativoSolido(position = game.at(0, 5), image = "x64sprites/mapa/pared-lado-izq.png"),
-    new ObjetoDecorativoSolido(position = game.at(0, 6), image = "x64sprites/mapa/pared-lado-izq.png"),
-    new ObjetoDecorativoSolido(position = game.at(0, 7), image = "x64sprites/mapa/pared-lado-izq.png"),
-    new ObjetoDecorativoSolido(position = game.at(0, 8), image = "x64sprites/mapa/pared-lado-izq.png"),
-    new ObjetoDecorativoSolido(position = game.at(8, 0), image = "x64sprites/mapa/pared-lado-der.png"),
-    new ObjetoDecorativoSolido(position = game.at(8, 1), image = "x64sprites/mapa/pared-lado-der.png"),
-    new ObjetoDecorativoSolido(position = game.at(8, 2), image = "x64sprites/mapa/pared-lado-der.png"),
-    new ObjetoDecorativoSolido(position = game.at(8, 3), image = "x64sprites/mapa/pared-lado-der.png"),
-    new ObjetoDecorativoSolido(position = game.at(8, 4), image = "x64sprites/mapa/pared-lado-der.png"),
-    new ObjetoDecorativoSolido(position = game.at(8, 6), image = "x64sprites/mapa/pared-lado-der.png"),
-    new ObjetoDecorativoSolido(position = game.at(8, 7), image = "x64sprites/mapa/pared-lado-der.png"),
-    new ObjetoDecorativoSolido(position = game.at(8, 8), image = "x64sprites/mapa/pared-lado-der.png"),
+  override method crearObjetos() = [
+    [
+    new ParedPizarraIzq(position = game.at(1, 8)),
+    new ParedPizarraMedio(position = game.at(2, 8)),
+    new ParedPizarraMedio(position = game.at(3, 8)),
+    new ParedPizarraMedioEscrito(position = game.at(4, 8)),
+    new ParedPizarraDer(position = game.at(5, 8))
+    ],
+    self.paredesFrente(6, 7),
+    self.paredesIzq(0, 8),
+    self.paredesDer(0, 4),
+    self.paredesDer(6, 8),
+    [
     puertaPasilloDesdeAula,
     new ObjetoDecorativoSolido(position = game.at(2, 3), image = "x64sprites/mapa/escritorio.png"),
     new ObjetoDecorativoSolido(position = game.at(2, 5), image = "x64sprites/mapa/escritorio-cerrado.png"),
@@ -57,7 +45,8 @@ new ObjetoDecorativoSolido(position = game.at(1, 8), image = "x64sprites/mapa/pa
     deniseSilla,
     agusSilla,
     mate
-  ]
+    ]
+  ].flatten()
 
   override method configurar() {
     game.title("Aula")
