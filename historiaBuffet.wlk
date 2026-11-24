@@ -17,7 +17,7 @@ object objetivoBuscarYerba inherits Objetivo {
   override method mensajeBloqueo() = "No creo encontrar yerba por acá…"
 
   override method interactuarConBedelia() { dialogo.mostrar(bedelia, "¿Yerba? No tenemos") }
-  override method interactuarConKiosquera() { dialogo.mostrar(kiosquera, "Noo, yerba no vendemos, hijo") }
+  override method interactuarConKiosquera() { dialogo.decir(kiosquera, "Noo, yerba no vendemos, hijo", "sonido/kiosquera-2.mp3") }
   override method interactuarConFacu() {
     dialogo.decir(facu, "¿Yerba? Obvio, te presto. Agarrala", "sonido/audio-facu-2.mp3")
     wachington.objetivo(objetivoTomarYerba)
@@ -29,7 +29,7 @@ object objetivoTomarYerba inherits Objetivo {
   override method descripcion() = "TOMAR LA YERBA"
   override method mensajeBloqueo() = "¡Necesito yerba primero!"
 
-  override method interactuarConKiosquera() { dialogo.mostrar(kiosquera, "Noo, yerba no vendemos, hijo") }
+  override method interactuarConKiosquera() { dialogo.decir(kiosquera, "Noo, yerba no vendemos, hijo", "sonido/kiosquera-2.mp3") }
   override method interactuarConFacu() { dialogo.decir(facu, "¿Necesitas un termo? En bedelía te prestan, seguro", "sonido/audio-facu-3.mp3") }
   override method interactuarConYerba() {
     dialogo.mostrar(wachington, "...")
@@ -46,7 +46,7 @@ object objetivoComprarBizcochitos inherits Objetivo {
 
   override method interactuarConBedelia() { dialogo.mostrar(bedelia, "¡Tengo hambre!") }
   override method interactuarConKiosquera() {
-    dialogo.mostrar(kiosquera, "¿Bizcochitos? Sii, son 1500 pesos")
+    dialogo.decir(kiosquera, "¿Bizcochitos? Sii, son 1500 pesos", "sonido/kiosquera-4.mp3")
     wachington.guardar(bizcochitos)
     wachington.objetivo(objetivoEntregarBizcochitos)
   }

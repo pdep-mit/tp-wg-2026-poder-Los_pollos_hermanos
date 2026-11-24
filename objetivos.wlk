@@ -6,7 +6,7 @@ import dialogos.*
 class Objetivo {
   method descripcion()
 
-  method interactuarConPortero() { dialogo.mostrar(portero, "Bienvenido a la facultad") }
+  method interactuarConPortero() { dialogo.decir(portero, "Bienvenido a la facultad", "sonido/portero-6.mp3") }
   method interactuarConTecnico() { dialogo.mostrar(tecnico, "Hasta que no me consigas la llave, no puedo hacer nada") }
   method interactuarConAscensor() { dialogo.mostrar(wachington, "Soy de sistemas, no de mecánica...") }
   method interactuarConPapel(papel) { dialogo.mostrar(wachington, "Que gente sucia tira la basura en cualquier lado") }
@@ -45,7 +45,7 @@ class Objetivo {
 
   method interactuarConBedelia() { dialogo.mostrar(bedelia, "...") }
 
-  method interactuarConKiosquera() { dialogo.mostrar(kiosquera, "Noo, eso no lo vendemos, hijo") }
+  method interactuarConKiosquera() { dialogo.decir(kiosquera, "Noo, eso no lo vendemos, hijo", "sonido/kiosquera-1.mp3") }
   method interactuarConFacu() { dialogo.decir(facu, "Si necesitas ayuda con tu mate… ¡Pedile a Hanz!", "sonido/audio-facu-1.mp3") }
   method interactuarConYerba() { dialogo.mostrar(wachington, "Es de Facu, debería pedir permiso primero…") }
 }

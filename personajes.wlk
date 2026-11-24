@@ -116,5 +116,5 @@ object julianSilla inherits Npc(position = game.at(2, 0)) {
 object conserje inherits Npc(position = game.at(9, 1)) {
   override method image() = "x64sprites/personajes/conserje/conserje-izq.png"
   override method dialogar(objetivo) {}
-  override method interactuar() { self.hablar("Cuidado donde pisas, está todo mojado") }
+  override method interactuar() { dialogo.decir(self, "Cuidado donde pisas, está todo mojado", "sonido/conserje.mp3") }
 }

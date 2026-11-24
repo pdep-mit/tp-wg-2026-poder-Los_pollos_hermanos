@@ -25,7 +25,7 @@ object objetivoLlegarAlAula inherits Objetivo {
 object objetivoArreglarAscensor inherits Objetivo{
   override method descripcion()="ARREGLAR EL ASCENSOR"
   override method interactuarConPortero(){
-      dialogo.mostrar(portero, "¿Está roto el ascensor? Pedile ayuda al técnico.")
+      dialogo.decir(portero, "¿Está roto el ascensor? Pedile ayuda al técnico.", "sonido/portero-7.mp3")
   }
   override method interactuarConTecnico() {
     dialogo.mostrar(tecnico, "¿Necesitas ayuda para arreglar el ascensor? Para eso necesito una llave inglesa")
@@ -37,7 +37,7 @@ object objetivoArreglarAscensor inherits Objetivo{
 object objetivoConseguirLlave inherits Objetivo {
   override method descripcion() = "CONSEGUIR UNA LLAVE INGLESA"
   override method interactuarConPortero() {
-    dialogo.mostrar(portero, "Ah, sí… La llave inglesa… Ayudame a limpiar un poco y te la doy")
+    dialogo.decir(portero, "Ah, sí… La llave inglesa… Ayudame a limpiar un poco y te la doy", "sonido/portero-3.mp3")
     wachington.objetivo(objetivoLimpiarEntrada)
   }
 }
@@ -50,7 +50,7 @@ object objetivoLimpiarEntrada inherits Objetivo{
   method juntoTodosLosPapeles() = mochila.tieneTodos(self.papeles())
 
   override method interactuarConPortero() {
-    dialogo.mostrar(portero, "Juntame los 5 papeles del piso y te doy la llave")
+    dialogo.decir(portero, "Juntame los 5 papeles del piso y te doy la llave", "sonido/portero-5.mp3")
   }
 
   override method interactuarConTacho() {
@@ -69,7 +69,7 @@ object objetivoLimpiarEntrada inherits Objetivo{
 object objetivoTirarBasuraAlTacho inherits Objetivo{
    override method descripcion() = "TIRAR LOS PAPELES"
   override method interactuarConPortero() {
-    dialogo.mostrar(portero, "Tiralos al tacho y te doy la llave...")
+    dialogo.decir(portero, "Tiralos al tacho y te doy la llave...", "sonido/portero-4.mp3")
   }
 
   override method interactuarConTacho() {
@@ -85,7 +85,7 @@ object objetivoBuscarLlave inherits Objetivo{
   override method descripcion()= "BUSCAR LA LLAVE INGLESA"
 
     override method interactuarConPortero() {
-    dialogo.mostrar(portero, "Como soy un hombre de palabra, tomá, aca tenes la llave inglesa")
+    dialogo.decir(portero, "Como soy un hombre de palabra, tomá, aca tenes la llave inglesa", "sonido/portero-2.mp3")
     wachington.guardar(llaveInglesa)
     wachington.objetivo(objetivoEntregarLlave)
   }
@@ -95,7 +95,7 @@ object objetivoBuscarLlave inherits Objetivo{
 object objetivoEntregarLlave inherits Objetivo{
  override method descripcion() = "ENTREGAR LA LLAVE INGLESA"
   override method interactuarConPortero() {
-    dialogo.mostrar(portero, "¿Qué clase de apellido es Wachington...?")
+    dialogo.decir(portero, "¿Qué clase de apellido es Wachington...?", "sonido/portero-1.mp3")
   }
   override method interactuarConTecnico() {
     dialogo.mostrar(tecnico, "Joya, enseguida lo arreglo")
@@ -109,7 +109,7 @@ object objetivoSubirAscensor inherits Objetivo{
   override method descripcion() = "SUBIR POR EL ASCENSOR"
 
   override method interactuarConPortero() {
-    dialogo.mostrar(portero, "¿Qué clase de apellido es Wachington...?")
+    dialogo.decir(portero, "¿Qué clase de apellido es Wachington...?", "sonido/portero-1.mp3")
   }
 
   override method interactuarConTecnico() {
