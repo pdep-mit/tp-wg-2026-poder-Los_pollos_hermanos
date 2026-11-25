@@ -21,6 +21,7 @@ class Sala {
     self.configurar()
     tablero.configurar(self.ancho(), self.alto())
     game.ground(self.fondo())
+    musica.asegurar()
     self.objetosEnElMapa().forEach({ objeto => game.addVisual(objeto) })
     self.ocultarFueraDeSala(0, 0)
     wachington.position(self.posicionInicial())

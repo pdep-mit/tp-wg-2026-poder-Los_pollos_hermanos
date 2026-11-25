@@ -14,7 +14,7 @@ import dialogos.*
 class ObjetivoCuestionario inherits Objetivo {
   override method mensajeBloqueo() = "¡Tengo que responder el cuestionario primero!"
   override method interactuarConMatos() {
-    dialogo.decir(matos, "En el Labo vas a poder hacer el TP ¡pero respondé el cuestionario primero!", "sonido/matos3.mp3")
+    dialogo.decir(matos, "En el Labo vas a poder hacer el TP ¡pero respondé el cuestionario primero!", "sonido/matos-3.mp3")
   }
 }
 
@@ -24,7 +24,7 @@ object objetivoPonerseAlDia inherits Objetivo {
   override method mensajeBloqueo() = "¡Tengo que ponerme al día primero!"
 
   override method interactuarConMatos() {
-    dialogo.decir(matos, "Yo ya dí la actividad… Si querés acceder al repositorio del TP, respondé bien el cuestionario…", "sonido/matos2.mp3")
+    dialogo.decir(matos, "Yo ya dí la actividad… Si querés acceder al repositorio del TP, respondé bien el cuestionario…", "sonido/matos-2.mp3")
     wachington.objetivo(objetivoConseguirRespuestas)
   }
   override method interactuarConAgus() { dialogo.decir(agusSilla, "¡Consultale a la profe que hay que hacer!", "sonido/agus-3.mp3") }
