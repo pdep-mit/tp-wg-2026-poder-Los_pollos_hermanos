@@ -34,7 +34,7 @@ class Objetivo {
 
   method interactuarConMatos() { dialogo.decir(matos, "¿Sabías que algunos de los personajes de este juego son reales?", "sonido/matos-1.mp3")}
   method interactuarConAgus() { dialogo.decir(agusSilla, "¡El TP de hoy es una papa!", "sonido/agus-1.mp3") }
-  method interactuarConDenise() { dialogo.mostrar(deniseSilla, "¡El TP de hoy es super estresante!") }
+  method interactuarConDenise() { dialogo.decir(deniseSilla, "¡El TP de hoy es super estresante!", "sonido/denise-3.mp3") }
   method interactuarConJulian() { dialogo.decir(julianSilla, "¡¿Había TP hoy?!", "sonido/julian-3.mp3") }
   method interactuarConMate() { dialogo.mostrar(wachington, "¿Un mate? ¿Para qué lo quiero?") }
   method interactuarConLaptop() { dialogo.mostrar(wachington, "...") }

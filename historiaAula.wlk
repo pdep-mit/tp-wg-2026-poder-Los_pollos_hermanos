@@ -28,7 +28,7 @@ object objetivoPonerseAlDia inherits Objetivo {
     wachington.objetivo(objetivoConseguirRespuestas)
   }
   override method interactuarConAgus() { dialogo.decir(agusSilla, "¡Consultale a la profe que hay que hacer!", "sonido/agus-3.mp3") }
-  override method interactuarConDenise() { dialogo.mostrar(deniseSilla, "¡Ay! ¿Recién llegas? ¡Habla con Matos!") }
+  override method interactuarConDenise() { dialogo.decir(deniseSilla, "¡Ay! ¿Recién llegas? ¡Habla con Matos!", "sonido/denise-1.mp3") }
   override method interactuarConJulian() { dialogo.decir(julianSilla, "Estas tarde wachin, anda a hablar con la profe", "sonido/julian-1.mp3") }
 }
 
@@ -40,7 +40,7 @@ object objetivoConseguirRespuestas inherits ObjetivoCuestionario {
 
   override method interactuarConLaptop() { dialogo.mostrar(wachington, "Quizá los chicos me puedan decir las respuestas…") }
   override method interactuarConAgus() { self.escuchar(agusSilla, "¿El cuestionario? La primer pregunta es la B", "sonido/agus-2.mp3") }
-  override method interactuarConDenise() { self.escuchar(deniseSilla, "¿El cuestionario? La última pregunta es la D", null) }
+  override method interactuarConDenise() { self.escuchar(deniseSilla, "¿El cuestionario? La última pregunta es la D", "sonido/denise-2.mp3") }
   override method interactuarConJulian() { self.escuchar(julianSilla, "¿El cuestionario? La segunda pregunta es la A", "sonido/julian-2.mp3") }
 
   method escuchar(chico, respuesta, audio) {
