@@ -32,12 +32,11 @@ class objetivoTomarYerba <<(O,#FFAA55) object>> {
   interactuarConYerba()
 }
 
-class objetivoBuscarTermo <<(O,#FFAA55) object>>
 
 wachington --> "1" Objetivo : objetivo
 wachington --> mochila : guardar(objeto)\nrecoger(objeto)
 
-objetivoBuscarYerba ..> objetivoTomarYerba : wachington.objetivo(objetivoTomarYerba)
-objetivoTomarYerba ..> objetivoBuscarTermo : wachington.objetivo(objetivoBuscarTermo)
+objetivoBuscarYerba ..> wachington : interactuarConFacu():\nobjetivo(objetivoTomarYerba)
+objetivoTomarYerba ..> wachington : interactuarConYerba():\nobjetivo(objetivoBuscarTermo)
 
 @enduml
