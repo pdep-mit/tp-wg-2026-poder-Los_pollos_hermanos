@@ -1,0 +1,52 @@
+@startuml Colecciones
+
+skinparam dpi 200
+skinparam nodesep 50
+skinparam ranksep 70
+
+title Colecciones: la mochila
+
+class mochila <<(O,#FFAA55) object>> {
+  objetos : List = []
+  recogidos : Set = #{}
+  objetos() = objetos.copy()
+  tieneTodos(lista) = lista.all(...)
+  fueRecogido(objeto) = recogidos.contains(objeto)
+  guardar(objeto)  : add
+  sacar(objeto)  : remove
+  sacarTodos(lista)  : removeAll
+  combinar(ingredientes, resultado)
+  cambiar(viejo, nuevo)
+}
+
+class "Item / yerba / mate" as Item {
+  nombre()
+  image()
+}
+
+class wachington <<(O,#FFAA55) object>> {
+  guardar(objeto)
+  recoger(objeto)
+  tiene(objeto)
+}
+
+class objetivoArmarMate <<(O,#FFAA55) object>> {
+  interactuarConHanz()
+}
+
+abstract class Sala {
+  objetosEnElMapa()
+}
+
+class pestaniaObjetos <<(O,#FFAA55) object>> {
+  dibujarEn(panel)
+}
+
+mochila o-- "*" Item : objetos
+
+wachington ..> mochila : guardar(objeto)
+objetivoArmarMate ..> mochila : combinar([yerba, termoLleno, mate], mateArmado)
+Sala ..> mochila : objetos().filter({ o => !mochila.fueRecogido(o) })
+pestaniaObjetos ..> mochila : objetos()
+
+@enduml

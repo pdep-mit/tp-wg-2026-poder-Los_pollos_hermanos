@@ -1,0 +1,43 @@
+@startuml Composicion
+
+skinparam dpi 200
+skinparam nodesep 50
+skinparam ranksep 80
+
+title Composición: wachington tiene un objetivo que va cambiando
+
+class wachington <<(O,#FFAA55) object>> {
+  objetivo
+  objetivo(nuevoObjetivo)
+}
+
+class mochila <<(O,#FFAA55) object>> {
+  objetos
+  recogidos
+}
+
+abstract class Objetivo {
+  descripcion()
+  salasPermitidas()
+  interactuarConHanz()
+  interactuarConFacu()
+  interactuarConYerba()
+}
+
+class objetivoBuscarYerba <<(O,#FFAA55) object>> {
+  interactuarConFacu()
+}
+
+class objetivoTomarYerba <<(O,#FFAA55) object>> {
+  interactuarConYerba()
+}
+
+class objetivoBuscarTermo <<(O,#FFAA55) object>>
+
+wachington --> "1" Objetivo : objetivo
+wachington --> mochila : guardar(objeto)\nrecoger(objeto)
+
+objetivoBuscarYerba ..> objetivoTomarYerba : wachington.objetivo(objetivoTomarYerba)
+objetivoTomarYerba ..> objetivoBuscarTermo : wachington.objetivo(objetivoBuscarTermo)
+
+@enduml

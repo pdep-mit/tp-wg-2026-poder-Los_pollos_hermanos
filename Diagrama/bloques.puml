@@ -1,0 +1,45 @@
+@startuml Bloques
+
+skinparam dpi 200
+skinparam nodesep 50
+skinparam ranksep 80
+
+title Bloques: quién los crea y quién los ejecuta
+
+class controles <<(O,#FFAA55) object>> {
+  configurar()
+  siEstaJugando(accion)
+}
+
+class keyboard <<(O,#FFAA55) object>> {
+  onPressDo(bloque)
+}
+
+class "{ self.siEstaJugando(...) }" as bloqueTecla <<(B,#88CCFF) bloque>> {
+  se ejecuta al apretar la tecla
+}
+
+class "{ movimiento.arriba(wachington) }" as bloqueMover <<(B,#88CCFF) bloque>> {
+  se ejecuta con apply()
+  solo si se está jugando
+}
+
+abstract class Sala {
+  paredesFrente(desde, hasta)
+  fila(y, desde, hasta, crear)
+}
+
+class "{ posicion => new ParedFrente(position = posicion) }" as bloqueCrear <<(B,#88CCFF) bloque>> {
+  recibe una posición
+  devuelve una pared
+}
+
+controles ..> bloqueTecla : crea
+controles ..> keyboard : onPressDo(bloque)
+keyboard ..> bloqueTecla : lo ejecuta después
+bloqueTecla ..> bloqueMover : crea
+controles ..> bloqueMover : siEstaJugando(accion)\naccion.apply()
+
+Sala ..> bloqueCrear : paredesFrente crea\nfila(..., crear)\ncrear.apply(game.at(x, y))
+
+@enduml

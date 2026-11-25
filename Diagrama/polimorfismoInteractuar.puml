@@ -1,90 +1,44 @@
-@startuml PolimorfismoInteractuar
+@startuml Polimorfismo
 
 skinparam dpi 200
-skinparam nodesep 60
-skinparam ranksep 80
+skinparam nodesep 40
+skinparam ranksep 90
 
-package "polimorfismo: interactuar()" {
-  class wachington <<(O,#FFAA55) object>> {
-    objetivo
-    interactuar()
-  }
+title Polimorfismo: el mismo mensaje interactuar(), distintas respuestas
 
-  interface "Visual del tablero" as Visual {
-    interactuar()
-  }
-
-  abstract class Interactuable {
-    interactuar()
-    reaccionarA(objetivo)
-  }
-
-  class Puerta {
-    reaccionarA(objetivo)
-  }
-
-  abstract class Npc {
-    reaccionarA(objetivo)
-    {abstract} dialogar(objetivo)
-  }
-
-  class "npcs (hanz, rasta, portero, ...)" as npcs <<(O,#FFAA55) object>> {
-    dialogar(objetivo)
-  }
-
-  class conserje <<(O,#FFAA55) object>> {
-    interactuar()
-  }
-
-  class PapelDelPiso {
-    interactuar()
-  }
-
-  class AccesoBloqueado {
-    interactuar()
-  }
-
-  class "ObjetoDecorativo / MascaraFueraDeSala" as noHacenNada {
-    interactuar() (vacío)
-  }
-
-  abstract class Objetivo {
-    pasarPor(puerta)
-    interactuarConHanz()
-    interactuarConRasta()
-    interactuarConPapel(papel)
-  }
+class wachington <<(O,#FFAA55) object>> {
+  interactuar()
 }
 
-wachington ..> Visual : obj.interactuar()\n(a todos los cercanos)
-wachington --> Objetivo : objetivo
+class puertaLaboDesdePasillo <<(O,#FFAA55) object>> {
+  interactuar() → me lleva a otra sala
+}
 
-Visual <|.. Interactuable
-Visual <|.. noHacenNada
-Interactuable <|-- Puerta
-Interactuable <|-- Npc
-Interactuable <|-- PapelDelPiso
-Interactuable <|-- AccesoBloqueado
-Npc <|-- npcs
-Npc <|-- conserje
+class hanz <<(O,#FFAA55) object>> {
+  interactuar() → habla conmigo
+}
 
-Puerta ..> Objetivo : pasarPor(self)
-npcs ..> Objetivo : interactuarConHanz()\ninteractuarConRasta()
-PapelDelPiso ..> Objetivo : interactuarConPapel(self)
+class conserje <<(O,#FFAA55) object>> {
+  interactuar() → "Cuidado donde pisas..."
+}
 
-note right of Interactuable
-  interactuar() llama a
-  reaccionarA(wachington.objetivo())
-end note
+class suciedadPapeles1 <<(O,#FFAA55) object>> {
+  interactuar() → lo junto solo si estoy encima
+}
 
-note bottom of conserje
-  conserje y AccesoBloqueado redefinen
-  interactuar(): no pasan por el objetivo
-end note
+class escalerasIzq <<(O,#FFAA55) object>> {
+  interactuar() → "no puedo ir por acá"
+}
 
-note bottom of Objetivo
-  Double dispatch: lo que pasa depende
-  de QUÉ toqué y de QUÉ objetivo tengo
-end note
+class "una Mesa" as mesa <<(O,#FFAA55) object>> {
+  interactuar() → no hace nada
+}
+
+wachington ..> puertaLaboDesdePasillo : interactuar()
+wachington ..> hanz : interactuar()
+wachington ..> conserje : interactuar()
+wachington ..> suciedadPapeles1 : interactuar()
+wachington ..> escalerasIzq : interactuar()
+wachington ..> mesa : interactuar()
 
 @enduml
