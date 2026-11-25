@@ -19,7 +19,7 @@ object objetivoBuscarTermo inherits Objetivo {
   override method interactuarConKiosquera() { dialogo.decir(kiosquera, "Noo, termos no vendemos, hijo", "sonido/kiosquera-3.mp3") }
   override method interactuarConFacu() { dialogo.decir(facu, "¿Necesitas un termo? En bedelía te prestan, seguro", "sonido/audio-facu-3.mp3") }
   override method interactuarConBedelia() {
-    dialogo.mostrar(bedelia, "¿Querés un termo? Traeme unos bizcochitos y te lo doy")
+    dialogo.decir(bedelia, "¿Querés un termo? Traeme unos bizcochitos y te lo doy", "sonido/bedelia-2.mp3")
     wachington.objetivo(objetivoComprarBizcochitos)
   }
 }
@@ -32,7 +32,7 @@ object objetivoEntregarBizcochitos inherits Objetivo {
 
   override method interactuarConKiosquera() { dialogo.decir(kiosquera, "¿Alguna vez te dijeron que sos medio denso?", "sonido/kiosquera-5.mp3") }
   override method interactuarConBedelia() {
-    dialogo.mostrar(bedelia, "¡Gracias! No te olvides de devolverlo después")
+    dialogo.decir(bedelia, "¡Gracias! No te olvides de devolverlo después", "sonido/bedelia-4.mp3")
     mochila.cambiar(bizcochitos, termoVacio)
     wachington.objetivo(objetivoCargarTermo)
   }

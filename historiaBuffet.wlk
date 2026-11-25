@@ -16,7 +16,7 @@ object objetivoBuscarYerba inherits Objetivo {
   override method salasPermitidas() = [salaPasillo, salaPasilloBedelia, salaBuffet]
   override method mensajeBloqueo() = "No creo encontrar yerba por acá…"
 
-  override method interactuarConBedelia() { dialogo.mostrar(bedelia, "¿Yerba? No tenemos") }
+  override method interactuarConBedelia() { dialogo.decir(bedelia, "¿Yerba? No tenemos", "sonido/bedelia-1.mp3") }
   override method interactuarConKiosquera() { dialogo.decir(kiosquera, "Noo, yerba no vendemos, hijo", "sonido/kiosquera-2.mp3") }
   override method interactuarConFacu() {
     dialogo.decir(facu, "¿Yerba? Obvio, te presto. Agarrala", "sonido/audio-facu-2.mp3")
@@ -44,7 +44,7 @@ object objetivoComprarBizcochitos inherits Objetivo {
   override method salasPermitidas() = [salaPasilloBedelia, salaBuffet]
   override method mensajeBloqueo() = "¡No puedo volver sin el termo!"
 
-  override method interactuarConBedelia() { dialogo.mostrar(bedelia, "¡Tengo hambre!") }
+  override method interactuarConBedelia() { dialogo.decir(bedelia, "¡Tengo hambre!", "sonido/bedelia-3.mp3") }
   override method interactuarConKiosquera() {
     dialogo.decir(kiosquera, "¿Bizcochitos? Sii, son 1500 pesos", "sonido/kiosquera-4.mp3")
     wachington.guardar(bizcochitos)
