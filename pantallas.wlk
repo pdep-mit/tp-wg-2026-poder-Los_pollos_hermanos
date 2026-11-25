@@ -6,19 +6,19 @@ import musica.*
 //dsp hacer clase imagen? 
 object imagenPortada {
   var property position = game.at(0, 0)
-  method image() = "mapa/aprobame-rasta-carga.gif"
+  method image() = "pantallas/aprobame-rasta-carga.gif"
   method interactuar() {}
 }
 
 object imagenContexto {
   var property position = game.at(0, 0)
-  method image() = "mapa/aprobame-rasta-contexto.png"
+  method image() = "pantallas/aprobame-rasta-contexto.png"
   method interactuar() {}
 }
 
 object imagenFinal {
   var property position = game.at(0, 0)
-  method image() = "mapa/aprobame-rasta-final.png"
+  method image() = "pantallas/aprobame-rasta-final.png"
   method interactuar() {}
 }
 
