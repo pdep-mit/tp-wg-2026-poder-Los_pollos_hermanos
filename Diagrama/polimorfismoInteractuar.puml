@@ -1,0 +1,90 @@
+@startuml PolimorfismoInteractuar
+
+skinparam dpi 200
+skinparam nodesep 60
+skinparam ranksep 80
+
+package "polimorfismo: interactuar()" {
+  class wachington <<(O,#FFAA55) object>> {
+    objetivo
+    interactuar()
+  }
+
+  interface "Visual del tablero" as Visual {
+    interactuar()
+  }
+
+  abstract class Interactuable {
+    interactuar()
+    reaccionarA(objetivo)
+  }
+
+  class Puerta {
+    reaccionarA(objetivo)
+  }
+
+  abstract class Npc {
+    reaccionarA(objetivo)
+    {abstract} dialogar(objetivo)
+  }
+
+  class "npcs (hanz, rasta, portero, ...)" as npcs <<(O,#FFAA55) object>> {
+    dialogar(objetivo)
+  }
+
+  class conserje <<(O,#FFAA55) object>> {
+    interactuar()
+  }
+
+  class PapelDelPiso {
+    interactuar()
+  }
+
+  class AccesoBloqueado {
+    interactuar()
+  }
+
+  class "ObjetoDecorativo / MascaraFueraDeSala" as noHacenNada {
+    interactuar() (vacío)
+  }
+
+  abstract class Objetivo {
+    pasarPor(puerta)
+    interactuarConHanz()
+    interactuarConRasta()
+    interactuarConPapel(papel)
+  }
+}
+
+wachington ..> Visual : obj.interactuar()\n(a todos los cercanos)
+wachington --> Objetivo : objetivo
+
+Visual <|.. Interactuable
+Visual <|.. noHacenNada
+Interactuable <|-- Puerta
+Interactuable <|-- Npc
+Interactuable <|-- PapelDelPiso
+Interactuable <|-- AccesoBloqueado
+Npc <|-- npcs
+Npc <|-- conserje
+
+Puerta ..> Objetivo : pasarPor(self)
+npcs ..> Objetivo : interactuarConHanz()\ninteractuarConRasta()
+PapelDelPiso ..> Objetivo : interactuarConPapel(self)
+
+note right of Interactuable
+  interactuar() llama a
+  reaccionarA(wachington.objetivo())
+end note
+
+note bottom of conserje
+  conserje y AccesoBloqueado redefinen
+  interactuar(): no pasan por el objetivo
+end note
+
+note bottom of Objetivo
+  Double dispatch: lo que pasa depende
+  de QUÉ toqué y de QUÉ objetivo tengo
+end note
+
+@enduml
