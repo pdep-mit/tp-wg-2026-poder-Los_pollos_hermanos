@@ -39,8 +39,9 @@ object mochila {
   }
 
   // Usar un objeto con el entorno: ej. termo vacio -> termo lleno
-  method cambiar(viejo, nuevo) { self.combinar([viejo], nuevo) }
-
+  method cambiar(viejo, nuevo) { self.combinar([viejo], nuevo) } 
+  // el temita de le pasa viejo por parametro como lista es porque combinar opera con listas
+  // esta pensado para que en un futuro reciba mas de uno para cambiar(N por 1) y funque igual 
   method validarQueTiene(objeto) {
     if (!self.tiene(objeto)) {
       self.error("No tengo eso en la mochila")

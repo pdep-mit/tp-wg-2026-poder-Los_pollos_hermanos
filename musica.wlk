@@ -2,15 +2,33 @@ import wollok.game.*
 
 object musica {
   var sonido = null
-
+  var pausada = false
+  
   method iniciar() {
-    if (sonido == null) {
-      sonido = game.sound("sonido/angry-birds-musica.mp3")
-      sonido.shouldLoop(true)
-      sonido.play()
-      
+    if (sonido == null) self.crear()
+  }
+  
+  method crear() {
+    sonido = game.sound("sonido/musica-fondo.mp3")
+    sonido.shouldLoop(true)
+    sonido.play()
+  }
+  
+  // se llama dsp de cada game.clear(), por si el sonido quedó cortado
+  method asegurar() {
+    if ((sonido != null) && (!pausada)) {
+      sonido.stop()
+      self.crear()
     }
   }
-  method pausar() { if (sonido != null) sonido.pause() }
-  method reanudar() { if (sonido != null) sonido.resume() }
+  
+  method pausar() {
+    pausada = true
+    if (sonido != null) sonido.pause()
+  }
+  
+  method reanudar() {
+    pausada = false
+    if (sonido != null) sonido.resume()
+  }
 }

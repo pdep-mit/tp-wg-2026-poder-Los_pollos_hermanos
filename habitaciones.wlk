@@ -4,11 +4,15 @@ import movimientos.*
 import mochila.*
 import panelMochila.*
 import musica.*
+import dialogos.*
+import objetos.*
 
 class Sala {
+    var objetosCreados = null
+
     method fondo()
-    method objetos()
-    method posicionInicial() 
+    method crearObjetos()
+    method posicionInicial()
     method ancho()
     method alto()
 
@@ -17,6 +21,7 @@ class Sala {
     self.configurar()
     tablero.configurar(self.ancho(), self.alto())
     game.ground(self.fondo())
+    musica.asegurar()
     self.objetosEnElMapa().forEach({ objeto => game.addVisual(objeto) })
     self.ocultarFueraDeSala(0, 0)
     wachington.position(self.posicionInicial())
@@ -30,8 +35,25 @@ class Sala {
   // Cada sala le avisa al objetivo que entraron, asi el objetivo no pregunta en que sala esta
   method recibir(objetivo) {}
 
+  // Los objetos se crean una sola vez (la primera vez que se piden) y despues se reutilizan
+  method objetos() {
+    if (objetosCreados == null) {
+      objetosCreados = self.crearObjetos()
+    }
+    return objetosCreados
+  }
+
   // Lo que ya se recogio no se vuelve a dibujar al volver a la sala
   method objetosEnElMapa() = self.objetos().filter({ objeto => !mochila.fueRecogido(objeto) })
+
+  // Arman una fila o columna de objetos iguales. "crear" es un bloque que recibe la posicion y devuelve el objeto
+  method fila(y, desde, hasta, crear) = (desde .. hasta).map({ x => crear.apply(game.at(x, y)) })
+  method columna(x, desde, hasta, crear) = (desde .. hasta).map({ y => crear.apply(game.at(x, y)) })
+
+  // Paredes de los bordes: la de frente va en la ultima fila y la derecha en la ultima columna
+  method paredesFrente(desde, hasta) = self.fila(self.alto() - 1, desde, hasta, { posicion => new ParedFrente(position = posicion) })
+  method paredesIzq(desde, hasta) = self.columna(0, desde, hasta, { posicion => new ParedIzq(position = posicion) })
+  method paredesDer(desde, hasta) = self.columna(self.ancho() - 1, desde, hasta, { posicion => new ParedDer(position = posicion) })
 
   method ocultarFueraDeSala(x, y) {
     if (y < game.height()) {
@@ -60,23 +82,33 @@ object controles {
     keyboard.down().onPressDo({ self.siEstaJugando({ movimiento.abajo(wachington) }) })
     keyboard.left().onPressDo({ self.siEstaJugando({ movimiento.izquierda(wachington) }) })
     keyboard.right().onPressDo({ self.siEstaJugando({ movimiento.derecha(wachington) }) })
-    keyboard.e().onPressDo({ self.siEstaJugando({ wachington.interactuar() }) })
-    keyboard.b().onPressDo({ panelMochila.alternar() })
-    keyboard.num1().onPressDo({ panelMochila.mostrar(pestaniaMision) })
-    keyboard.num2().onPressDo({ panelMochila.mostrar(pestaniaObjetos) })
+    keyboard.e().onPressDo({
+      if (dialogo.estaVisible()) dialogo.ocultar()
+      else self.siEstaJugando({ wachington.interactuar() })
+    })
+    keyboard.b().onPressDo({
+      if (!dialogo.estaVisible()) panelMochila.alternar()
+    })
+    keyboard.num1().onPressDo({
+      if (!dialogo.estaVisible()) panelMochila.mostrar(pestaniaMision)
+    })
+    keyboard.num2().onPressDo({
+      if (!dialogo.estaVisible()) panelMochila.mostrar(pestaniaObjetos)
+    })
     keyboard.m().onPressDo({ musica.pausar() })
     keyboard.n().onPressDo({ musica.reanudar() })
   }
 
   // Con la mochila abierta Wachington no se mueve ni interactua
   method siEstaJugando(accion) {
-    if (!panelMochila.estaAbierto()) accion.apply()
+    if (!panelMochila.estaAbierto() && !dialogo.estaVisible()) accion.apply()
   }
 }
 
 object habitacionActual {
     var property salaActual = null
     method irA(sala, posicionLlegada) {
+        dialogo.ocultar()
         game.clear()
         sala.cargar()
         wachington.position(posicionLlegada)

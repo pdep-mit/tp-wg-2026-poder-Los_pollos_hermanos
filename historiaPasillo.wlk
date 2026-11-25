@@ -1,4 +1,5 @@
 import wollok.game.*
+import dialogos.*
 import personajes.*
 import objetos.*
 import mochila.*
@@ -17,7 +18,7 @@ object objetivoIrAlAula inherits Objetivo {
   override method salasPermitidas() = [salaAula]
   override method mensajeBloqueo() = "Debo llegar al aula, estoy llegando tarde"
 
-  override method interactuarConHanz() { game.say(hanz, "¿El aula? A mi derecha, negro") }
+  override method interactuarConHanz() { dialogo.decir(hanz, "¿El aula? A mi derecha, negro", "sonido/hanz-5.mp3") }
   override method alEntrarAlAula() { wachington.objetivo(objetivoPonerseAlDia) }
 }
 
@@ -27,8 +28,8 @@ object objetivoIrAlLabo inherits ObjetivoCuestionario {
   override method salasPermitidas() = [salaPasillo, salaLabo]
   override method mensajeBloqueo() = "Debo llegar al labo, estoy llegando tarde"
 
-  override method interactuarConHanz() { game.say(hanz, "¿El labo? A mi izquierda, negro") }
-  override method interactuarConLaptop() { game.say(wachington, "¡Listo! Ahora al labo") }
+  override method interactuarConHanz() { dialogo.decir(hanz, "¿El labo? A mi izquierda, negro", "sonido/hanz-6.mp3") }
+  override method interactuarConLaptop() { dialogo.mostrar(wachington, "¡Listo! Ahora al labo") }
   override method alEntrarAlLabo() { wachington.objetivo(objetivoResolverTp) }
 }
 
@@ -38,9 +39,11 @@ object objetivoCargarTermo inherits Objetivo {
   override method salasPermitidas() = [salaPasillo, salaPasilloBedelia]
   override method mensajeBloqueo() = "¡Tengo que cargar el termo primero!"
 
-  override method interactuarConHanz() { game.say(hanz, "¿Necesitas ayuda con el mate, negro?") }
+  override method interactuarConHanz() { dialogo.decir(hanz, "¿Necesitas ayuda con el mate, negro?", "sonido/hanz-1.mp3") }
   override method interactuarConTaragui() {
-    game.say(wachington, "¡Menos mal el agua está caliente!")
+    dialogo.mostrar(wachington, "¡Menos mal el agua está caliente!")
+    const sonidoAgua = game.sound("sonido/agua-cargar.mp3")
+    sonidoAgua.play()
     mochila.cambiar(termoVacio, termoLleno)
     wachington.objetivo(objetivoArmarMate)
   }
@@ -52,7 +55,7 @@ object objetivoArmarMate inherits Objetivo {
   override method mensajeBloqueo() = "¡Tengo que armarle el mate al Rasta!"
 
   override method interactuarConHanz() {
-    game.say(hanz, "¿Es para el Rasta? ¡Dejame darte una mano!")
+    dialogo.decir(hanz, "¿Es para el Rasta? ¡Dejame darte una mano!", "sonido/hanz-2.mp3")
     mochila.combinar([yerba, termoLleno, mate], mateArmado)
     wachington.objetivo(objetivoEntregarMate)
   }

@@ -1,228 +1,102 @@
 @startuml Juego
 
-' Mas espacio entre cajas para que las flechas no se pisen
 skinparam nodesep 60
 skinparam ranksep 80
 
-package personajes {
-  class wachington  {
-    position
-    imagen
-    mochila
-    objetivo
-    image()
-    esSolido()
-    estaAlLadoDe(otro)
+package "double dispatch" {
+  abstract class Npc {
     interactuar()
-    guardar(objeto)
-    tiene(objeto)
+    {abstract} dialogar(objetivo)
   }
 
-  interface Interactuable {
-    position()
-    image()
-    esSolido()
-    esInteractuable()
-    interactuar()
+  class "npcs (portero, hanz, rasta, ...)" as npcs <<(O,#FFAA55) object>> {
+    dialogar(objetivo)
   }
 
-  class rasta  {
-    hablar(mensaje)
-    interactuar()
-  }
-  class companieroClase {
-    hablar(mensaje)
-    interactuar()
-  }
-  class portero {
-    interactuar()
-  }
-  class tecnico  {
-    interactuar()
-  }
-}
-
-
-
-package movimientos {
-class Tablero {
-  anchoHabitacion
-    altoHabitacion
-    configurar(ancho, alto)
-    ancho()
-    alto()
-    estaDentro(posicion)
-    hayObstaculoEn(posicion)
-    puedeOcuparse(posicion)
-  }
-class Movimientos {
-  mover(personaje, destino)
-    arriba(personaje)
-    abajo(personaje)
-    izquierda(personaje)
-    derecha(personaje)
- }
-}
-
-
-package salas {
-class Sala {
-  fondos()
-  objetos()
-  posicioninicial()
-  ancho()
-  alto()
-  cargar()
-  configurar()
-  ocultarFueraDeSala(x,y)
-}
-
-Object habitacionActual {
-  salaactual()
-  irA(sala,posicionllegada)
-}
-
-' El #FFAA55 le da el color naranja en el diagrama, es solo un detalle ' 
-' El O para referenciar que es un objeto (explicar en la presentacion)
-  class salaEntrada <<(O,#FFAA55) object>> 
-  class salaPasillo <<(O,#FFAA55) object>>
-  class salaAula <<(O,#FFAA55) object>>
-  class salaLabo <<(O,#FFAA55) object>>
-  class salaPasilloBedelia <<(O,#FFAA55) object>>
-  class salaBuffet <<(O,#FFAA55) object>>
-
-'lo pongo asi para diferenciar de las decorativas ' 
-class "puertas (puertaXDesdeY)" as puertas <<(O,#FFAA55) object>> {
-    interactuar()
-  }
-class ascensor <<(O,#FFAA55) object>> {
-    interactuar()
-  }
-
-class controles <<(O,#FFAA55) object>> {
-    configurar()
-  }
-
-class MascaraFueraDeSala {
-    position
-    image()
-  }
-}
-
-package historia {
-  interface Objetivo {
+  abstract class Objetivo {
     interactuarConPortero()
-    interactuarConTecnico()
+    interactuarConHanz()
+    pasarPor(puerta)
+    alEntrarAlAula()
+    alEntrarAlLabo()
+  }
+
+  class "objetivos (objetivoIrAlAula, objetivoIrAlLabo, ...)" as objetivos <<(O,#FFAA55) object>> {
+    interactuarConPortero()
+    interactuarConHanz()
+    alEntrarAlAula()
+    alEntrarAlLabo()
+  }
+
+  abstract class Sala {
+    recibir(objetivo)
+  }
+
+  class "salaAula / salaLabo" as salas <<(O,#FFAA55) object>> {
+    recibir(objetivo)
+  }
+}
+
+package "actualizacion de estados" {
+  class wachington <<(O,#FFAA55) object>> {
+    objetivo
+    objetivo(nuevoObjetivo)
+  }
+
+  class objetivoSubirAscensor <<(O,#FFAA55) object>> {
     interactuarConAscensor()
   }
 
-  class objetivoLlegarAlAula <<(O,#FFAA55) object>>
-  class objetivoArreglarAscensor <<(O,#FFAA55) object>>
-  class objetivoConseguirLlave <<(O,#FFAA55) object>>
-  class objetivoLimpiarEntrada <<(O,#FFAA55) object>>
-}
-
-
-package decorados {
- class ObjetoDecorativo {
-  position
-    esInteractuable()
+  class objetivoIrAlAula <<(O,#FFAA55) object>> {
+    alEntrarAlAula()
   }
-  class ObjetoDecorativoSolido {
-    esSolido()
-  }
-  class ObjetoDecorativoNoSolido {
-    esSolido()
+
+  class objetivoPonerseAlDia <<(O,#FFAA55) object>> {
+    interactuarConMatos()
   }
 }
 
-
-
-package utiles {
-class computadora {
-  hablar(mensaje)
-  interactuaur()
-}
-
-class tp {
-  estado
-  
-}
-  
-
-interface EstadoTp {
-    mensajeRasta()
-    mensajeCompa()
-    mensajeCompu()
-    avanzarConRasta()
-    avanzarConCompu()
+package "mochila y panel" {
+  class mochila <<(O,#FFAA55) object>> {
+    objetos : List
+    recogidos : Set
+    objetos()
+    fueRecogido(objeto)
+    combinar(ingredientes, resultado)
+    cambiar(viejo, nuevo)
   }
 
-class sinTp <<(O,#FFAA55) object>>
-class tpIncompleto <<(O,#FFAA55) object>>
-class tpCompleto <<(O,#FFAA55) object>>
-class tpEntregado <<(O,#FFAA55) object>>
+  class panelMochila <<(O,#FFAA55) object>> {
+    pestania
+    mostrar(nuevaPestania)
+    dibujar()
+    escribir(x, y, texto)
+  }
+
+  class "pestaniaMision / pestaniaObjetos" as pestanias <<(O,#FFAA55) object>> {
+    titulo()
+    dibujarEn(panel)
+  }
 }
 
+Npc <|-- npcs
+Objetivo <|-- objetivos
+Sala <|-- salas
 
-' Relaciones ' 
+npcs ..> Objetivo : interactuarConPortero()\ninteractuarConHanz()
+Objetivo ..> Sala : recibir(self)
+salas ..> Objetivo : alEntrarAlAula()\nalEntrarAlLabo()
 
-' Herencia' 
-ObjetoDecorativo <|-- ObjetoDecorativoSolido
-ObjetoDecorativo <|-- ObjetoDecorativoNoSolido
+Objetivo <|-- objetivoSubirAscensor
+Objetivo <|-- objetivoIrAlAula
+Objetivo <|-- objetivoPonerseAlDia
 
-Sala <|-d- salaEntrada
-Sala <|-d- salaPasillo
-Sala <|-u- salaAula
-Sala <|-u- salaLabo
-Sala <|-d- salaPasilloBedelia
-Sala <|-u- salaBuffet
+wachington --> Objetivo : objetivo
+objetivoSubirAscensor ..> objetivoIrAlAula : wachington.objetivo(...)
+objetivoIrAlAula ..> objetivoPonerseAlDia : wachington.objetivo(...)
 
-' Implimentacion ' 
-Interactuable <|.. rasta
-Interactuable <|.. companieroClase
-Interactuable <|.. portero
-Interactuable <|.. tecnico
-Interactuable <|.. ascensor
-Interactuable <|.. puertas
-Interactuable <|.. computadora
-
-EstadoTp <|.. sinTp
-EstadoTp <|.. tpIncompleto
-EstadoTp <|.. tpCompleto
-EstadoTp <|.. tpEntregado
-
-Objetivo <|.. objetivoLlegarAlAula
-Objetivo <|.. objetivoArreglarAscensor
-Objetivo <|.. objetivoConseguirLlave
-Objetivo <|.. objetivoLimpiarEntrada
-
-'asosiacion' 
-wachington --> Objetivo :objetivo
-wachington o--> tp :mochila
-wachington ..> Interactuable :interactuar()
-
-tp --> EstadoTp : estado
-rasta ..> tp
-companieroClase ..> tp
-computadora ..> tp
-
-portero ..> wachington : objetivo()
-tecnico ..> wachington : objetivo()
-ascensor ..> wachington : objetivo()
-
-controles ..> Movimientos
-controles ..> wachington
-Movimientos ..> Tablero
-
-Sala ..> Tablero : configurar()
-Sala ..> controles
-Sala ..> habitacionActual
-Sala ..> MascaraFueraDeSala : crea
-Sala o-->  ObjetoDecorativo : objetos()
-Sala o-->  Interactuable : objetos()
-
-habitacionActual --> Sala : salaActual
-puertas ..> habitacionActual : irA()
+panelMochila --> pestanias : pestania.dibujarEn(self)
+pestanias ..> panelMochila : escribir(x, y, texto)
+pestanias ..> mochila : objetos()
 
 @enduml

@@ -3,6 +3,7 @@ import personajes.*
 import movimientos.*
 import habitaciones.*
 import panelMochila.*
+import dialogos.*
 import objetos.*
 
 describe "Panel de la mochila y movimiento" {
@@ -35,6 +36,24 @@ describe "Panel de la mochila y movimiento" {
     assert.equals(0, acciones)
 
     panelMochila.cerrar()
+    controles.siEstaJugando({ acciones += 1 })
+    assert.equals(1, acciones)
+  }
+
+  test "Un diálogo permanece visible hasta cerrarlo y bloquea los controles" {
+    const visualesAntes = game.allVisuals().size()
+    dialogo.mostrar(wachington, "Este mensaje se puede leer con calma")
+    assert.that(dialogo.estaVisible())
+    assert.equals("Este mensaje se puede leer con calma", dialogo.textoActual())
+    assert.that(game.allVisuals().size() > visualesAntes)
+
+    var acciones = 0
+    controles.siEstaJugando({ acciones += 1 })
+    assert.equals(0, acciones)
+
+    dialogo.ocultar()
+    assert.notThat(dialogo.estaVisible())
+    assert.equals(visualesAntes, game.allVisuals().size())
     controles.siEstaJugando({ acciones += 1 })
     assert.equals(1, acciones)
   }

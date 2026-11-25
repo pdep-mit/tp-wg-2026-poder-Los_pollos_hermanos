@@ -1,0 +1,44 @@
+@startuml Polimorfismo
+
+skinparam dpi 200
+skinparam nodesep 40
+skinparam ranksep 90
+
+title Polimorfismo: el mismo mensaje interactuar(), distintas respuestas
+
+class wachington <<(O,#FFAA55) object>> {
+  interactuar()
+}
+
+class puertaLaboDesdePasillo <<(O,#FFAA55) object>> {
+  interactuar() → me lleva a otra sala
+}
+
+class hanz <<(O,#FFAA55) object>> {
+  interactuar() → habla conmigo
+}
+
+class conserje <<(O,#FFAA55) object>> {
+  interactuar() → "Cuidado donde pisas..."
+}
+
+class suciedadPapeles1 <<(O,#FFAA55) object>> {
+  interactuar() → lo junto solo si estoy encima
+}
+
+class escalerasIzq <<(O,#FFAA55) object>> {
+  interactuar() → "no puedo ir por acá"
+}
+
+class "una Mesa" as mesa <<(O,#FFAA55) object>> {
+  interactuar() → no hace nada
+}
+
+wachington ..> puertaLaboDesdePasillo : interactuar()
+wachington ..> hanz : interactuar()
+wachington ..> conserje : interactuar()
+wachington ..> suciedadPapeles1 : interactuar()
+wachington ..> escalerasIzq : interactuar()
+wachington ..> mesa : interactuar()
+
+@enduml

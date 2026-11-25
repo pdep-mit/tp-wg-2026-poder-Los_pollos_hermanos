@@ -1,4 +1,5 @@
 import wollok.game.*
+import dialogos.*
 import personajes.*
 import objetos.*
 import mochila.*
@@ -15,10 +16,10 @@ object objetivoBuscarTermo inherits Objetivo {
   override method salasPermitidas() = [salaPasilloBedelia, salaBuffet]
   override method mensajeBloqueo() = "¡No puedo volver sin el termo!"
 
-  override method interactuarConKiosquera() { game.say(kiosquera, "Noo, termos no vendemos, hijo") }
-  override method interactuarConFacu() { game.say(facu, "¿Necesitas un termo? En bedelía te prestan, seguro") }
+  override method interactuarConKiosquera() { dialogo.decir(kiosquera, "Noo, termos no vendemos, hijo", "sonido/kiosquera-3.mp3") }
+  override method interactuarConFacu() { dialogo.decir(facu, "¿Necesitas un termo? En bedelía te prestan, seguro", "sonido/audio-facu-3.mp3") }
   override method interactuarConBedelia() {
-    game.say(bedelia, "¿Querés un termo? Traeme unos bizcochitos y te lo doy")
+    dialogo.decir(bedelia, "¿Querés un termo? Traeme unos bizcochitos y te lo doy", "sonido/bedelia-2.mp3")
     wachington.objetivo(objetivoComprarBizcochitos)
   }
 }
@@ -29,9 +30,9 @@ object objetivoEntregarBizcochitos inherits Objetivo {
   override method salasPermitidas() = [salaPasilloBedelia, salaBuffet]
   override method mensajeBloqueo() = "¡No puedo volver sin el termo!"
 
-  override method interactuarConKiosquera() { game.say(kiosquera, "¿Alguna vez te dijeron que sos medio denso?") }
+  override method interactuarConKiosquera() { dialogo.decir(kiosquera, "¿Alguna vez te dijeron que sos medio denso?", "sonido/kiosquera-5.mp3") }
   override method interactuarConBedelia() {
-    game.say(bedelia, "¡Gracias! No te olvides de devolverlo después")
+    dialogo.decir(bedelia, "¡Gracias! No te olvides de devolverlo después", "sonido/bedelia-4.mp3")
     mochila.cambiar(bizcochitos, termoVacio)
     wachington.objetivo(objetivoCargarTermo)
   }

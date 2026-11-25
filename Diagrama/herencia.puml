@@ -1,0 +1,76 @@
+@startuml Herencia
+
+skinparam dpi 200
+skinparam nodesep 40
+skinparam ranksep 70
+
+title Herencia y template method
+
+package "Template method: cargar una sala" {
+  abstract class Sala {
+    cargar()
+    configurar()
+    {abstract} fondo()
+    {abstract} crearObjetos()
+    {abstract} posicionInicial()
+    {abstract} ancho()
+    {abstract} alto()
+  }
+
+  class salaAula <<(O,#FFAA55) object>> {
+    fondo()
+    crearObjetos()
+    posicionInicial()
+    ancho()
+    alto()
+    configurar()
+  }
+
+  class salaLabo <<(O,#FFAA55) object>> {
+    fondo()
+    crearObjetos()
+    posicionInicial()
+    ancho()
+    alto()
+    configurar()
+  }
+
+  class "salaPasillo, salaBuffet, ..." as otrasSalas <<(O,#FFAA55) object>>
+}
+
+package "Elementos interactuables" {
+  abstract class Interactuable {
+    position
+    {abstract} image()
+    esSolido()
+    interactuar()
+  }
+
+  class Puerta {
+    pasar()
+  }
+
+  abstract class Npc {
+    {abstract} dialogar(objetivo)
+  }
+
+  class PapelDelPiso {
+    esSolido()
+    interactuar()
+  }
+
+  class AccesoBloqueado {
+    interactuar()
+  }
+}
+
+Sala <|-- salaAula
+Sala <|-- salaLabo
+Sala <|-- otrasSalas
+
+Interactuable <|-- Puerta
+Interactuable <|-- Npc
+Interactuable <|-- PapelDelPiso
+Interactuable <|-- AccesoBloqueado
+
+@enduml

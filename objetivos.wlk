@@ -1,15 +1,16 @@
 import wollok.game.*
 import personajes.*
+import dialogos.*
 
 // para los diálogos default
 class Objetivo {
   method descripcion()
 
-  method interactuarConPortero() { game.say(portero, "Bienvenido a la facultad") }
-  method interactuarConTecnico() { game.say(tecnico, "Hasta que no me consigas la llave, no puedo hacer nada") }
-  method interactuarConAscensor() { game.say(wachington, "Soy de sistemas, no de mecánica...") }
-  method interactuarConPapel(papel) { game.say(wachington, "Que gente sucia tira la basura en cualquier lado") }
-  method interactuarConTacho() { game.say(wachington, "Un tacho común y corriente") }
+  method interactuarConPortero() { dialogo.decir(portero, "Bienvenido a la facultad", "sonido/portero-6.mp3") }
+  method interactuarConTecnico() { dialogo.decir(tecnico, "Hasta que no me consigas la llave, no puedo hacer nada", "sonido/tecnico-5.mp3") }
+  method interactuarConAscensor() { dialogo.mostrar(wachington, "Soy de sistemas, no de mecánica...") }
+  method interactuarConPapel(papel) { dialogo.mostrar(wachington, "Que gente sucia tira la basura en cualquier lado") }
+  method interactuarConTacho() { dialogo.mostrar(wachington, "Un tacho común y corriente") }
   
   // para las puertas
   method salasPermitidas() = []
@@ -24,27 +25,27 @@ class Objetivo {
       puerta.pasar()
       sala.recibir(self)
     } else {
-      game.say(wachington, self.mensajeBloqueo())
+      dialogo.mostrar(wachington, self.mensajeBloqueo())
     }
   }
 
-  method interactuarConHanz() { game.say(hanz, "¿Ya cursaste operativos? La que te espera…") }
-  method interactuarConTaragui() { game.say(wachington, "No encuentro una forma de que esto me sea util") }
+  method interactuarConHanz() { dialogo.decir(hanz, "¿Ya cursaste operativos? La que te espera…", "sonido/hanz-3.mp3") }
+  method interactuarConTaragui() { dialogo.mostrar(wachington, "No encuentro una forma de que esto me sea util") }
 
-  method interactuarConMatos() { game.say(matos, "¿Sabías que algunos de los personajes de este juego son reales?") }
-  method interactuarConAgus() { game.say(agusSilla, "¡El TP de hoy es una papa!") }
-  method interactuarConDenise() { game.say(deniseSilla, "¡El TP de hoy es super estresante!") }
-  method interactuarConJulian() { game.say(julianSilla, "¡¿Había TP hoy?!") }
-  method interactuarConMate() { game.say(wachington, "¿Un mate? ¿Para qué lo quiero?") }
-  method interactuarConLaptop() { game.say(wachington, "...") }
+  method interactuarConMatos() { dialogo.decir(matos, "¿Sabías que algunos de los personajes de este juego son reales?", "sonido/matos-1.mp3")}
+  method interactuarConAgus() { dialogo.decir(agusSilla, "¡El TP de hoy es una papa!", "sonido/agus-1.mp3") }
+  method interactuarConDenise() { dialogo.decir(deniseSilla, "¡El TP de hoy es super estresante!", "sonido/denise-3.mp3") }
+  method interactuarConJulian() { dialogo.decir(julianSilla, "¡¿Había TP hoy?!", "sonido/julian-3.mp3") }
+  method interactuarConMate() { dialogo.mostrar(wachington, "¿Un mate? ¿Para qué lo quiero?") }
+  method interactuarConLaptop() { dialogo.mostrar(wachington, "...") }
 
-  method interactuarConRasta() { game.say(rasta, "¿Te parece llegar a esta hora?") }
-  method interactuarConMati() { game.say(mati, "¿Sabes hacer mate al menos?") }
-  method interactuarConPcLabo() { game.say(wachington, "Si el Rasta no me habilita el TP, no voy a poder hacerlo…") }
+  method interactuarConRasta() { dialogo.decir(rasta, "¿Te parece llegar a esta hora?", "sonido/rasta-1.mp3")}
+  method interactuarConMati() { dialogo.decir(mati, "¿Sabes hacer mate al menos?", "sonido/mati-6.mp3") }
+  method interactuarConPcLabo() { dialogo.mostrar(wachington, "Si el Rasta no me habilita el TP, no voy a poder hacerlo…") }
 
-  method interactuarConBedelia() { game.say(bedelia, "...") }
+  method interactuarConBedelia() { dialogo.mostrar(bedelia, "...") }
 
-  method interactuarConKiosquera() { game.say(kiosquera, "Noo, eso no lo vendemos, hijo") }
-  method interactuarConFacu() { game.say(facu, "Si necesitas ayuda con tu mate… ¡Pedile a Hanz!") }
-  method interactuarConYerba() { game.say(wachington, "Es de Facu, debería pedir permiso primero…") }
+  method interactuarConKiosquera() { dialogo.decir(kiosquera, "Noo, eso no lo vendemos, hijo", "sonido/kiosquera-1.mp3") }
+  method interactuarConFacu() { dialogo.decir(facu, "Si necesitas ayuda con tu mate… ¡Pedile a Hanz!", "sonido/audio-facu-1.mp3") }
+  method interactuarConYerba() { dialogo.mostrar(wachington, "Es de Facu, debería pedir permiso primero…") }
 }
